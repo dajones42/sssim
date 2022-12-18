@@ -83,6 +83,8 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car)
 			matrices: [],
 			geometry: []
 		};
+		if (shape.animations.length > 0)
+			shapeData.animations= shape.animations;
 		mstsModelMap[shapePath]= shapeData;
 		for (let i=0; i<shape.matrices.length; i++) {
 			var m= shape.matrices[i].mat;
@@ -204,14 +206,17 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car)
 		for (let i=0; i<shapeData.matrices.length; i++) {
 			let mat= shapeData.matrices[i];
 			if (mat.name.toLowerCase().substr(0,6)=="wheels") {
+				let radius= mat.object.position.y;
+				if (mat.parent>=0)
+					radius+= shapeData.matrices[
+					  mat.parent].object.position.y;
 				mat.part= car.parts.length;
 				car.parts.push(new RailCarPart(
-				  mat.object.position.z,mat.object));
-				let radius= mat.object.position.y;
+				  mat.object.position.z,mat.object,radius));
 				if (car.mainWheelRadius < radius)
 					car.mainWheelRadius= radius;
-				console.log("wheel "+i+" "+radius+" "+
-				  shapePath);
+//				console.log("wheel "+i+" "+radius+" "+
+//				  shapePath);
 			}
 		}
 		car.nWheels= car.parts.length;
@@ -220,10 +225,10 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car)
 			if (mat.name.toLowerCase().substr(0,5)=="bogie") {
 				mat.part= car.parts.length;
 				car.parts.push(new RailCarPart(
-				  mat.object.position.z,mat.object));
+				  mat.object.position.z,mat.object,0));
 			}
 		}
-		car.parts.push(new RailCarPart(root.position.x,root));
+		car.parts.push(new RailCarPart(root.position.x,root,0));
 		for (let i=0; i<shapeData.matrices.length; i++) {
 			let mat= shapeData.matrices[i];
 			if (mat.part>=0 && mat.parent>=0) {
@@ -246,6 +251,55 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car)
 //			let part= car.parts[i];
 //			console.log("part "+i+" "+part.parent+" "+part.xOffset);
 //		}
+		let makeTrack= function(name,controller) {
+			if (controller.length < 2)
+				return null;
+			let times= [];
+			let values= [];
+			let type= null;
+			for (let i=0; i<controller.length; i++) {
+				let c= controller[i];
+//				console.log("track "+i+" "+c.frame+" "+
+//				  name+" "+c.type);
+				type= c.type;
+				times.push(c.frame/(controller.length-1));
+				if (type == "position")
+					values.push(c.x,c.y,c.z);
+				else
+					values.push(c.x,c.y,c.z,c.w);
+			}
+			if (type == "position")
+				return new THREE.VectorKeyframeTrack(
+				  name+".position",times,values);
+			else
+				return new THREE.QuaternionKeyframeTrack(
+				  name+".rotation",times,values);
+		}
+		if (shapeData.animations) {
+//			console.log("nwheels "+car.nWheels);
+//			console.log("animations "+shapeData.animations.length);
+			let tracks= [];
+			for (let i=0; i<shapeData.animations.length; i++) {
+				let animation= shapeData.animations[i];
+				for (let j=0; j<animation.nodes.length; j++) {
+					let node= animation.nodes[j];
+					for (let k=0; k<node.controllers.length;
+					  k++) {
+						let track= makeTrack(node.name,
+						  node.controllers[k]);
+						if (track)
+							tracks.push(track);
+					}
+				}
+			}
+			if (tracks.length > 0) {
+				let clip=
+				  new THREE.AnimationClip("rods",-1,tracks);
+				let mixer= new THREE.AnimationMixer(root);
+				mixer.clipAction(clip).play();
+				car.animation= mixer;
+			}
+		}
 	}
 	return root;
 }

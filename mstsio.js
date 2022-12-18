@@ -406,6 +406,9 @@ let readMstsShape= function(path)
 		let primState= null;
 		let triList= null;
 		let matrix= null;
+		let animation= null;
+		let animNode= null;
+		let controller= null;
 		for (; offset<buffer.length; ) {
 			let code= getInt();
 			if (code == 0)
@@ -608,11 +611,19 @@ let readMstsShape= function(path)
 				break;
 			 case 28: // animation
 				getString();
-				var n= getInt();
-				var r= getInt();
+				animation= {
+				  frames: getInt(),
+				  rate: getInt(),
+				  nodes: []
+				};
+				result.animations.push(animation);
 				break;
 			 case 26: // anim_node
-				getString();
+				animNode= {
+				  name: getString(),
+				  controllers: []
+				};
+				animation.nodes.push(animNode);
 				break;
 			 case 25: // controllers
 				getString();
@@ -621,36 +632,49 @@ let readMstsShape= function(path)
 			 case 21: // linear_pos
 				getString();
 				getInt();
+				controller= [];
+				animNode.controllers.push(controller);
 				break;
 			 case 22: // tcb_pos
 				offset+= len;
 				break;
 			 case 23: // slerp_rot
 				getString();
-				getInt();
-				getFloat();
-				getFloat();
-				getFloat();
-				getFloat();
+				controller.push({
+					type: "rotation",
+					frame: getInt(),
+					x: getFloat(),
+					y: getFloat(),
+					z: getFloat(),
+					w: getFloat()
+				});
 				break;
 			 case 24: // tcb_rot
 				getString();
 				getInt();
+				controller= [];
+				animNode.controllers.push(controller);
 				break;
 			 case 19: // linear_key
 				getString();
-				getInt();
-				getFloat();
-				getFloat();
-				getFloat();
+				controller.push({
+					type: "position",
+					frame: getInt(),
+					x: getFloat(),
+					y: getFloat(),
+					z: getFloat()
+				});
 				break;
 			 case 20: // tcb_key
 				getString();
-				getInt();
-				getFloat();
-				getFloat();
-				getFloat();
-				getFloat();
+				controller.push({
+					type: "rotation",
+					frame: getInt(),
+					x: getFloat(),
+					y: getFloat(),
+					z: getFloat(),
+					w: getFloat()
+				});
 				getFloat();
 				getFloat();
 				getFloat();
@@ -881,6 +905,7 @@ let readMstsShape= function(path)
 				};
 				let parseTcbKey= function(a) {
 					controller.push({
+						type: "rotation",
 						frame: parseInt(a[0]),
 						x: parseFloat(a[1]),
 						y: parseFloat(a[2]),

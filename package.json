@@ -3,7 +3,7 @@
 	"main": "sssim.html",
 	"window": {
 		"width": 1024,
-		"height": 768
+		"height": 832
 	},
 	"license": "MIT",
 	"dependencies": {

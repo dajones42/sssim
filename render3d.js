@@ -39,7 +39,7 @@ let initScene= function()
 	renderer= new THREE.WebGLRenderer({canvas:canvas});
 	renderer.setClearColor(0x00dddd);
 //	renderer.sortObjects= false;
-	let alight= new THREE.AmbientLight(0x888888);
+	let alight= new THREE.AmbientLight(0xaaaaaa);
 	scene.add(alight);
 	let dlight= new THREE.DirectionalLight(0xffffff,.5);
 	dlight.position.set(0,100,50);

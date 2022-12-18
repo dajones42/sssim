@@ -23,10 +23,11 @@ THE SOFTWARE.
 //	code for cars in trains
 
 class RailCarPart {
-	constructor(x0,m) {
+	constructor(x0,m,r) {
 		this.parent= -1;
 		this.xOffset= x0;
 		this.model= m;
+		this.radius= r;
 	}
 	initLinReg() {
 		this.sw= 0;
@@ -70,7 +71,11 @@ class RailCarPart {
 	}
 	moveWheel(distance,rev) {
 		this.location.move(distance,0);
-		//update rotation info
+//		if (this.radius) {
+//			this.state+= distance/(2*Math.PI*this.radius);
+//			if (this.model)
+//				this.model.rotation.x= this.state;
+//		}
 	}
 }
 
@@ -91,6 +96,7 @@ class RailCar {
 			let p= loc.getPosition();
 //			console.log("wheelpos "+p.x+" "+p.y+" "+p.z);
 		}
+		this.mainWheelState= 0;
 		this.move(0);
 	}
 	move(distance) {
@@ -155,6 +161,12 @@ class RailCar {
 //			  part.model.position.y+" "+
 //			  part.model.position.z+" "+
 //			  part.model.rotation.y);
+		}
+		if (this.mainWheelRadius > 0) {
+			this.mainWheelState+=
+			  distance/(2*Math.PI*this.mainWheelRadius);
+			if (this.animation)
+				this.animation.setTime(this.mainWheelState);
 		}
 	}
 }
