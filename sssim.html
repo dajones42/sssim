@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--
+Copyright © 2022 Doug Jones
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+<html>
+<head>
+<title>Signal Station Simulator</title>
+<script src="sssim.js"></script>
+<script src="menu.js"></script>
+<script src="map.js"></script>
+<script src="mstsio.js"></script>
+<script src="msts.js"></script>
+<script src="track.js"></script>
+<script src="signal.js"></script>
+<script src="interlocking.js"></script>
+<script src="levers.js"></script>
+<script src="eventsim.js"></script>
+<script src="train.js"></script>
+<script src="render3d.js"></script>
+<script src="msts3.js"></script>
+<script src="railcar.js"></script>
+<script src="sound.js"></script>
+<link rel="stylesheet" href="sssim.css" type="text/css">
+</head>
+<body>
+<canvas id="canvas3d" height="567px" width="990px">
+</canvas>
+<p>
+<div id="timediv"></div>
+<canvas id="levercanvas" height="100px" width="990px">
+</canvas>
+<div id="activetrains"></div>
+</p>
+<hr>
+<canvas id="canvas" height="567px" width="990px">
+</canvas>
+<hr>
+<h4>Options</h4>
+<table>
+<tr>
+<td align=left>Lever:</td>
+<td align=left><input id="lever" type="text" value="1"/></td>
+</tr><tr>
+<td align=left>Lock:</td>
+<td align=left><input id="lock" type="text"/></td>
+</tr><tr>
+<td align=left>Location Name:</td>
+<td align=left><input id="locationname" type="text"/></td>
+</tr><tr>
+<td align=left>Maximum Speed:</td>
+<td align=left><input id="maxspeed" type="text"/> MPH</td>
+</tr>
+</table>
+<hr>
+<h4>Trains</h4>
+<div id="trains"></div>
+<br>
+<table>
+<tr>
+<td align=left>Name:</td>
+<td align=left><input id="trainname" type="text"/></td>
+</tr><tr>
+<td align=left>Start Time:</td>
+<td align=left><input id="trainstart" type="text"/> hh:mm</td>
+</tr><tr>
+<td align=left>Maximum Speed:</td>
+<td align=left><input id="trainmaxspeed" type="text"/> MPH</td>
+</tr><tr>
+<td align=left>Entrance:</td>
+<td align=left><select id="trainentrance"></select</td>
+</tr><tr>
+<td align=left>Exit:</td>
+<td align=left><select id="trainexit"></select</td>
+</tr><tr>
+<td align=left>Stop:</td>
+<td align=left><select id="trainstop"></select</td>
+</tr><tr>
+<td align=left>Stop Time:</td>
+<td align=left><input id="trainstoptime" type="text"/> hh:mm</td>
+</tr><tr>
+</tr>
+</table>
+<button id="trainadd">Add Train</button>
+<hr>
+<p>
+<div id="results"></div>
+</p>
+<hr>
+<h4>Controls</h4>
+<bl>
+<li>
+Shift+Click: Move clicked location to center of display.
+<li>
+Click: Select an object.
+<li>
+Drag: move object.
+<li>
+Right Click: add object.
+<li>
+Up Arrow: zoom in.
+<li>
+Down Arrow: zoom out.
+<le>
+<h4>File Menu</h4>
+<bl>
+<li>
+New: open an MSTS route TDB file to create new data.
+<li>
+Open: open a previously saved json file of data.
+<li>
+Save: save data to a json file.
+<le>
+<h4>Edit Menu</h4>
+<bl>
+<li>
+Change Lever: Change the lever nummber assigned to the selected
+switch or signal.
+<li>
+Change Lock: Change the lock associated with the selected switch or signal.
+For a switch this is a lever that locks the switch in either state.
+For a signal this is a list of lever states that lock the signal lever.
+<li>
+Change Maximum Speed: Change the maximum speed for the selected signal.
+<li>
+Change Name: Change the name of the selected location.
+<li>
+Toggle Signal Direction: Flip the direction of the selected signal relative
+to the track.
+<li>
+Delete: Delete the selected object.
+<le>
+<h4>Run Menu</h4>
+<bl>
+<li>
+Start: Start the simulation.
+<li>
+Pause: Pause the simulation.
+<le>
+<input id="fileopen" type="file" style="display:none" accept=".json"/>
+<input id="fileopentdb" type="file" style="display:none" accept=".tdb"/>
+<input id="filesave" type="file" nwsaveas style="display:none" accept=".json"/>
+</body>
+</html>

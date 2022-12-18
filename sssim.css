@@ -1,0 +1,50 @@
+table {
+	margin: 0;
+	padding: 0;
+	border-width: 1px;
+	border: 1px solid #333;
+	border-spacing: 0;
+}
+tr {
+	background: #fff;
+	color: #000;
+}
+th {
+	background: #696;
+	color: #000;
+	margin: 0;
+	padding: 4px;
+	border: 1px solid #333;
+	text-align: center;
+}
+td {
+	margin: 0;
+	padding: 4px;
+	border: 1px solid #333;
+}
+td.red {
+	color: #888;
+	background: rgb(80%,0%,0%)
+	border: 1px solid #888;
+}
+td.blue {
+	color: #888;
+	background: rgb(0%,0%,80%)
+	border: 1px solid #888;
+}
+td.black {
+	color: #888;
+	background: rgb(0%,0%,0%)
+	border: 1px solid #888;
+}
+td.gray {
+	color: #444;
+	background: rgb(50%,50%,50%)
+	border: 1px solid #888;
+}
+button.lever {
+	width: 30px;
+	height: 78px;
+	margin: 0;
+	padding: 0;
+}
