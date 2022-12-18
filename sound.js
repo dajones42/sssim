@@ -36,6 +36,26 @@ let sounds= {
 		{ minThrottle: .84, maxThrottle: 1, volume: 1,
 			wavFile: "GP38/SOUND/x_gp_power_cruise6.wav" }
 	],
+	rdc: [
+		{ minThrottle: 0, maxThrottle: .06, volume: 1,
+			wavFile: "NHRDC/Sound/x_sd_power_cruise0.wav" },
+		{ minThrottle: .06, maxThrottle: .18, volume: 1,
+			wavFile: "NHRDC/Sound/x_sd_power_cruise1.wav" },
+		{ minThrottle: .18, maxThrottle: .30, volume: 1,
+			wavFile: "NHRDC/Sound/x_sd_power_cruise2.wav" },
+		{ minThrottle: .30, maxThrottle: .42, volume: 1,
+			wavFile: "NHRDC/Sound/x_sd_power_cruise3.wav" },
+		{ minThrottle: .42, maxThrottle: .54, volume: 1,
+			wavFile: "NHRDC/Sound/x_sd_power_cruise4.wav" },
+		{ minThrottle: .54, maxThrottle: .66, volume: 1,
+			wavFile: "NHRDC/Sound/x_sd_power_cruise5.wav" },
+		{ minThrottle: .66, maxThrottle: .78, volume: 1,
+			wavFile: "NHRDC/Sound/x_sd_power_cruise6.wav" },
+		{ minThrottle: .78, maxThrottle: .90, volume: 1,
+			wavFile: "NHRDC/Sound/x_sd_power_cruise7.wav" },
+		{ minThrottle: .90, maxThrottle: 1, volume: 1,
+			wavFile: "NHRDC/Sound/x_sd_power_cruise8.wav" }
+	],
 	vscrodloco2: [
 		{ minSpeed: .5, maxSpeed: 1.2, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_150.wav" },
@@ -66,9 +86,9 @@ let sounds= {
 		{ minSpeed: 18, maxSpeed: 24, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_009g.wav" },
 		{ minSpeed: 24, maxSpeed: 32, volume: 1,
-			wavFile: "VSCSteamSound/x_es2_007g.wav" },
+			wavFile: "VSCSteamSound/x_es2_007h.wav" },
 		{ minSpeed: 32, maxSpeed: 100, volume: 1,
-			wavFile: "VSCSteamSound/x_es2_005g.wav" }
+			wavFile: "VSCSteamSound/x_es2_005f.wav" }
 	]
 };
 
@@ -144,7 +164,7 @@ let loadRailcarSounds= function(railcar,soundName)
 		if (soundTable[i].buffer)
 			continue;
 		let path= basepath+soundTable[i].wavFile;
-		console.log("sound "+i+" "+path);
+//		console.log("sound "+i+" "+path);
 		soundTable[i].buffer= loadWavFile(path);
 	}
 }
@@ -185,7 +205,7 @@ let updateRailcarSound= function(railcar,throttle,speed)
 					sc.sound.setVolume(1);
 				sc.sound.play();
 				sc.current= i;
-				console.log("sound "+i);
+//				console.log("sound "+i);
 			}
 			return;
 		}
