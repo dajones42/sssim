@@ -71,6 +71,8 @@ let trains= [];
 let interlocking= null;
 let activeTrains= [];
 let background= "daysky.ace";
+let equipment= {};
+let consists= {};
 
 //	finds the center of MSTS route using TDB data
 //	adjusts default display settings
@@ -162,7 +164,9 @@ let saveData= function(filename)
 		mapObjects: mapObjects,
 		trains: trains,
 		background: background,
-		sounds: sounds
+		sounds: sounds,
+		equipment: equipment,
+		consists: consists
 	};
 	if (tdbPath)
 		data.tdbPath= tdbPath;
@@ -201,12 +205,17 @@ let readData= function(filename)
 		background= data.background;
 	if (data.sounds)
 		sounds= data.sounds;
+	if (data.equipment)
+		equipment= data.equipment;
+	if (data.consists)
+		consists= data.consists;
 	calcTrackDBUV();
 	makeTrack();
 	renderCanvas();
 	makeLevers();
 	displayTrains();
 	updateLocations();
+	updateConsists();
 }
 
 let makeLevers= function()
@@ -285,6 +294,7 @@ let addTrain= function()
 		entrance: document.getElementById("trainentrance").value,
 		exit: document.getElementById("trainexit").value,
 		startTime: document.getElementById("trainstart").value,
+		consist: document.getElementById("trainconsist").value,
 		maxSpeed:
 		  parseFloat(document.getElementById("trainmaxspeed").value)
 	};
@@ -301,14 +311,15 @@ let displayTrains= function()
 	if (trains.length == 0)
 		return;
 	let s= "<table><tr><th>Name</th><th>Start Time</th><th>Max.Speed</th>"+
-	  "<th>Entrance</th><th>Exit</th><th>Stops</th></tr>";
+	  "<th>Entrance</th><th>Exit</th><th>Consist</th><th>Stops</th></tr>";
 	for (let i=0; i<trains.length; i++) {
 		let train= trains[i];
 		s+= "<tr><td>"+train.name+"</td><td>"+
 		  train.startTime+"</td><td>"+
 		  train.maxSpeed+"</td><td>"+
 		  train.entrance+"</td><td>"+
-		  train.exit+"</td>";
+		  train.exit+"</td><td>"+
+		  train.consist+"</td>";
 		if (train.stops) {
 			s+= "<td>";
 			for (let j=0; j<train.stops.length; j++)
@@ -334,6 +345,16 @@ let updateLocations= function()
 	document.getElementById("trainentrance").innerHTML= s;
 	document.getElementById("trainexit").innerHTML= s;
 	document.getElementById("trainstop").innerHTML= s;
+}
+
+let updateConsists= function()
+{
+	let s= "";
+	for (let i in consists) {
+		if (consists.hasOwnProperty(i))
+			s+= "<option>"+i;
+	}
+	document.getElementById("trainconsist").innerHTML= s;
 }
 
 let simTime= 0;

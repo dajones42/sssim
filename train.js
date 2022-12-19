@@ -29,7 +29,14 @@ class Train {
 		this.decel= 1;
 		this.location= loc;
 		this.endLocation= loc.copy();
-		if (info.cars) {
+		if (info.consist) {
+			let consist= consists[info.consist];
+			this.length= 0;
+			for (let i=0; i<consist.length; i++) {
+				let car= equipment[consist[i]];
+				this.length+= car.length;
+			}
+		} else if (info.cars) {
 			this.length= 0;
 			for (let i=0; i<info.cars.length; i++)
 				this.length+= info.cars[i].length;
@@ -127,7 +134,6 @@ class Train {
 		}
 		if (this.signal && this.signalDistance<0)
 			this.findSignal();
-		this.moveModels();
 		return 0;
 	}
 	findSignal() {
@@ -172,12 +178,20 @@ class Train {
 		}
 	}
 	createModels(info) {
-		if (info.cars) {
+		let cars= info.cars;
+		if (info.consist) {
+			let consist= consists[info.consist];
+			cars= [];
+			for (let i=0; i<consist.length; i++) {
+				cars.push(equipment[consist[i]]);
+			}
+		}
+		if (cars) {
 			this.cars= [];
 			this.length= 0;
 			let loc= this.location.copy();
-			for (let i=0; i<info.cars.length; i++) {
-				let car= info.cars[i];
+			for (let i=0; i<cars.length; i++) {
+				let car= cars[i];
 				let dir= mstsDir+fspath.sep+"TRAINS"+
 				  fspath.sep+"TRAINSET"+fspath.sep+
 				  car.directory;
@@ -197,6 +211,11 @@ class Train {
 					for (let j=0; j<car.lights.length;
 					  j++) {
 						let light= car.lights[j];
+						if (i==0 && light.unit!=2)
+							continue;
+						if (i==cars.length-1 &&
+						  light.unit!=3)
+							continue;
 						let geom= new THREE.
 						  CircleGeometry(light.radius);
 						let mat= new THREE.
@@ -217,62 +236,13 @@ class Train {
 					loadRailcarSounds(railcar,car.sound);
 				}
 			}
-			this.moveModels();
-		} else {
-			this.lamp1= new THREE.Mesh(
-			  new THREE.SphereGeometry(.5),
-			  new THREE.MeshBasicMaterial({ color: 0xeeeeee }));
-			this.lamp2= new THREE.Mesh(
-			  new THREE.SphereGeometry(.5),
-			  new THREE.MeshBasicMaterial({ color: 0xee0000 }));
-			this.moveModels();
-			scene.add(this.lamp1);
-			scene.add(this.lamp2);
-		}
-	}
-	moveModels() {
-		if (this.lamp1) {
-			let p= this.location.getPosition();
-			this.lamp1.position.x= (p.x-center.x);
-			this.lamp1.position.y= (p.z-center.z);
-			this.lamp1.position.z= -(p.y-center.y);
-		}
-		if (this.lamp2) {
-			let p= this.endLocation.getPosition();
-			this.lamp2.position.x= (p.x-center.x);
-			this.lamp2.position.y= (p.z-center.z);
-			this.lamp2.position.z= -(p.y-center.y);
-		}
-		if (this.models) {
-			let p1= this.location.getPosition();
-			let p2= this.endLocation.getPosition();
-			for (let i=0; i<this.models.length; i++) {
-				let model= this.models[i];
-				model.position.x= .5*(p1.x+p2.x)-center.x;
-				model.position.y= .5*(p1.z+p2.z)-center.z;
-				model.position.z= center.y-.5*(p1.y+p2.y);
-				let dx= (p1.x-p2.x)/this.length;
-				let dy= (p1.y-p2.y)/this.length;
-				model.rotation.y= Math.atan2(dy,dx)-Math.PI/2;
-			}
 		}
 	}
 	removeModels() {
-		if (this.lamp1) {
-			scene.remove(this.lamp1);
-			this.lamp1.geometry.dispose();
-			this.lamp1= null;
-		}
-		if (this.lamp2) {
-			scene.remove(this.lamp2);
-			this.lamp2.geometry.dispose();
-			this.lamp2= null;
-		}
-		if (this.models) {
-			for (let i=0; i<this.models.length; i++) {
-				let model= this.models[i];
-				scene.remove(model);
-			}
+		for (let i=0; i<this.cars.length; i++) {
+			let car= this.cars[i];
+			if (car.model)
+				scene.remove(car.model);
 		}
 	}
 }
