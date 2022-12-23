@@ -36,6 +36,20 @@ let sounds= {
 		{ minThrottle: .84, maxThrottle: 1, volume: 1,
 			wavFile: "GP38/SOUND/x_gp_power_cruise6.wav" }
 	],
+	als4: [
+		{ minThrottle: 0, maxThrottle: .16, volume: 1,
+			wavFile: "Common.Snd/als4/x_Alco_power_cruise1.wav" },
+		{ minThrottle: .16, maxThrottle: .33, volume: 1,
+			wavFile: "Common.Snd/als4/x_Alco_power_cruise2.wav" },
+		{ minThrottle: .33, maxThrottle: .5, volume: 1,
+			wavFile: "Common.Snd/als4/x_Alco_power_cruise3.wav" },
+		{ minThrottle: .5, maxThrottle: .66, volume: 1,
+			wavFile: "Common.Snd/als4/x_Alco_power_cruise4.wav" },
+		{ minThrottle: .66, maxThrottle: .84, volume: 1,
+			wavFile: "Common.Snd/als4/x_Alco_power_cruise5.wav" },
+		{ minThrottle: .84, maxThrottle: 1, volume: 1,
+			wavFile: "Common.Snd/als4/x_Alco_power_cruise6.wav" }
+	],
 	rdc: [
 		{ minThrottle: 0, maxThrottle: .06, volume: 1,
 			wavFile: "NHRDC/Sound/x_sd_power_cruise0.wav" },
@@ -56,7 +70,7 @@ let sounds= {
 		{ minThrottle: .90, maxThrottle: 1, volume: 1,
 			wavFile: "NHRDC/Sound/x_sd_power_cruise8.wav" }
 	],
-	vscrodloco2: [
+	rodloco2: [
 		{ minSpeed: .5, maxSpeed: 1.2, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_150.wav" },
 		{ minSpeed: 1.2, maxSpeed: 2, volume: 1,

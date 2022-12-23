@@ -324,6 +324,20 @@ let readMstsUnicode= function(path)
 	return root;
 }
 
+//	loops over array a returned by readMstsUnicode looking for string v
+//	and calls function op on the following value for each match
+let foreach= function(a,v,op)
+{
+	for (let i=0; i<a.length; i++) {
+		if (typeof a[i]=="string" && a[i].toLowerCase()==v) {
+			if (typeof a[i+1] == "string")
+				op(a[i+2],a[i+1]);
+			else
+				op(a[i+1]);
+		}
+	}
+}
+
 class MstsBinFileParser {
 	constructor(buf) {
 		this.buffer= buf;
@@ -1142,5 +1156,108 @@ let readMstsWorld= function(tile)
 			}
 		}
 	}
+	return result;
+}
+
+let readMstsConsist= function(path)
+{
+	let root= readMstsUnicode(path);
+	if (typeof root[0]!="string" ||
+	  root[0].toLowerCase()!="train") {
+		console.log("no train data "+path);
+		return null;
+	}
+	root= root[1][1];
+	let result= {
+		cars: []
+	};
+	let car= null;
+	for (let i=0; i<root.length; i++) {
+		if (typeof root[i] != "string")
+			continue;
+		let lower= root[i].toLowerCase();
+		//console.log(" "+i+" "+lower+" "+root[i+1].length);
+		if (lower == "name") {
+			result.name= root[i+1][0];
+		} else if (lower=="engine" || lower=="wagon") {
+			car= {};
+			result.cars.push(car);
+			foreach(root[i+1],"flip",function(a) {
+				car.flip= true;
+			});
+			foreach(root[i+1],"enginedata",function(a) {
+				car.file= a[0]+".eng";
+				car.directory= a[1];
+			});
+			foreach(root[i+1],"wagondata",function(a) {
+				car.file= a[0]+".wag";
+				car.directory= a[1];
+			});
+		}
+	}
+	return result;
+}
+
+let readMstsWag= function(path)
+{
+	console.log("readwag "+path);
+	let root= readMstsUnicode(path);
+	if (typeof root[0]!="string" ||
+	  root[0].toLowerCase()!="wagon") {
+		console.log("no wagon data "+path);
+		return null;
+	}
+	root= root[1];
+	let result= {
+	};
+	foreach(root,"wagonshape",function(a) {
+		result.shape= a[0];
+	});
+	foreach(root,"freightanim",function(a) {
+		result.fashape= a[0];
+	});
+	foreach(root,"size",function(a) {
+		result.length= parseFloat(a[2]);
+	});
+	foreach(root,"sound",function(a) {
+		result.sound= a[0];
+	});
+	foreach(root,"lights",function(a) {
+		let lights= [];
+		foreach(a,"light",function(a) {
+			let light= {}
+			foreach(a,"type",function(a) {
+				light.type= parseInt(a[0]);
+			});
+			foreach(a,"conditions",function(a) {
+				foreach(a,"headlight",function(a) {
+					light.headlight= parseInt(a[0]);
+				});
+				foreach(a,"unit",function(a) {
+					light.unit= parseInt(a[0]);
+				});
+			});
+			foreach(a,"states",function(a) {
+				foreach(a,"state",function(a) {
+					foreach(a,"lightcolour",function(a) {
+						light.color= a[0].substr(2);
+					});
+					foreach(a,"position",function(a) {
+						light.x= parseFloat(a[0]);
+						light.y= parseFloat(a[1]);
+						light.z= parseFloat(a[2]);
+					});
+					foreach(a,"radius",function(a) {
+						light.radius= parseFloat(a[0]);
+					});
+				});
+			});
+			console.log("light "+light.type+" "+light.headlight);
+			if (light.type===0 && light.headlight==3)
+				lights.push(light);
+		});
+		if (lights.length > 0)
+			result.lights= lights;
+	});
 	return result;
 }

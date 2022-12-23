@@ -50,26 +50,6 @@ THE SOFTWARE.
 <div id="activetrains"></div>
 </p>
 <hr>
-<canvas id="canvas" height="567px" width="990px">
-</canvas>
-<hr>
-<h4>Options</h4>
-<table>
-<tr>
-<td align=left>Lever:</td>
-<td align=left><input id="lever" type="text" value="1"/></td>
-</tr><tr>
-<td align=left>Lock:</td>
-<td align=left><input id="lock" type="text"/></td>
-</tr><tr>
-<td align=left>Location Name:</td>
-<td align=left><input id="locationname" type="text"/></td>
-</tr><tr>
-<td align=left>Maximum Speed:</td>
-<td align=left><input id="maxspeed" type="text"/> MPH</td>
-</tr>
-</table>
-<hr>
 <h4>Trains</h4>
 <div id="trains"></div>
 <br>
@@ -101,11 +81,34 @@ THE SOFTWARE.
 </tr><tr>
 </tr>
 </table>
+<p>
 <button id="trainadd">Add Train</button>
+</p>
 <hr>
 <p>
-<div id="results"></div>
+Add Consist: <input id="consistfile" type="file" accept=".con"/>
 </p>
+<div id="consistdisplay"></div>
+<hr>
+<canvas id="canvas" height="567px" width="990px">
+</canvas>
+<hr>
+<h4>Options</h4>
+<table>
+<tr>
+<td align=left>Lever:</td>
+<td align=left><input id="lever" type="text" value="1"/></td>
+</tr><tr>
+<td align=left>Lock:</td>
+<td align=left><input id="lock" type="text"/></td>
+</tr><tr>
+<td align=left>Location Name:</td>
+<td align=left><input id="locationname" type="text"/></td>
+</tr><tr>
+<td align=left>Maximum Speed:</td>
+<td align=left><input id="maxspeed" type="text"/> MPH</td>
+</tr>
+</table>
 <hr>
 <h4>Controls</h4>
 <bl>

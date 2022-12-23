@@ -50,10 +50,10 @@ class Edge {
 		  this.v2.position.clone().multiplyScalar(a));
 		if (this.ddx || this.ddy) {
 			let b= 1-a;
-			let a3= a*a*a;
-			let b3= b*b*b;
-			//p.x+= this.ddx*(b3+a3);
-			//p.y+= this.ddy*(b3+a3);
+			let a3= a*a*a-a;
+			let b3= b*b*b-b;
+			p.x+= this.ddx*(b3+a3);
+			p.y+= this.ddy*(b3+a3);
 		}
 		return p;
 	}
@@ -141,14 +141,24 @@ let makeTrack= function()
 		let pin1= getPin(node1,i);
 		let pin2= getPin(node2,i);
 		let v1= node1.vertex;
+		let s1= node.sections[0];
 		for (let j=1; j<node.sections.length; j++) {
-			let s= node.sections[j];
-			let v2= new Vertex(s.u,s.v,s.y+.275);
+			let s2= node.sections[j];
+			let v2= new Vertex(s2.u,s2.v,s2.y+.275);
 			vertices.push(v2);
 			let e= new Edge(v1,pin1,v2,0);
 			edges.push(e);
+			let sinfo= trackDB.tSection.sections[s1.sectionID];
+			if (sinfo.radius) {
+				e.setCircle(sinfo.radius,
+				  sinfo.angle*Math.PI/180);
+				e.length= sinfo.radius*sinfo.angle*Math.PI/180;
+				if (e.length < 0)
+					e.length= -e.length;
+			}
 			v1= v2;
 			pin1= 1;
+			s1= s2;
 		}
 		let v2= node2.vertex;
 		let e= new Edge(v1,pin1,v2,pin2);

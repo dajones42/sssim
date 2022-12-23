@@ -48,6 +48,8 @@ window.onload= function() {
 	});
 	let button= document.getElementById("trainadd");
 	button.addEventListener('click',addTrain);
+	document.getElementById("consistfile").
+	  addEventListener('change',loadConsist);
 	setupMap();
 	setupLevers();
 }
@@ -310,10 +312,17 @@ let displayTrains= function()
 {
 	if (trains.length == 0)
 		return;
+	let sortedTrains= trains.sort(function(a,b) {
+		if (a.startTime < b.startTime)
+			return -1;
+		if (a.startTime > b.startTime)
+			return 1;
+		return 0;
+	});
 	let s= "<table><tr><th>Name</th><th>Start Time</th><th>Max.Speed</th>"+
 	  "<th>Entrance</th><th>Exit</th><th>Consist</th><th>Stops</th></tr>";
-	for (let i=0; i<trains.length; i++) {
-		let train= trains[i];
+	for (let i=0; i<sortedTrains.length; i++) {
+		let train= sortedTrains[i];
 		s+= "<tr><td>"+train.name+"</td><td>"+
 		  train.startTime+"</td><td>"+
 		  train.maxSpeed+"</td><td>"+
@@ -492,4 +501,96 @@ let displayActiveTrains= function()
 	s+= "</table>";
 	let trainList= document.getElementById("activetrains");
 	trainList.innerHTML= s;
+}
+
+let loadConsist= function()
+{
+	let path= document.getElementById("consistfile").value;
+	console.log("loadconsist "+path);
+	let data= readMstsConsist(path);
+	if (!data)
+		return;
+	let trainsDir= fspath.dirname(fspath.dirname(path));
+	if (!trainsDir) {
+		let s= "<pre>"+JSON.stringify(data,null,1)+"</pre>";
+		document.getElementById("consistdisplay").innerHTML= s;
+		return;
+	}
+	let consist= [];
+	let path0= trainsDir+fspath.sep+"TRAINSET"+fspath.sep;
+	for (let i=0; i<data.cars.length; i++) {
+		let car= data.cars[i];
+		if (!car.directory || !car.file)
+			continue;
+		let name= car.directory+"/"+car.file;
+		if (car.flip)
+			consist.push("^"+name);
+		else
+			consist.push(name);
+		if (equipment[name])
+			continue;
+		let path= path0+car.directory+fspath.sep+car.file;
+		let wag= readMstsWag(path);
+		if (!wag || !wag.shape || !wag.length)
+			continue;
+		let equip= {
+			directory: car.directory,
+			shape: wag.shape,
+			length: wag.length
+		};
+		if (wag.fashape)
+			equip.fashape= wag.fashape;
+		if (wag.lights) {
+			equip.lights= wag.lights;
+			for (let j=0; j<equip.lights.length; j++) {
+				let light= equip.lights[j];
+				if (light.radius > .5)
+					light.radius*= .1;
+				else
+					light.radius*= .2;
+				if (light.unit == 2)
+					light.radius= .15;
+				else
+					light.radius= .06;
+			}
+		}
+		if (wag.sound) {
+			let lower= wag.sound.toLowerCase();
+			for (j in sounds) {
+				if (sounds.hasOwnProperty(j) &&
+				  lower.indexOf(j)>=0) {
+					equip.sound= j;
+					break;
+				}
+			}
+		}
+		equipment[name]= equip;
+	}
+	consists[data.name]= consist;
+	updateConsists();
+//	let s= "<pre>"+JSON.stringify(data,null,1)+"</pre>";
+	let s= "<br>"+data.name+"<table>"+
+	  "<tr><th>Car</th><th>Shape</th><th>Length</th><th>Lights</th>"+
+	  "<th>Sound</th></tr>";
+	for (let i=0; i<consist.length; i++) {
+		let car= consist[i];
+		s+= "<tr><td>"+car+"</td>";
+		let name= car.substr(0,1)=="^" ? car.substr(1) : car;
+		let equip= equipment[name];
+		if (equip) {
+			s+= "<td>"+equip.shape+"</td>";
+			s+= "<td>"+equip.length.toFixed(3)+"</td>";
+			if (equip.lights)
+				s+= "<td>"+equip.lights.length+"</td>";
+			else
+				s+= "<td></td>";
+			if (equip.sound)
+				s+= "<td>"+equip.sound+"</td>";
+			else
+				s+= "<td></td>";
+		}
+		s+= "</tr>";
+	}
+	s+= "</table>";
+	document.getElementById("consistdisplay").innerHTML= s;
 }
