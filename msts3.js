@@ -273,7 +273,7 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car)
 				  name+".position",times,values);
 			else
 				return new THREE.QuaternionKeyframeTrack(
-				  name+".rotation",times,values);
+				  name+".quaternion",times,values);
 		}
 		if (shapeData.animations) {
 //			console.log("nwheels "+car.nWheels);
@@ -293,6 +293,7 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car)
 				}
 			}
 			if (tracks.length > 0) {
+//				console.log("animtracks "+tracks.length);
 				let clip=
 				  new THREE.AnimationClip("rods",-1,tracks);
 				let mixer= new THREE.AnimationMixer(root);

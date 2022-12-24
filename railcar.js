@@ -71,11 +71,11 @@ class RailCarPart {
 	}
 	moveWheel(distance,rev) {
 		this.location.move(distance,0);
-//		if (this.radius) {
-//			this.state+= distance/(2*Math.PI*this.radius);
-//			if (this.model)
-//				this.model.rotation.x= this.state;
-//		}
+		if (this.radius) {
+			this.state+= distance/(2*Math.PI*this.radius);
+			if (this.model)
+				this.model.rotation.x= this.state;
+		}
 	}
 }
 
@@ -93,7 +93,10 @@ class RailCar {
 			loc.move(offset+s*part.xOffset,0);
 			part.location= loc;
 			part.state= 0;
-			let p= loc.getPosition();
+			if (this.animation &&
+			  part.radius>=this.mainWheelRadius-.01)
+				part.radius= 0;
+//			let p= loc.getPosition();
 //			console.log("wheelpos "+p.x+" "+p.y+" "+p.z);
 		}
 		this.mainWheelState= 0;
@@ -142,6 +145,16 @@ class RailCar {
 				part.bx= parent.bx;
 				part.by= parent.by;
 				part.bz= parent.bz;
+			} else if (part.parent>=0 && part.model) {
+				let fwd= new THREE.Vector3(part.bx,part.by,0);
+				fwd.normalize();
+				let parent= this.parts[part.parent];
+				let pfwd= new THREE.Vector3(
+				  parent.bx,parent.by,0);
+				pfwd.normalize();
+				part.model.rotation.y=
+				  Math.atan2(pfwd.y,pfwd.x)-
+				  Math.atan2(fwd.y,fwd.x);
 			}
 			if (!part.model || part.parent>=0)
 				continue;
