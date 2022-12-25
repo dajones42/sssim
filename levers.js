@@ -81,3 +81,33 @@ let leverMouseDown= function(event)
 		renderLevers();
 	event.preventDefault();
 }
+
+let renderModelBoard= function()
+{
+	if (!interlocking)
+		return;
+	let canvas= document.getElementById("modelboardcanvas");
+	let leverSpacing= 20;
+	let leverWidth= 8;
+	canvas.width= leverSpacing*interlocking.levers.length;
+	let context= canvas.getContext("2d");
+	context.clearRect(0,0,canvas.width,canvas.height);
+	for (let i=0; i<interlocking.levers.length; i++) {
+		let lever= interlocking.levers[i];
+		let x= i*leverSpacing;
+		let x1= x+.5*(leverSpacing-leverWidth);
+		if (interlocking.getSwitchOccupied(i+1)) {
+			context.fillStyle= lever.color;
+			context.fillRect(x1,0,leverWidth,canvas.height);
+		} else {
+			let ind= interlocking.getSignalState(i+1);
+			if (ind == 0) {
+				context.fillStyle= "#f00";
+				context.fillRect(x1,0,leverWidth,canvas.height);
+			} else if (ind > 0) {
+				context.fillStyle= "#0c0";
+				context.fillRect(x1,0,leverWidth,canvas.height);
+			}
+		}
+	}
+}

@@ -69,9 +69,19 @@ class Interlocking {
 	getSwitchOccupied(lvr) {
 		let lever= this.levers[lvr-1];
 		for (let i=0; i<lever.switches.length; i++)
-			if (lever.switches[i].occupied)
+			if (lever.switches[i].vertex.occupied)
 				return true;
 		return false;
+	}
+	getSignalState(lvr) {
+		let lever= this.levers[lvr-1];
+		let result= Signal.MAXINDICATION+1;
+		for (let i=0; i<lever.signals.length; i++) {
+			let sig= lever.signals[i];
+			if (sig.trainDistance>0 && result>sig.indication)
+				result= sig.indication;
+		}
+		return result>Signal.MAXINDICATION ? -1 : result;
 	}
 	// returns remaining lever lock duration
 	getLockDuration(lever,timeS) {

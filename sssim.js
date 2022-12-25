@@ -439,6 +439,7 @@ let updateSimulation= function()
 		}
 		updateEvents(simTime);
 		displayActiveTrains();
+		renderModelBoard();
 		render3D();
 	}
 	window.setTimeout(updateSimulation,100);
