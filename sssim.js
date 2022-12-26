@@ -75,6 +75,8 @@ let activeTrains= [];
 let background= "daysky.ace";
 let equipment= {};
 let consists= {};
+let blockSheet= [[],[]];
+let blockSheetColumns= ["Northbound","Southbound"];
 
 //	finds the center of MSTS route using TDB data
 //	adjusts default display settings
@@ -420,8 +422,11 @@ let updateSimulation= function()
 				if (t.speed)
 					moving= true;
 			}
-			if (t.distance > t.maxDistance)
+			if (t.distance > t.maxDistance) {
 				del= t;
+				t.times.cleared= simTime;
+				displayBlockSheet();
+			}
 		}
 		if (!moving)
 			timeMult= 8;
@@ -438,7 +443,7 @@ let updateSimulation= function()
 			timeMult= 0;
 		}
 		updateEvents(simTime);
-		displayActiveTrains();
+		//displayActiveTrains();
 		renderModelBoard();
 		render3D();
 	}
@@ -452,7 +457,8 @@ let startTrainEvent= function(e)
 		for (let i=0; i<mapObjects.length; i++) {
 			let o= mapObjects[i];
 			if (o.type=="location" && o.name==name)
-				return findLocation(o.u,o.v).loc;
+				return { loc: findLocation(o.u,o.v).loc,
+				  column: o.column?1:0 };
 		}
 		console.log("cannod find location "+name);
 		return null;
@@ -461,6 +467,9 @@ let startTrainEvent= function(e)
 	let endLoc= findNamedLocation(e.train.exit);
 	if (!startLoc || !endLoc)
 		return;
+	let column= startLoc.column;
+	startLoc= startLoc.loc;
+	endLoc= endLoc.loc;
 	findSPT(endLoc,true);
 	let d= startLoc.dDistance(endLoc);
 	startLoc.rev= startLoc.edge.v1.dist<startLoc.edge.v2.dist;
@@ -475,6 +484,7 @@ let startTrainEvent= function(e)
 			let loc= findNamedLocation(e.train.stops[i].stop);
 			if (!loc)
 				break;
+			loc= loc.loc;
 			train.addStop(d-loc.spDistance()+train.length/2,
 			  hmToTime(e.train.stops[i].stopTime));
 			d= loc.spDistance();
@@ -482,6 +492,9 @@ let startTrainEvent= function(e)
 	}
 	train.findSignal();
 	activeTrains.push(train);
+	train.times= { train:train, entered:simTime };
+	blockSheet[column].push(train.times);
+	displayBlockSheet();
 }
 
 let displayActiveTrains= function()
@@ -594,4 +607,76 @@ let loadConsist= function()
 	}
 	s+= "</table>";
 	document.getElementById("consistdisplay").innerHTML= s;
+}
+
+let displayBlockSheet= function()
+{
+	let s= "<table><tr><th colspan=7>"+blockSheetColumns[0]+"</th>"+
+	  "<th colspan=7>"+blockSheetColumns[1]+"</th></tr>"+
+	  "<tr><th>Train</th><th>Block Given</th><th>Block Entered</th>"+
+	  "<th>Block Received</th>"+
+	  "<th>Arrived</th><th>Departed</th><th>Block Cleared</th>"+
+	  "<th>Train</th><th>Block Given</th><th>Block Entered</th>"+
+	  "<th>Block Received</th>"+
+	  "<th>Arrived</th><th>Departed</th><th>Block Cleared</th></tr>";
+	let addTime= function(t,func,name) {
+		s+= "<td>";
+		if (t)
+			s+= timeToHM(t);
+		else if (func)
+			s+= "<button type='button' onclick='"+func+"(\""+name+
+			  "\")'>Enter</button>";
+		s+= "</td>";
+	}
+	let addTimes= function(times) {
+		s+= "<td>"+times.train.name+"</td>";
+		addTime(times.given);
+		addTime(times.entered);
+		addTime(times.received);
+		addTime(times.arrived,"setArrivalTime",times.train.name);
+		addTime(times.departed,"setDepartureTime",times.train.name);
+		addTime(times.cleared);
+	}
+	let blank= "<td></td><td></td><td></td><td></td><td></td>"+
+	  "<td></td><td></td>";
+	for (let i=0; i<blockSheet[0].length || i<blockSheet[1].length; i++) {
+		s+= "<tr>";
+		if (i<blockSheet[0].length)
+			addTimes(blockSheet[0][i]);
+		else
+			s+= blank;
+		if (i<blockSheet[1].length)
+			addTimes(blockSheet[1][i]);
+		else
+			s+= blank;
+	}
+	s+= "</table>";
+	let trainList= document.getElementById("blocksheet");
+	trainList.innerHTML= s;
+}
+
+let setArrivalTime= function(name)
+{
+	for (let i=0; i<activeTrains.length; i++) {
+		let train= activeTrains[i];
+		if (train.name == name) {
+			train.times.arrived= simTime;
+			displayBlockSheet();
+			return;
+		}
+	}
+}
+
+let setDepartureTime= function(name)
+{
+	for (let i=0; i<activeTrains.length; i++) {
+		let train= activeTrains[i];
+		if (train.name == name) {
+			train.times.departed= simTime;
+			if (!train.times.arrived)
+				train.times.arrived= simTime;
+			displayBlockSheet();
+			return;
+		}
+	}
 }
