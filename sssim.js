@@ -174,7 +174,7 @@ let saveData= function(filename)
 		consists: consists
 	};
 	if (tdbPath)
-		data.tdbPath= tdbPath;
+		data.tdbFile= fspath.basename(tdbPath);
 	let s= JSON.stringify(data,null,1);
 	if (filename.indexOf(".json") < 0)
 		filename+= ".json";
@@ -188,9 +188,17 @@ let saveData= function(filename)
 let readData= function(filename)
 {
 	console.log("read "+filename);
+	routeDir= fspath.dirname(fspath.dirname(filename));
+	mstsDir= fspath.dirname(fspath.dirname(routeDir));
+	console.log("mstsdir "+mstsDir);
+	console.log("routedir "+routeDir);
 	let s= fs.readFileSync(filename);
 	let data= JSON.parse(s);
-	if (data.tdbPath) {
+	if (data.tdbFile) {
+		console.log("tdbfile "+data.tdbFile);
+		trackDB= readTrackDB(routeDir+fspath.sep+data.tdbFile);
+		readTiles();
+	} else if (data.tdbPath) {
 		console.log("tdbpath "+data.tdbPath);
 		trackDB= readTrackDB(data.tdbPath);
 		readTiles();

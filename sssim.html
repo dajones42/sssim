@@ -44,7 +44,7 @@ THE SOFTWARE.
 <canvas id="canvas3d" height="567px" width="990px">
 </canvas>
 <p>
-<div id="timediv">Scroll down for editing</div>
+<div id="timediv"></div>
 <div id="requestdiv"></div>
 <canvas id="modelboardcanvas" height="8px" width="990px">
 </canvas>
@@ -115,7 +115,7 @@ Add Consist: <input id="consistfile" type="file" accept=".con"/>
 </tr>
 </table>
 <hr>
-<h4>Controls</h4>
+<h4>Editing Controls</h4>
 <bl>
 <li>
 Shift+Click: Move clicked location to center of display.
@@ -164,6 +164,21 @@ Delete: Delete the selected object.
 Start: Start the simulation.
 <li>
 Pause: Pause the simulation.
+<le>
+<h4>Simulation Controls</h4>
+<bl>
+<li>
+Click: Toggle lever state (if not locked).
+<li>
+Left Arrow: rotate camera.
+<li>
+Right Arrow: rotate camera.
+<li>
+Block for Button: grant block in rear for schedule train.
+<li>
+Request Button: request block in advance for train to exit.
+<li>
+Enter Button: record time in block sheet.
 <le>
 <input id="fileopen" type="file" style="display:none" accept=".json"/>
 <input id="fileopentdb" type="file" style="display:none" accept=".tdb"/>

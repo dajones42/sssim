@@ -55,7 +55,7 @@ class Interlocking {
 			this.interlocks[i-1].when.push(
 			  {lever:lever,state:state});
 	}
-	// adds a switch to the indicated lever state
+	// adds a switch to the indicated lever
 	addSwitch(lever,swVertex,rev) {
 		this.levers[lever-1].switches.push({vertex:swVertex,rev:rev});
 		this.levers[lever-1].color= "#000";
@@ -73,6 +73,10 @@ class Interlocking {
 				return true;
 		return false;
 	}
+	// returns state of signals attached to the indicated lever
+	// -1 if no train approaching
+	// 0 if train approaching STOP signal
+	// >0 if train appoaching CLEAR signal
 	getSignalState(lvr) {
 		let lever= this.levers[lvr-1];
 		let result= Signal.MAXINDICATION+1;
@@ -177,6 +181,8 @@ class Interlocking {
 	}
 }
 
+//	Build interlocking given map objects using locking defined on
+//	switch and signals
 let makeInterlocking= function()
 {
 	let n= 0;
@@ -235,6 +241,7 @@ let makeInterlocking= function()
 	}
 }
 
+//	creates locking from lock string
 let parseSignalLock= function(lever,lock)
 {
 	let locks= lock.split(',');

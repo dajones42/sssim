@@ -56,7 +56,7 @@ class Signal {
 			e= v.nextEdge(e);
 			if (!e)
 				break;
-			if (e.trackCircuit && e.trackCircuit.occupiied>0) {
+			if (e.trackCircuit && e.trackCircuit.occupied>0) {
 				clear= false;
 				break;
 			}
