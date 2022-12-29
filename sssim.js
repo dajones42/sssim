@@ -319,6 +319,37 @@ let addTrain= function()
 	displayTrains();
 }
 
+let deleteTrain= function(name)
+{
+	for (let i=0; i<trains.length; i++) {
+		let train= trains[i];
+		if (train.name == name) {
+			document.getElementById("trainname").value= name;
+			document.getElementById("trainentrance").value=
+			  train.entrance
+			document.getElementById("trainexit").value= train.exit;
+			document.getElementById("trainstart").value=
+			  train.startTime;
+			document.getElementById("trainconsist").value=
+			  train.consist;
+			document.getElementById("trainmaxspeed").value=
+			  train.maxSpeed.toFixed(0);
+			if (train.stops && train.stops.length>0) {
+				document.getElementById("trainstop").value=
+				  train.stops[0].stop;
+				document.getElementById("trainstoptime").value=
+				  train.stops[0].stopTime;
+			} else {
+				document.getElementById("trainstoptime").value=
+				  "";
+			}
+			trains.splice(i,1);
+			displayTrains();
+			return;
+		}
+	}
+}
+
 let displayTrains= function()
 {
 	if (trains.length == 0)
@@ -346,7 +377,11 @@ let displayTrains= function()
 				s+= train.stops[j].stop+" "+
 				  train.stops[j].stopTime+" ";
 			s+= "</td>";
+		} else {
+			s+= "<td></td>";
 		}
+		s+= "<td><button type='button' onclick='deleteTrain(\""+
+		  train.name+"\")'>Delete</button></td>";
 		s+= "</tr>";
 	}
 	s+= "</table>";
