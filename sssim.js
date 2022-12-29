@@ -77,6 +77,7 @@ let equipment= {};
 let consists= {};
 let blockSheet= [[],[]];
 let blockSheetColumns= ["Northbound","Southbound"];
+let requests= [];
 
 //	finds the center of MSTS route using TDB data
 //	adjusts default display settings
@@ -119,7 +120,7 @@ let findCenter= function()
 	let sx= canvas.width/(2048*(maxTX-minTX+2));
 	let sz= canvas.height/(2048*(maxTZ-minTZ+2));
 	scale= sx<sz ? sx : sz;
-	console.log("center "+centerTX+" "+centerTZ);
+//	console.log("center "+centerTX+" "+centerTZ);
 }
 
 //	Calculates U&V coordinates used for displays for trackDB contents.
@@ -380,10 +381,17 @@ let startSimulation= function()
 	}
 	makeInterlocking();
 	renderLevers();
+	initBlocks();
 	for (let i=0; i<trains.length; i++) {
 		let train= trains[i];
 		let t= hmToTime(train.startTime);
-		addEvent(t,startTrainEvent,train);
+		let loc= findNamedLocation(train.entrance);
+		if (loc.block) {
+			train.startBlock= loc.block;
+			addEvent(t-loc.block.delay,requestBlockEvent,train);
+		} else {
+			addEvent(t,startTrainEvent,train);
+		}
 	}
 	if (eventQueue.length > 0)
 		simTime= eventQueue[0].time;
@@ -425,10 +433,16 @@ let updateSimulation= function()
 			if (t.distance > t.maxDistance) {
 				del= t;
 				t.times.cleared= simTime;
+				if (t.startBlock)
+					t.startBlock.inUse= false;
+				if (t.endBlock)
+					t.endBlock.inUse= false;
 				displayBlockSheet();
 			}
 		}
-		if (!moving)
+		if (requests.length > 0)
+			timeMult= 1;
+		else if (!moving)
 			timeMult= 8;
 		if (del) {
 			del.removeModels();
@@ -436,10 +450,15 @@ let updateSimulation= function()
 			activeTrains.splice(i,1);
 		}
 		if (activeTrains.length==0 && timeMult>1 &&
-		  eventQueue.length>0) {
+		  eventQueue.length>0 &&
+		  (blockSheet[0].length==0 ||
+		   blockSheet[0][blockSheet[0].length-1].cleared) &&
+		  (blockSheet[1].length==0 ||
+		   blockSheet[1][blockSheet[1].length-1].cleared)) {
 			simTime= eventQueue[0].time;
 			console.log("timejump "+timeToHMS(simTime));
-		} else if (activeTrains.length==0 && timeMult>1) {
+		} else if (activeTrains.length==0 && timeMult>1 &&
+		  eventQueue.length==0) {
 			timeMult= 0;
 		}
 		updateEvents(simTime);
@@ -450,31 +469,107 @@ let updateSimulation= function()
 	window.setTimeout(updateSimulation,100);
 }
 
+let initBlocks= function()
+{
+	for (let i=0; i<mapObjects.length; i++) {
+		let o= mapObjects[i];
+		if (o.type=="location" && o.blockDelay) {
+			o.block= {
+				name: o.name,
+				delay: o.blockDelay,
+				inUse:false
+			};
+		}
+	}
+}
+
+let findNamedLocation= function(name)
+{
+	for (let i=0; i<mapObjects.length; i++) {
+		let o= mapObjects[i];
+		if (o.type=="location" && o.name==name) {
+			return {
+			  loc: findLocation(o.u,o.v).loc,
+			  column: o.column?1:0,
+			  block: o.block
+			 };
+		}
+	}
+	console.log("cannod find location "+name);
+	return null;
+}
+
+let requestBlockEvent= function(e)
+{
+//	console.log("request block "+e.train.name+" at "+timeToHMS(simTime));
+	if (e.train.startBlock.inUse) {
+		console.log("block not clear");
+		addEvent(simTime+60,requestBlockEvent,e.train);
+	}
+	requests.push({
+		func:"recordBlockFor",
+		label:"Block for "+e.train.name,
+		train:e.train
+	});
+	displayRequests();
+}
+
+let displayRequests= function()
+{
+	let s= "";
+	for (let i=0; i<requests.length; i++) {
+		let request= requests[i];
+		s+= "<button type='button' onclick='"+request.func+
+		  "(\""+request.train.name+"\")'>"+request.label+
+		  "</button>";
+	}
+	document.getElementById("requestdiv").innerHTML= s;
+}
+
+let recordBlockFor= function(name)
+{
+//	console.log("recordblock "+name);
+	for (let i=0; i<trains.length; i++) {
+		let train= trains[i];
+		if (train.name == name) {
+			let loc= findNamedLocation(train.entrance);
+			loc.block.inUse= true;
+			let column= loc.column;
+			addEvent(simTime+loc.block.delay,startTrainEvent,train);
+			train.times= { train:train, given:simTime };
+			blockSheet[column].push(train.times);
+			displayBlockSheet();
+//			console.log("given "+simTime);
+			break;
+		}
+	}
+	for (let i=0; i<requests.length; i++) {
+		if (requests[i].train.name == name) {
+//			console.log("remove button "+i);
+			requests.splice(i,1);
+			displayRequests();
+			return;
+		}
+	}
+}
+
 let startTrainEvent= function(e)
 {
-	console.log("starttime "+e.train.name+" at "+timeToHMS(simTime));
-	let findNamedLocation= function(name) {
-		for (let i=0; i<mapObjects.length; i++) {
-			let o= mapObjects[i];
-			if (o.type=="location" && o.name==name)
-				return { loc: findLocation(o.u,o.v).loc,
-				  column: o.column?1:0 };
-		}
-		console.log("cannod find location "+name);
-		return null;
-	}
+//	console.log("starttime "+e.train.name+" at "+timeToHMS(simTime));
 	let startLoc= findNamedLocation(e.train.entrance);
 	let endLoc= findNamedLocation(e.train.exit);
 	if (!startLoc || !endLoc)
 		return;
 	let column= startLoc.column;
+	let startBlock= startLoc.block;
 	startLoc= startLoc.loc;
+	let endBlock= endLoc.block;
 	endLoc= endLoc.loc;
 	findSPT(endLoc,true);
 	let d= startLoc.dDistance(endLoc);
 	startLoc.rev= startLoc.edge.v1.dist<startLoc.edge.v2.dist;
-	console.log("startdir "+startLoc.rev+" "+startLoc.edge.v1.dist+" "+
-	  startLoc.edge.v2.dist);
+//	console.log("startdir "+startLoc.rev+" "+startLoc.edge.v1.dist+" "+
+//	  startLoc.edge.v2.dist);
 	let train= new Train(e.train,startLoc,
 	  Math.max(startLoc.edge.v1.dist,startLoc.edge.v2.dist));
 	train.createModels(e.train);
@@ -491,9 +586,17 @@ let startTrainEvent= function(e)
 		}
 	}
 	train.findSignal();
+	train.startBlock= startBlock;
+	train.endBlock= endBlock;
 	activeTrains.push(train);
-	train.times= { train:train, entered:simTime };
-	blockSheet[column].push(train.times);
+	if (e.train.times) {
+		train.times= e.train.times;
+		train.times.train= train;
+		train.times.entered= simTime;
+	} else {
+		train.times= { train:train, entered:simTime };
+		blockSheet[column].push(train.times);
+	}
 	displayBlockSheet();
 }
 
@@ -520,7 +623,7 @@ let displayActiveTrains= function()
 let loadConsist= function()
 {
 	let path= document.getElementById("consistfile").value;
-	console.log("loadconsist "+path);
+//	console.log("loadconsist "+path);
 	let data= readMstsConsist(path);
 	if (!data)
 		return;
@@ -619,22 +722,28 @@ let displayBlockSheet= function()
 	  "<th>Train</th><th>Block Given</th><th>Block Entered</th>"+
 	  "<th>Block Received</th>"+
 	  "<th>Arrived</th><th>Departed</th><th>Block Cleared</th></tr>";
-	let addTime= function(t,func,name) {
+	let addTime= function(t,func,name,label) {
 		s+= "<td>";
 		if (t)
 			s+= timeToHM(t);
 		else if (func)
 			s+= "<button type='button' onclick='"+func+"(\""+name+
-			  "\")'>Enter</button>";
+			  "\")'>"+label+"</button>";
 		s+= "</td>";
 	}
 	let addTimes= function(times) {
 		s+= "<td>"+times.train.name+"</td>";
 		addTime(times.given);
 		addTime(times.entered);
-		addTime(times.received);
-		addTime(times.arrived,"setArrivalTime",times.train.name);
-		addTime(times.departed,"setDepartureTime",times.train.name);
+		if (times.train.endBlock && times.entered && !times.received)
+			addTime(times.received,"requestBlock",times.train.name,
+			  "Request");
+		else
+			addTime(times.received);
+		addTime(times.arrived,"setArrivalTime",times.train.name,
+		  "Enter");
+		addTime(times.departed,"setDepartureTime",times.train.name,
+		  "Enter");
 		addTime(times.cleared);
 	}
 	let blank= "<td></td><td></td><td></td><td></td><td></td>"+
@@ -661,6 +770,8 @@ let setArrivalTime= function(name)
 		let train= activeTrains[i];
 		if (train.name == name) {
 			train.times.arrived= simTime;
+			if (train.startBlock)
+				train.startBlock.inUse= false;
 			displayBlockSheet();
 			return;
 		}
@@ -673,8 +784,21 @@ let setDepartureTime= function(name)
 		let train= activeTrains[i];
 		if (train.name == name) {
 			train.times.departed= simTime;
-			if (!train.times.arrived)
-				train.times.arrived= simTime;
+//			if (!train.times.arrived)
+//				train.times.arrived= simTime;
+			displayBlockSheet();
+			return;
+		}
+	}
+}
+
+let requestBlock= function(name)
+{
+	for (let i=0; i<activeTrains.length; i++) {
+		let train= activeTrains[i];
+		if (train.name==name && train.endBlock.inUse==false) {
+			train.times.received= simTime;
+			train.endBlock.inUse= true;
 			displayBlockSheet();
 			return;
 		}

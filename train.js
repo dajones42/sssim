@@ -71,11 +71,9 @@ class Train {
 		let minsq= (d-.2)*this.decel;
 		if (minsq < 0)
 			minsq= 0;
-		if (this.signal && this.signal.maxSpeed>0 &&
-		  this.signal.maxSpeed<this.speed) {
+		if (this.signal && this.signal.maxSpeed>0) {
 			let s= this.signal.maxSpeed;
-			let sq= .25*s*s +
-			  this.signalDistance*this.decel;
+			let sq= s*s + this.signalDistance*this.decel;
 			if (minsq > sq)
 				minsq= sq;
 		}

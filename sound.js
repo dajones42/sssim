@@ -219,7 +219,7 @@ let updateRailcarSound= function(railcar,throttle,speed)
 					sc.sound.setVolume(1);
 				sc.sound.play();
 				sc.current= i;
-//				console.log("sound "+i);
+//				console.log("sound "+i+" "+throttle+" "+speed);
 			}
 			return;
 		}
