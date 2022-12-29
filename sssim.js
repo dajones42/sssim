@@ -537,7 +537,7 @@ let recordBlockFor= function(name)
 			let column= loc.column;
 			addEvent(simTime+loc.block.delay,startTrainEvent,train);
 			train.times= { train:train, given:simTime };
-			blockSheet[column].push(train.times);
+			blockSheet[column].unshift(train.times);
 			displayBlockSheet();
 //			console.log("given "+simTime);
 			break;
@@ -595,7 +595,7 @@ let startTrainEvent= function(e)
 		train.times.entered= simTime;
 	} else {
 		train.times= { train:train, entered:simTime };
-		blockSheet[column].push(train.times);
+		blockSheet[column].unshift(train.times);
 	}
 	displayBlockSheet();
 }
