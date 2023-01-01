@@ -109,9 +109,11 @@ class Train {
 			this.speed= 0;
 		if (this.speed==0 && this.stops.length>0 && 
 		  this.stopDistance<10 && simTime>this.stops[0].time) {
-			this.stops.slice(0,0);
+			this.stops.splice(0,1);
 			if (this.stops.length > 0)
 				this.stopDistance= this.stops[0].dist;
+			else if (this.nextTrain)
+				startNextTrain(this);
 		}
 		let dx= this.speed*dt;
 		if (dx == 0)
@@ -232,31 +234,9 @@ class Train {
 					famodel.rotation.y= 0;
 					famodel.scale.z= 1;
 				}
-				if (car.lights) {
-					for (let j=0; j<car.lights.length;
-					  j++) {
-						let light= car.lights[j];
-						if (i==0 && light.unit!=2)
-							continue;
-						if (i==cars.length-1 &&
-						  light.unit!=3)
-							continue;
-						let geom= new THREE.
-						  CircleGeometry(light.radius);
-						let mat= new THREE.
-						  MeshBasicMaterial({ color:
-						   parseInt(light.color,16) });
-						let mesh= new THREE.Mesh(
-						  geom,mat);
-						mesh.position.x= light.x;
-						mesh.position.y= light.y;
-						mesh.position.z= light.z;
-						if (i > 0)
-							mesh.rotation.y=
-							  Math.PI;
-						model.add(mesh);
-					}
-				}
+				if (car.lights)
+					railcar.addLights(i==0,
+					  i==cars.length-1,car.lights);
 				if (car.sound) {
 					loadRailcarSounds(railcar,car.sound);
 				}
@@ -269,5 +249,15 @@ class Train {
 			if (car.model)
 				scene.remove(car.model);
 		}
+	}
+	reverse() {
+		let t= this.location;
+		this.location= this.endLocation;
+		this.location= t;
+		this.location.rev= !this.location.rev;
+		this.endLocation.rev= !this.endLocation.rev;
+		this.cars.reverse();
+		for (let i=0; i<this.cars.length; i++)
+			this.cars[i].reverse();
 	}
 }

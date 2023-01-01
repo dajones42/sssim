@@ -427,6 +427,15 @@ let startSimulation= function()
 	initBlocks();
 	for (let i=0; i<trains.length; i++) {
 		let train= trains[i];
+		if (train.startTime.indexOf(":")<0) {
+			for (let j=0; j<trains.length; j++) {
+				if (trains[j].name == train.startTime) {
+					trains[j].nextTrain= train.name;
+					break;
+				}
+			}
+			continue;
+		}
 		let t= hmToTime(train.startTime);
 		let loc= findNamedLocation(train.entrance);
 		if (loc.block) {
@@ -583,7 +592,8 @@ let recordBlockFor= function(name)
 			loc.block.inUse= true;
 			let column= loc.column;
 			addEvent(simTime+loc.block.delay,startTrainEvent,train);
-			train.times= { train:train, given:simTime };
+			train.times= { train:train, name:train.name,
+			  given:simTime };
 			blockSheet[column].unshift(train.times);
 			displayBlockSheet();
 //			console.log("given "+simTime);
@@ -608,6 +618,8 @@ let startTrainEvent= function(e)
 	if (!startLoc || !endLoc)
 		return;
 	let column= startLoc.column;
+	if (e.train.prevTrain)
+		column= 1-endLoc.column;
 	let startBlock= startLoc.block;
 	startLoc= startLoc.loc;
 	let endBlock= endLoc.block;
@@ -617,9 +629,19 @@ let startTrainEvent= function(e)
 	startLoc.rev= startLoc.edge.v1.dist<startLoc.edge.v2.dist;
 //	console.log("startdir "+startLoc.rev+" "+startLoc.edge.v1.dist+" "+
 //	  startLoc.edge.v2.dist);
-	let train= new Train(e.train,startLoc,
-	  Math.max(startLoc.edge.v1.dist,startLoc.edge.v2.dist));
-	train.createModels(e.train);
+	let train= null;
+	if (e.train.prevTrain) {
+		train= e.train.prevTrain;
+		train.name= e.train.name;
+		train.reverse();
+		train.maxDistance=
+		  Math.max(startLoc.edge.v1.dist,startLoc.edge.v2.dist);
+	} else {
+		train= new Train(e.train,startLoc,
+		  Math.max(startLoc.edge.v1.dist,startLoc.edge.v2.dist));
+		train.createModels(e.train);
+		activeTrains.push(train);
+	}
 	if (e.train.stops) {
 		d= startLoc.spDistance();
 		for (let i=0; i<e.train.stops.length; i++) {
@@ -631,20 +653,50 @@ let startTrainEvent= function(e)
 			  hmToTime(e.train.stops[i].stopTime));
 			d= loc.spDistance();
 		}
+		if (e.train.nextTrain)
+			train.nextTrain= e.train.nextTrain;
+		if (e.train.prevTrain)
+			train.stopDistance= 0;
 	}
 	train.findSignal();
 	train.startBlock= startBlock;
 	train.endBlock= endBlock;
-	activeTrains.push(train);
 	if (e.train.times) {
 		train.times= e.train.times;
 		train.times.train= train;
 		train.times.entered= simTime;
 	} else {
-		train.times= { train:train, entered:simTime };
+		train.times= { train:train, name:train.name, entered:simTime };
 		blockSheet[column].unshift(train.times);
 	}
+	if (e.train.prevTrain)
+		train.times.arrived= simTime;
 	displayBlockSheet();
+}
+
+let startNextTrain= function(prevTrain)
+{
+	for (let i=0; i<trains.length; i++) {
+		let train= trains[i];
+		if (train.name == prevTrain.nextTrain) {
+			train.prevTrain= prevTrain;
+			prevTrain.nextTrain= train.nextTrain;
+			prevTrain.times.departed= simTime;
+			if (!prevTrain.times.arrived)
+				prevTrain.times.arrived= simTime;
+			prevTrain.times.cleared= simTime;
+			if (prevTrain.startBlock)
+				prevTrain.startBlock.inUse= false;
+			prevTrain.distance= 0;
+			if (prevTrain.signal) {
+				prevTrain.signal.trainDistance= 0;
+				prevTrain.signal= 0;
+				prevTrain.signalDistance= 0;
+			}
+			addEvent(simTime,startTrainEvent,train);
+			return;
+		}
+	}
 }
 
 let displayActiveTrains= function()
@@ -781,17 +833,17 @@ let displayBlockSheet= function()
 		s+= "</td>";
 	}
 	let addTimes= function(times) {
-		s+= "<td>"+times.train.name+"</td>";
+		s+= "<td>"+times.name+"</td>";
 		addTime(times.given);
 		addTime(times.entered);
 		if (times.train.endBlock && times.entered && !times.received)
-			addTime(times.received,"requestBlock",times.train.name,
+			addTime(times.received,"requestBlock",times.name,
 			  "Request");
 		else
 			addTime(times.received);
-		addTime(times.arrived,"setArrivalTime",times.train.name,
+		addTime(times.arrived,"setArrivalTime",times.name,
 		  "Enter");
-		addTime(times.departed,"setDepartureTime",times.train.name,
+		addTime(times.departed,"setDepartureTime",times.name,
 		  "Enter");
 		addTime(times.cleared);
 	}

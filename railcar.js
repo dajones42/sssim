@@ -182,4 +182,72 @@ class RailCar {
 				this.animation.setTime(this.mainWheelState);
 		}
 	}
+	addLights(headend,tailend,lights) {
+		if (!headend && !tailend)
+			return;
+		let lights2= [];
+		let lights3= [];
+		for (let i=0; i<lights.length; i++) {
+			let light= lights[i];
+			if (light.unit!=2 && light.unit!=3)
+				continue;
+			let geom= new THREE.CircleGeometry(light.radius);
+			let mat= new THREE.MeshBasicMaterial({ color:
+			   parseInt(light.color,16) });
+			let mesh= new THREE.Mesh(geom,mat);
+			mesh.position.x= light.x;
+			mesh.position.y= light.y;
+			mesh.position.z= light.z;
+			if (light.unit == 2) {
+				lights2.push(mesh);
+			} else {
+				lights3.push(mesh);
+				mesh.rotation.y= Math.PI;
+			}
+		}
+		if (headend && tailend) {
+			this.currentLights= lights2;
+			for (let i=0; i<lights3.length; i++)
+				this.currentLights.push(lights3[i]);
+			this.otherLights= null;
+		} else if (headend) {
+			this.currentLights= lights2;
+			this.otherLights= lights3;
+		} else {
+			this.currentLights= lights3;
+			this.otherLights= lights2;
+		}
+		for (let i=0; i<this.currentLights.length; i++)
+			this.model.add(this.currentLights[i]);
+		if (this.otherLights) {
+			for (let i=0; i<this.otherLights.length; i++) {
+				let mesh= this.otherLights[i];
+				mesh.position.z= -mesh.position.z;
+				mesh.rotation.y+= Math.PI;
+			}
+		}
+	}
+	reverse() {
+		for (let i=0; i<this.nWheels; i++) {
+			let part= this.parts[i];
+			part.location.rev= !part.location.rev;
+		}
+		if (this.currentLights && this.otherLights) {
+			for (let i=0; i<this.currentLights.length; i++)
+				this.model.remove(this.currentLights[i]);
+			let t= this.currentLights;
+			this.currentLights= this.otherLights;
+			this.otherLights= t;
+			for (let i=0; i<this.currentLights.length; i++) {
+				this.model.add(this.currentLights[i]);
+				let mesh= this.currentLights[i];
+			}
+		} else if (this.currentLights) {
+			for (let i=0; i<this.currentLights.length; i++) {
+				let mesh= this.currentLights[i];
+				mesh.position.z= -mesh.position.z;
+				mesh.rotation.y+= Math.PI;
+			}
+		}
+	}
 }
