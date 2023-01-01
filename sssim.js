@@ -462,10 +462,8 @@ let updateSimulation= function()
 		timeMult= 32;
 		let del= null;
 		let moving= false;
-		for (let i=0; i<activeTrains.length; i++) {
-			let t= activeTrains[i];
-			t.move(dt,simTime);
-			let p= t.location.getPosition();
+		let checkNear= function(t,loc) {
+			let p= loc.getPosition();
 			let du= p.x-centerU;
 			let dv= p.y-centerV;
 			if (du*du+dv*dv < 500*500) {
@@ -473,6 +471,12 @@ let updateSimulation= function()
 				if (t.speed)
 					moving= true;
 			}
+		}
+		for (let i=0; i<activeTrains.length; i++) {
+			let t= activeTrains[i];
+			t.move(dt,simTime);
+			checkNear(t,t.location);
+			checkNear(t,t.endLocation);
 			if (t.distance > t.maxDistance) {
 				del= t;
 				t.times.cleared= simTime;
@@ -748,6 +752,8 @@ let loadConsist= function()
 				s+= "<td>"+equip.sound+"</td>";
 			else
 				s+= "<td></td>";
+		} else {
+			s+= "<td>file not found</td>";
 		}
 		s+= "</tr>";
 	}

@@ -27,14 +27,14 @@ THE SOFTWARE.
 let mstsModelMap= {};
 let mstsMaterialMap= {};
 
-let getMstsMaterial= function(acefile,transparent,texDir1,texDir2)
+let getMstsMaterial= function(acefile,transparent,texDir1,texDir2,alphaTest)
 {
-	let id= texDir1+fspath.sep+acefile+transparent;
+	let id= texDir1+fspath.sep+acefile+transparent+alphaTest;
 	let mat= mstsMaterialMap[id];
 	if (mat)
 		return mat;
 	if (texDir2) {
-		id= texDir2+fspath.sep+acefile+transparent;
+		id= texDir2+fspath.sep+acefile+transparent+alphaTest;
 		mat= mstsMaterialMap[id];
 		if (mat)
 			return mat;
@@ -55,9 +55,12 @@ let getMstsMaterial= function(acefile,transparent,texDir1,texDir2)
 	} else {
 		mat= new THREE.MeshBasicMaterial({ color: 0xdddddd } );
 	}
-	mat.side= THREE.DoubleSide;
+//	mat.side= THREE.DoubleSide;
+//	mat.side= THREE.TwoPassDoubleSide;
 	mat.transparent= transparent;
-	id= path+transparent;
+	if (alphaTest)
+		mat.alphaTest= 200/255;//value used by OR
+	id= path+transparent+alphaTest;
 	mstsMaterialMap[id]= mat;
 	return mat;
 }
@@ -66,14 +69,13 @@ let getMstsMaterial= function(acefile,transparent,texDir1,texDir2)
 //	Saves geometry and material info so it can be shared by multiple
 //	copies and eventually displosed of.
 //	Adds railcar parts if car is defined.
-let getMstsModel= function(shapePath,texDir1,texDir2,car)
+let getMstsModel= function(shapePath,texDir1,texDir2,car,roOffset)
 {
 	let shapeData= mstsModelMap[shapePath];
 	if (!shapeData) {
 		let shape= readMstsShape(shapePath);
 		if (!shape)
 			return null;
-//		console.log("dlevels "+shape.distLevels.length);
 		let dLevel= shape.distLevels[0];
 		for (let i=1; i<shape.distLevels.length; i++)
 			if (dLevel.dist > shape.distLevels[i].dist)
@@ -164,10 +166,12 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car)
 				  (shader.substr(0,5).toLowerCase()=="blend");
 				let aceFile= shape.images[shape.textures[
 				  primState.texIdx]];
+				let alphaTest=
+				  primState.alphaTestMode?true:false;
 				shapeData.geometry.push({
 				  geometry: bgeom,
 				  material: getMstsMaterial(aceFile,
-				    transparent,texDir1,texDir2),
+				    transparent,texDir1,texDir2,alphaTest),
 				  matrixIndex:
 				    shape.vtxStates[primState.vStateIndex]
 				});
@@ -198,10 +202,15 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car)
 		let geom= shapeData.geometry[i];
 		let mesh= new THREE.Mesh(geom.geometry,geom.material);
 		shapeData.matrices[geom.matrixIndex].object.add(mesh);
+		mesh.renderOrder= roOffset+i;
 	}
 	shapeData.count++;
 	root.userData= shapeData;
 	if (car) {
+		let setRenderOrder= function(obj,value) {
+			for (let i=0; i<obj.children.length; i++)
+				obj.children[i].renderOrder= value;
+		}
 		car.mainWheelRadius= 0;
 		for (let i=0; i<shapeData.matrices.length; i++) {
 			let mat= shapeData.matrices[i];
@@ -215,6 +224,7 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car)
 				  mat.object.position.z,mat.object,radius));
 				if (car.mainWheelRadius < radius)
 					car.mainWheelRadius= radius;
+				setRenderOrder(mat.object,roOffset-2);
 //				console.log("wheel "+i+" "+radius+" "+
 //				  shapePath);
 			}
@@ -226,6 +236,7 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car)
 				mat.part= car.parts.length;
 				car.parts.push(new RailCarPart(
 				  mat.object.position.z,mat.object,0));
+				setRenderOrder(mat.object,roOffset-1);
 			}
 		}
 		car.parts.push(new RailCarPart(root.position.x,root,0));
@@ -384,7 +395,7 @@ let makePatchModel= function(tile,patch,i0,j0)
 	geom.setIndex(indices);
 	let rtpath= routeDir+fspath.sep+"TERRTEX";
 	let mat= getMstsMaterial(tile.textures[patch.texIndex],false,
-	  rtpath,null);
+	  rtpath,null,false);
 	geom.computeBoundingSphere();
 	return new THREE.Mesh(geom,mat);
 }
@@ -415,7 +426,7 @@ let loadTileModels= function(tx,tz)
 			  routeDir+fspath.sep+"SHAPES";
 			spath+= fspath.sep+object.filename;
 //			console.log("spath "+spath);
-			model= getMstsModel(spath,rtpath,gtpath,null);
+			model= getMstsModel(spath,rtpath,gtpath,null,0);
 			if (!model)
 				continue;
 		} else if (object.type == "dyntrack") {
@@ -549,7 +560,7 @@ let makeDynTrackModel= function(object)
 		 new THREE.Float32BufferAttribute(uvs,2));
 		geom.setIndex(indices);
 		let mat= getMstsMaterial(options.imageFile,
-		  options.transparent,rtpath,null);
+		  options.transparent,rtpath,null,options.transparent);
 		let mesh= new THREE.Mesh(geom,mat);
 		mesh.scale.z= -1;
 		return mesh;
@@ -687,6 +698,8 @@ let makeForestModel= function(object,tx,tz)
 		let z= tree.z;
 		let nx= cs*tree.du + sn*tree.dv;
 		let nz= cs*tree.dv - sn*tree.du;
+		nx= -nx;
+		nz= -nz;
 		let px= -nz;
 		let pz= nx;
 		verts.push(x+w*px,y,z+w*pz);
@@ -714,7 +727,8 @@ let makeForestModel= function(object,tx,tz)
 	 new THREE.Float32BufferAttribute(uvs,2));
 	geom.setIndex(indices);
 	let rtpath= routeDir+fspath.sep+"TEXTURES";
-	let mat= getMstsMaterial(object.treeTexture,true,rtpath,null);
+	let mat= getMstsMaterial(object.treeTexture,true,rtpath,null,true);
+//	mat.side= THREE.DoubleSide;
 	let mesh= new THREE.Mesh(geom,mat);
 	mesh.scale.z= -1;
 	return mesh;

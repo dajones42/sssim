@@ -36,9 +36,13 @@ let fixFilenameCase= function(path)
 		files= fs.readdirSync(dir);
 	} catch (e) {
 		dir= fixFilenameCase(dir);
-		files= fs.readdirSync(dir);
+		try {
+			files= fs.readdirSync(dir);
+		} catch (e) {
+			console.log("cannot read dir "+dir);
+		}
 	}
-	for (let i=0; i<files.length; i++)
+	for (let i=0; files && i<files.length; i++)
 		if (files[i].toLowerCase() == lower)
 			return dir+fspath.sep+files[i];
 	return path;
@@ -1169,17 +1173,18 @@ let readMstsConsist= function(path)
 	}
 	root= root[1][1];
 	let result= {
+		name: fspath.basename(path),
 		cars: []
 	};
+	if (typeof root[0] == "string")
+		result.name= root[0];
 	let car= null;
 	for (let i=0; i<root.length; i++) {
 		if (typeof root[i] != "string")
 			continue;
 		let lower= root[i].toLowerCase();
 		//console.log(" "+i+" "+lower+" "+root[i+1].length);
-		if (lower == "name") {
-			result.name= root[i+1][0];
-		} else if (lower=="engine" || lower=="wagon") {
+		if (lower=="engine" || lower=="wagon") {
 			car= {};
 			result.cars.push(car);
 			foreach(root[i+1],"flip",function(a) {
@@ -1202,7 +1207,7 @@ let readMstsWag= function(path)
 {
 	console.log("readwag "+path);
 	let root= readMstsUnicode(path);
-	if (typeof root[0]!="string" ||
+	if (!root || typeof root[0]!="string" ||
 	  root[0].toLowerCase()!="wagon") {
 		console.log("no wagon data "+path);
 		return null;

@@ -35,7 +35,7 @@ let readTiles= function(routePath)
 {
 	if (!routePath)
 		routePath= routeDir;
-	let tilesPath= routePath+fspath.sep+'TILES';
+	let tilesPath= fixFilenameCase(routePath+fspath.sep+'TILES');
 	let files= fs.readdirSync(tilesPath);
 	for (let i=0; i<files.length; i++) {
 		if (files[i].substr(files[i].length-2) != ".t")

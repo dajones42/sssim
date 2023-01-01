@@ -25,16 +25,23 @@ class Train {
 		this.name= info.name;
 		this.maxSpeed= parseFloat(info.maxSpeed)/2.23693;
 		this.speed= 0;
-		this.accel= .3;
-		this.decel= 1;
+		this.accel= .2;
+		this.decel= .7;
 		this.location= loc;
 		this.endLocation= loc.copy();
 		if (info.consist) {
 			let consist= consists[info.consist];
 			this.length= 0;
 			for (let i=0; i<consist.length; i++) {
-				let car= equipment[consist[i]];
-				this.length+= car.length;
+				let eq= consist[i];
+				if (eq.substr(0,1)=="^")
+					eq= eq.substr(1);
+				let car= equipment[eq];
+				if (car)
+					this.length+= car.length;
+				else
+					console.log("missing equipment "+
+					  consist[i]);
 			}
 		} else if (info.cars) {
 			this.length= 0;
@@ -177,11 +184,22 @@ class Train {
 	}
 	createModels(info) {
 		let cars= info.cars;
+		let flip= [];
 		if (info.consist) {
 			let consist= consists[info.consist];
 			cars= [];
 			for (let i=0; i<consist.length; i++) {
-				cars.push(equipment[consist[i]]);
+				let eq= consist[i];
+				let f= false;
+				if (eq.substr(0,1)=="^") {
+					eq= eq.substr(1);
+					f= true;
+				}
+				let car= equipment[eq];
+				if (car) {
+					cars.push(car);
+					flip.push(f);
+				}
 			}
 		}
 		if (cars) {
@@ -195,16 +213,25 @@ class Train {
 				  car.directory;
 				let railcar= new RailCar();
 				let model= getMstsModel(
-				  dir+fspath.sep+car.shape,dir,null,railcar);
+				  dir+fspath.sep+car.shape,dir,null,
+				  railcar,1000);
 				if (!model)
 					continue;
 				this.length+= car.length;
 				loc.move(-car.length/2,0);
-				railcar.setLocation(0,loc,false);
+				railcar.setLocation(0,loc,flip[i]);
 				loc.move(-car.length/2,0);
 				this.cars.push(railcar);
 				railcar.model= model;
 				scene.add(model);
+				if (car.fashape) {
+					let famodel= getMstsModel(
+					  dir+fspath.sep+car.fashape,dir,null,
+					  null,1000);
+					model.add(famodel);
+					famodel.rotation.y= 0;
+					famodel.scale.z= 1;
+				}
 				if (car.lights) {
 					for (let j=0; j<car.lights.length;
 					  j++) {
