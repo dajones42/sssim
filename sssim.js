@@ -309,7 +309,9 @@ let addTrain= function()
 		startTime: document.getElementById("trainstart").value,
 		consist: document.getElementById("trainconsist").value,
 		maxSpeed:
-		  parseFloat(document.getElementById("trainmaxspeed").value)
+		  parseFloat(document.getElementById("trainmaxspeed").value),
+		randomDelay:
+		  parseInt(document.getElementById("trainrandomdelay").value)
 	};
 	let stop= document.getElementById("trainstop").value;
 	let stopTime= document.getElementById("trainstoptime").value;
@@ -343,6 +345,13 @@ let deleteTrain= function(name)
 				document.getElementById("trainstoptime").value=
 				  "";
 			}
+			if (train.randomDelay)
+				document.getElementById(
+				  "trainrandomdelay").value=
+				  train.randomDelay.toFixed(0);
+			else
+				document.getElementById(
+				  "trainrandomdelay").value= "";
 			trains.splice(i,1);
 			displayTrains();
 			return;
@@ -361,8 +370,9 @@ let displayTrains= function()
 			return 1;
 		return 0;
 	});
-	let s= "<table><tr><th>Name</th><th>Start Time</th><th>Max.Speed</th>"+
-	  "<th>Entrance</th><th>Exit</th><th>Consist</th><th>Stops</th></tr>";
+	let s= "<table><tr><th>Name</th><th>Start Time</th><th>Max. Speed</th>"+
+	  "<th>Entrance</th><th>Exit</th><th>Consist</th><th>Stops</th>"+
+	  "<th>Random Delay</th></tr>";
 	for (let i=0; i<sortedTrains.length; i++) {
 		let train= sortedTrains[i];
 		s+= "<tr><td>"+train.name+"</td><td>"+
@@ -380,6 +390,10 @@ let displayTrains= function()
 		} else {
 			s+= "<td></td>";
 		}
+		if (train.randomDelay)
+			s+= "<td>"+train.randomDelay.toFixed(0)+"</td>";
+		else
+			s+= "<td></td>";
 		s+= "<td><button type='button' onclick='deleteTrain(\""+
 		  train.name+"\")'>Delete</button></td>";
 		s+= "</tr>";
@@ -437,6 +451,8 @@ let startSimulation= function()
 			continue;
 		}
 		let t= hmToTime(train.startTime);
+		if (train.randomDelay)
+			t+= Math.random()*train.randomDelay*60;
 		let loc= findNamedLocation(train.entrance);
 		if (loc.block) {
 			train.startBlock= loc.block;
