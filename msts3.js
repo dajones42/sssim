@@ -27,14 +27,16 @@ THE SOFTWARE.
 let mstsModelMap= {};
 let mstsMaterialMap= {};
 
-let getMstsMaterial= function(acefile,transparent,texDir1,texDir2,alphaTest)
+let getMstsMaterial= function(acefile,transparent,texDir1,texDir2,alphaTest,
+  lightMatIdx)
 {
-	let id= texDir1+fspath.sep+acefile+transparent+alphaTest;
+	let id= texDir1+fspath.sep+acefile+transparent+alphaTest+lightMatIdx;
 	let mat= mstsMaterialMap[id];
 	if (mat)
 		return mat;
 	if (texDir2) {
-		id= texDir2+fspath.sep+acefile+transparent+alphaTest;
+		id= texDir2+fspath.sep+acefile+transparent+alphaTest+
+		  lightMatIdx;
 		mat= mstsMaterialMap[id];
 		if (mat)
 			return mat;
@@ -51,17 +53,35 @@ let getMstsMaterial= function(acefile,transparent,texDir1,texDir2,alphaTest)
 		texture.wrapT= THREE.RepeatWrapping;
 		texture.flipY= false;
 		texture.needsUpdate= true;
-		mat= new THREE.MeshLambertMaterial({ map: texture } );
+		if (lightMatIdx == -9)
+			mat= new THREE.MeshBasicMaterial({ map: texture } );
+		else if (lightMatIdx == -6)
+			mat= new THREE.MeshPhongMaterial({
+			  map: texture, shininess: 4 } );
+		else if (lightMatIdx == -7)
+			mat= new THREE.MeshPhongMaterial({
+			  map: texture, shininess: 128 } );
+		else if (lightMatIdx == -10)
+			mat= new THREE.MeshLambertMaterial({
+			  map: texture, emissive: 0xffffff } );
+		else if (lightMatIdx == -11)
+			mat= new THREE.MeshLambertMaterial({
+			  map: texture, color: 0xcccccc } );
+		else if (lightMatIdx == -12)
+			mat= new THREE.MeshLambertMaterial({
+			  map: texture, color: 0x888888 } );
+		else
+			mat= new THREE.MeshLambertMaterial({ map: texture } );
 	} else {
 		mat= new THREE.MeshBasicMaterial({ color: 0xdddddd } );
 	}
-//	mat.side= THREE.DoubleSide;
-//	mat.side= THREE.TwoPassDoubleSide;
 	mat.transparent= transparent;
 	if (alphaTest)
 		mat.alphaTest= 200/255;//value used by OR
-	id= path+transparent+alphaTest;
+	id= path+transparent+alphaTest+lightMatIdx;
 	mstsMaterialMap[id]= mat;
+//	if (lightMatIdx != -5)
+//		console.log("lightMatIdx "+lightMatIdx+" "+id);
 	return mat;
 }
 
@@ -168,12 +188,14 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car,roOffset)
 				  primState.texIdx]];
 				let alphaTest=
 				  primState.alphaTestMode?true:false;
+				let vtxState=
+				  shape.vtxStates[primState.vStateIndex];
 				shapeData.geometry.push({
 				  geometry: bgeom,
 				  material: getMstsMaterial(aceFile,
-				    transparent,texDir1,texDir2,alphaTest),
-				  matrixIndex:
-				    shape.vtxStates[primState.vStateIndex]
+				    transparent,texDir1,texDir2,alphaTest,
+				    vtxState.lightMatIdx),
+				  matrixIndex: vtxState.matIdx
 				});
 			}
 		}
@@ -395,7 +417,7 @@ let makePatchModel= function(tile,patch,i0,j0)
 	geom.setIndex(indices);
 	let rtpath= routeDir+fspath.sep+"TERRTEX";
 	let mat= getMstsMaterial(tile.textures[patch.texIndex],false,
-	  rtpath,null,false);
+	  rtpath,null,false,-5);
 	geom.computeBoundingSphere();
 	return new THREE.Mesh(geom,mat);
 }
@@ -560,7 +582,7 @@ let makeDynTrackModel= function(object)
 		 new THREE.Float32BufferAttribute(uvs,2));
 		geom.setIndex(indices);
 		let mat= getMstsMaterial(options.imageFile,
-		  options.transparent,rtpath,null,options.transparent);
+		  options.transparent,rtpath,null,options.transparent,-5);
 		let mesh= new THREE.Mesh(geom,mat);
 		mesh.scale.z= -1;
 		return mesh;
@@ -727,7 +749,7 @@ let makeForestModel= function(object,tx,tz)
 	 new THREE.Float32BufferAttribute(uvs,2));
 	geom.setIndex(indices);
 	let rtpath= routeDir+fspath.sep+"TEXTURES";
-	let mat= getMstsMaterial(object.treeTexture,true,rtpath,null,true);
+	let mat= getMstsMaterial(object.treeTexture,true,rtpath,null,true,-5);
 //	mat.side= THREE.DoubleSide;
 	let mesh= new THREE.Mesh(geom,mat);
 	mesh.scale.z= -1;

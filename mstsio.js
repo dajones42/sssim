@@ -519,7 +519,10 @@ let readMstsShape= function(path)
 			 case 46: // vtx_state
 				getString();
 				getInt();
-				result.vtxStates.push(getInt());
+				result.vtxStates.push({
+					matIdx:getInt(),
+					lightMatIdx:getInt()
+				});
 				offset= offset0+len;
 				break;
 			 case 54: // prim_state
@@ -778,7 +781,10 @@ let readMstsShape= function(path)
 				});
 			} else if (lower == "vtx_states") {
 				foreach(root[i+1],"vtx_state",function(a) {
-					result.vtxStates.push(parseInt(a[1]));
+					result.vtxStates.push({
+						matIdx: parseInt(a[1]),
+						lightMatIdx: parseInt(a[2])
+					});
 				});
 			} else if (lower == "prim_states") {
 				foreach(root[i+1],"prim_state",function(a) {
