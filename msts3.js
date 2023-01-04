@@ -105,7 +105,7 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car,roOffset)
 			matrices: [],
 			geometry: []
 		};
-		if (shape.animations.length > 0)
+		if (shape.animations && shape.animations.length>0)
 			shapeData.animations= shape.animations;
 		mstsModelMap[shapePath]= shapeData;
 		for (let i=0; i<shape.matrices.length; i++) {
@@ -146,14 +146,24 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car,roOffset)
 					so.vertices[k].index= nv++;
 					let k1= so.vertices[k].pointIndex;
 					let point= shape.points[k1];
-					verts.push(point[0],point[1],point[2]);
+					if (point)
+						verts.push(point[0],point[1],
+						  point[2]);
+					else
+						verts.push(0,0,0);
 					let ni= so.vertices[k].normalIndex;
 					let normal= shape.normals[ni];
-					normals.push(normal[0],normal[1],
-					  normal[2]);
+					if (normal)
+						normals.push(normal[0],
+						  normal[1],normal[2]);
+					else
+						normals.push(0,0,0);
 					let uvi= so.vertices[k].uvIndex;
 					let uv= shape.uvPoints[uvi];
-					uvs.push(uv[0],uv[1]);
+					if (uv)
+						uvs.push(uv[0],uv[1]);
+					else
+						uvs.push(0,0);
 				}
 				let indices= [];
 				for (let k=0; k<triList.vertexIdxs.length;
@@ -440,6 +450,7 @@ let loadTileModels= function(tx,tz)
 		if (!object.position || !object.qdirection)
 			continue;
 		let model= null;
+//		console.log("type "+object.type);
 		if (object.filename) {
 			let global= object.staticFlags &&
 			  (object.staticFlags&0x00200000)!=0;
@@ -447,7 +458,6 @@ let loadTileModels= function(tx,tz)
 			  mstsDir+fspath.sep+"GLOBAL"+fspath.sep+"SHAPES" :
 			  routeDir+fspath.sep+"SHAPES";
 			spath+= fspath.sep+object.filename;
-//			console.log("spath "+spath);
 			model= getMstsModel(spath,rtpath,gtpath,null,0);
 			if (!model)
 				continue;

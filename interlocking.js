@@ -233,10 +233,25 @@ let makeInterlocking= function()
 				v.signal1= signal;
 			else
 				v.signal2= signal;
-			if (o.lock)
+			if (o.lock && o.lock!="calc")
 				parseSignalLock(o.lever,o.lock);
 			if (o.maxSpeed)
 				signal.maxSpeed= o.maxSpeed/2.23693;
+		}
+	}
+	for (let i=0; i<mapObjects.length; i++) {
+		let o= mapObjects[i];
+		if (o.type=="signal" && o.trackCircuit) {
+			let tc= { name: o.trackCircuit, occupied: 0 };
+			let v= findVertex(o.u,o.v,false);
+			let e= o.direction ? v.edge2 : v.edge1;
+			while (e) {
+				e.trackCircuit= tc;
+				v= v==e.v1 ? e.v2 : e.v1;
+				if (v.getSignal(e))
+					break;
+				e= v.nextEdge(e);
+			}
 		}
 	}
 }

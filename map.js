@@ -260,6 +260,10 @@ let mapMouseMove= function(event)
 				if (dragging.type=="signal") {
 					dragging.du= Math.cos(Math.PI/2-p.ay);
 					dragging.dv= Math.sin(Math.PI/2-p.ay);
+					if (dragging.direction) {
+						dragging.du= -dragging.du;
+						dragging.dv= -dragging.dv;
+					}
 				}
 			}
 		} else {
@@ -348,12 +352,13 @@ let findNearestTrack= function(u,v)
 	let bestD= 10000;
 	let bestSection= null;
 	let bestNode= null;
+	let bestj= -1;
 	for (let i=0; trackDB && i<trackDB.nodes.length; i++) {
 		let node= trackDB.nodes[i];
 		if (!node)
 			continue;
 		if (node.sections) {
-			for (let j=0; j<node.sections.length; j++) {
+			for (let j=1; j<node.sections.length; j++) {
 				let section= node.sections[j];
 				let du= u-section.u;
 				let dv= v-section.v;
@@ -362,6 +367,7 @@ let findNearestTrack= function(u,v)
 					bestD= d;
 					bestSection= section;
 					bestNode= node;
+					bestj= j;
 				}
 			}
 		}
@@ -423,6 +429,17 @@ let changeSpeed= function()
 		return;
 	let speed= document.getElementById('maxspeed');
 	selected.maxSpeed= parseFloat(speed.value);
+	renderCanvas();
+}
+
+let changeTrackCircuit= function()
+{
+	if (!selected)
+		return;
+	if (selected.type!="signal")
+		return;
+	let tc= document.getElementById('trackcircuit');
+	selected.trackCircuit= tc.value;
 	renderCanvas();
 }
 

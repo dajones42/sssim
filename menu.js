@@ -64,6 +64,10 @@ let setupMenu= function() {
 		click: changeSpeed
 	}));
 	editMenu.append(new nw.MenuItem({
+		label: 'Change Track Circuit',
+		click: changeTrackCircuit
+	}));
+	editMenu.append(new nw.MenuItem({
 		label: 'Change Name',
 		click: changeName
 	}));

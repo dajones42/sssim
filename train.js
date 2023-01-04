@@ -50,6 +50,8 @@ class Train {
 		} else {
 			this.length= 25;
 		}
+		if (this.location.edge.trackCircuit)
+			this.location.edge.trackCircuit.occupied++;
 		this.location.move(this.length,1);
 		this.maxDistance= maxd;
 		this.distance= 0;
@@ -249,6 +251,9 @@ class Train {
 			if (car.model)
 				scene.remove(car.model);
 		}
+		this.endLocation.move(this.length,-1);
+		if (this.location.edge.trackCircuit)
+			this.location.edge.trackCircuit.occupied--;
 	}
 	reverse() {
 		let t= this.location;

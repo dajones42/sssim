@@ -817,7 +817,8 @@ let readMstsShape= function(path)
 					subObject.vertices.push({
 						pointIndex: parseInt(a[1]),
 						normalIndex: parseInt(a[2]),
-						uvIndex: parseInt(a[6][1])
+						uvIndex: a[6][1] ?
+						  parseInt(a[6][1]) : 0
 					});
 				};
 				let parseVertices= function(a) {
@@ -1037,6 +1038,10 @@ let readMstsWorld= function(tile)
 				addObject("dyntrack");
 				object.trackSections= [];
 				break;
+			 case 56: // gantry?
+				parser.getString();
+				addObject("gantry");
+				break;
 			 case 95: // filename
 				parser.getString();
 				object.filename= parser.getStringU(
@@ -1086,7 +1091,7 @@ let readMstsWorld= function(tile)
 		}
 	} else {
 		let root= readMstsUnicode(path);
-		if (typeof root[0]!="string" ||
+		if (!root || typeof root[0]!="string" ||
 		  root[0].toLowerCase()!="tr_worldfile") {
 			console.log("no world data "+path);
 			return null;
@@ -1127,11 +1132,13 @@ let readMstsWorld= function(tile)
 			if (typeof root[i] != "string")
 				continue;
 			let lower= root[i].toLowerCase();
-			//console.log(" "+i+" "+lower+" "+root[i+1].length);
+//			console.log(" "+i+" "+lower+" "+root[i+1].length);
 			if (lower == "static") {
 				addObject("static",root[i+1]);
 			} else if (lower == "trackobj") {
 				addObject("track",root[i+1]);
+			} else if (lower == "gantry") {
+				addObject("gantry",root[i+1]);
 			} else if (lower == "dyntrack") {
 				addObject("dyntrack",root[i+1]);
 				object.trackSections= [];

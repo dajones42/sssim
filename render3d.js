@@ -49,6 +49,8 @@ let initScene= function()
 		if (o.type == "camera") {
 			centerU= o.u;
 			centerV= o.v;
+			if (o.y)
+				camera.position.y= o.y;
 			let v= findVertex(o.u,o.v);
 			center= new THREE.Vector3(o.u,o.v,v.position.z);
 			console.log("center "+center.x+" "+center.y+" "+

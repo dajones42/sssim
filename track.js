@@ -280,9 +280,22 @@ class Location {
 			if (dOccupied < 0) {
 				v.occupied--;
 				this.edge.occupied--;
+				if (this.edge.trackCircuit!=e.trackCircuit &&
+				  e.trackCircuit) {
+					e.trackCircuit.occupied--;
+					console.log("tc "+e.trackCircuit.name+
+					  " "+e.trackCircuit.occupied);
+				}
 			} else if (dOccupied > 0) {
 				v.occupied++
 				this.edge.occupied++
+				if (this.edge.trackCircuit!=e.trackCircuit &&
+				  this.edge.trackCircuit) {
+					this.edge.trackCircuit.occupied++;
+					console.log("tc "+
+					  this.edge.trackCircuit.name+" "+
+					  this.edge.trackCircuit.occupied);
+				}
 			}
 			if (v == this.edge.v1) {
 				this.offset= 0;
