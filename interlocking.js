@@ -30,7 +30,7 @@ class Interlocking {
 		for (let i=0; i<numLevers; i++)
 			this.levers.push({state:Interlocking.NORMAL,
 			  color:"#888",switches:[],signals:[]});
-		this.interlocks= [];
+		this.locks= [];
 		this.routeLocks= [];
 		this.lockdelay= 120;
 	}
@@ -41,29 +41,48 @@ class Interlocking {
 	}
 	// add locking information for a pair of lever states
 	addLocking(lever1,state1,lever2,state2,when) {
-		if (!when)
-			when=[];
 //		console.log("addlocking "+lever1+" "+state1+" "+
-//		  lever2+" "+state2);
-		this.interlocks.push({ lever1:lever1, state1:state1,
-		  lever2:lever2, state2:state2, when:when });
+//		  lever2+" "+state2+" "+when);
+		if (when) {
+			let whencopy= [];
+			for (let i=0; when && i<when.length; i++)
+				whencopy.push(when[i]);
+			this.locks.push({ lever1:lever1, state1:state1,
+			  lever2:lever2, state2:state2, when:whencopy });
+		} else {
+			for (let i=0; i<this.locks.length; i++) {
+				let lock= this.locks[i];
+				if (lock.lever1==lever1 &&
+				  lock.state1==state1 &&
+				  lock.lever2==lever2 &&
+				  lock.state2==state2)
+					return;
+			}
+			this.locks.push({ lever1:lever1, state1:state1,
+			  lever2:lever2, state2:state2 });
+		}
 	}
-	// adds a condition to the latest interlock
+	// adds a condition to the latest lock
 	addCondition(lever,state) {
-		let i= this.interlocks.length;
-		if (i > 0)
-			this.interlocks[i-1].when.push(
-			  {lever:lever,state:state});
+		let i= this.locks.length;
+		if (i > 0) {
+			let lock= this.locks[i-1];
+			if (!lock.when)
+				lock.when= [];
+			lock.when.push({lever:lever,state:state});
+		}
 	}
 	// adds a switch to the indicated lever
 	addSwitch(lever,swVertex,rev) {
 		this.levers[lever-1].switches.push({vertex:swVertex,rev:rev});
 		this.levers[lever-1].color= "#000";
+		swVertex.lever= lever;
 	}
 	// adds a signal to the indicated lever
 	addSignal(lever,signal) {
 		this.levers[lever-1].signals.push(signal);
 		this.levers[lever-1].color= "#a00";
+		signal.lever= lever;
 	}
 	// returns true if a switch connected to the indicated lever is occupied
 	getSwitchOccupied(lvr) {
@@ -101,16 +120,19 @@ class Interlocking {
 			return true;
 		let state= this.levers[lever-1].state;
 //		console.log("islocked "+lever+" "+state);
-		for (let i=0; i<this.interlocks.length; i++) {
-			let lock= this.interlocks[i];
-			let j=0;
-			for (; j<lock.when.length; j++) {
-				let w= lock.when[j];
-				if ((this.levers[w.lever-1].state&w.state)==0)
-					break;
+		for (let i=0; i<this.locks.length; i++) {
+			let lock= this.locks[i];
+			if (lock.when) {
+				let j=0;
+				for (; lock.when && j<lock.when.length; j++) {
+					let w= lock.when[j];
+					let state= this.levers[w.lever-1].state;
+					if ((state&w.state) == 0)
+						break;
+				}
+				if (j < lock.when.length)
+					continue;
 			}
-			if (j < lock.when.length)
-				continue;
 //			console.log(" "+i+" "+lock.lever1+" "+lock.state1+" "+
 //			  lock.lever2+" "+lock.state2);
 			if (lock.lever1==lever && (lock.state1&state)==0 &&
@@ -177,7 +199,19 @@ class Interlocking {
 	setState(lever,state,timeS) {
 		if (this.levers[lever-1].state == state)
 			return true;
-		return toggleState(lever,timeS);
+		return this.toggleState(lever,timeS);
+	}
+	printLocks(lever) {
+		for (let i=0; i<this.locks.length; i++) {
+			let lock= this.locks[i];
+			if (lever && lever!=lock.lever1)
+				continue;
+			console.log(" lock "+lock.lever1+" "+lock.state1+" "+
+			  lock.lever2+" "+lock.state2);
+			for (let j=0; lock.when && j<lock.when.length; j++)
+				console.log("  when "+lock.when[j].lever+" "+
+				  lock.when[j].state);
+		}
 	}
 }
 
@@ -215,6 +249,7 @@ let makeInterlocking= function()
 				interlocking.addLocking(lock,
 				  Interlocking.REVERSE,o.lever,
 				  Interlocking.NORMAL|Interlocking.REVERSE);
+				v.lock= lock;
 			}
 		} else if (o.type == "signal") {
 			let v= findVertex(o.u,o.v,false);
@@ -253,6 +288,12 @@ let makeInterlocking= function()
 				e= v.nextEdge(e);
 			}
 		}
+		if (o.type=="signal" && o.lever>0 && o.lock && o.lock=="calc") {
+			let v= findVertex(o.u,o.v,false);
+			let e= o.direction ? v.edge2 : v.edge1;
+			console.log("addsignalocking "+o.lever);
+			addSignalLocking(o.lever,v,e,[]);
+		}
 	}
 }
 
@@ -275,5 +316,54 @@ let parseSignalLock= function(lever,lock)
 //		console.log("parselock "+i+" "+locks[i]+" "+lever2+" "+state);
 		interlocking.addLocking(lever,Interlocking.REVERSE,
 		  lever2,state);
+	}
+}
+
+//	adds locking for a signal lever by recursively following all paths
+//	starting at the signal and ending at a controlled signal facing back.
+let addSignalLocking= function(lever,v,e,when)
+{
+//	console.log("addsignalocking "+lever+" "+when.length);
+	while (e) {
+		v= v==e.v1 ? e.v2 : e.v1;
+		e= v.nextEdge(e);
+		let signal= v.getSignal(e);
+		if (signal && signal.lever) {
+//			console.log("back signal "+lever+" "+signal.lever);
+//			for (let i=0; i<when.length; i++)
+//				console.log(" when "+when[i].lever+" "+
+//				  when[i].state);
+			if (lever < signal.lever)
+				interlocking.addLocking(
+				  lever,Interlocking.REVERSE,
+				  signal.lever,Interlocking.NORMAL,when);
+			return;
+		}
+		if (v.swEdges && v.lever)
+			break;
+	}
+	if (!e) {
+		console.log("path with no exit signal "+lever);
+		return;
+	}
+	if (v.lock)
+		interlocking.addLocking(lever,Interlocking.REVERSE,
+		  v.lock,Interlocking.REVERSE,when);
+	if (e == v.edge1) {
+//		console.log("trailing "+v.lever);
+		interlocking.addLocking(lever,Interlocking.REVERSE,
+		  v.lever,v.swEdges[v.mainEdge]==v.edge2?Interlocking.NORMAL:
+		  Interlocking.REVERSE,when);
+		addSignalLocking(lever,v,e,when);
+	} else {
+//		console.log("facing "+v.lever);
+		when.push({lever:v.lever,state:Interlocking.NORMAL});
+		addSignalLocking(lever,v,v.edge2,when);
+		when.pop();
+		interlocking.setState(v.lever,Interlocking.REVERSE,0);
+		when.push({lever:v.lever,state:Interlocking.REVERSE});
+		addSignalLocking(lever,v,v.edge2,when);
+		when.pop();
+		interlocking.setState(v.lever,Interlocking.NORMAL,0);
 	}
 }

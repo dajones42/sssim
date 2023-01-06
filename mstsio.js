@@ -1271,7 +1271,7 @@ let readMstsWag= function(path)
 				});
 			});
 			console.log("light "+light.type+" "+light.headlight);
-			if (light.type===0 && light.headlight==3)
+			if (light.type===0 && light.headlight>=3)
 				lights.push(light);
 		});
 		if (lights.length > 0)

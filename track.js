@@ -362,7 +362,7 @@ let findVertex= function(x,y,switchOnly)
 			bestV= v;
 		}
 	}
-	console.log("bestd "+bestD);
+//	console.log("bestd "+bestD);
 	return bestV;
 }
 
