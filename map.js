@@ -320,6 +320,8 @@ let addObject= function(type)
 		object.v= p.v;
 		let name= document.getElementById('locationname');
 		object.name= name.value;
+		object.column=
+		  parseInt(document.getElementById('locationcolumn'));
 	}
 	mapObjects.push(object);
 	renderCanvas();
@@ -449,6 +451,7 @@ let changeName= function()
 		return;
 	let name= document.getElementById('locationname');
 	selected.name= name.value;
+	selected.column= parseInt(document.getElementById('locationcolumn'));
 	renderCanvas();
 	updateLocations();
 }
