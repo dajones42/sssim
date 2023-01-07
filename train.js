@@ -238,7 +238,7 @@ class Train {
 				}
 				if (car.lights)
 					railcar.addLights(i==0,
-					  i==cars.length-1,car.lights);
+					  i==cars.length-1,car.lights,flip[i]);
 				if (car.sound) {
 					loadRailcarSounds(railcar,car.sound);
 				}

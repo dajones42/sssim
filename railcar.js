@@ -184,7 +184,7 @@ class RailCar {
 				this.rodAnimation.setTime(this.mainWheelState);
 		}
 	}
-	addLights(headend,tailend,lights) {
+	addLights(headend,tailend,lights,rev) {
 		if (!headend && !tailend)
 			return;
 		let lights2= [];
@@ -221,7 +221,14 @@ class RailCar {
 		}
 		for (let i=0; i<this.currentLights.length; i++)
 			this.model.add(this.currentLights[i]);
-		if (this.otherLights) {
+		if (rev) {
+			for (let i=0; i<this.currentLights.length; i++) {
+				let mesh= this.currentLights[i];
+				mesh.position.z= -mesh.position.z;
+				mesh.rotation.y+= Math.PI;
+			}
+		}
+		if (this.otherLights && !rev) {
 			for (let i=0; i<this.otherLights.length; i++) {
 				let mesh= this.otherLights[i];
 				mesh.position.z= -mesh.position.z;
