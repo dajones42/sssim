@@ -309,7 +309,7 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car,roOffset)
 				if (type == "position")
 					values.push(c.x,c.y,c.z);
 				else
-					values.push(c.x,c.y,c.z,c.w);
+					values.push(-c.x,-c.y,-c.z,c.w);
 			}
 			if (type == "position")
 				return new THREE.VectorKeyframeTrack(
@@ -318,10 +318,15 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car,roOffset)
 				return new THREE.QuaternionKeyframeTrack(
 				  name+".quaternion",times,values);
 		}
+		let prefixMatch= function(name,prefix) {
+			return name.substr(0,prefix.length).toLowerCase()==
+			  prefix;
+		}
 		if (shapeData.animations) {
 //			console.log("nwheels "+car.nWheels);
 //			console.log("animations "+shapeData.animations.length);
-			let tracks= [];
+			let rodTracks= [];
+			let panTracks= [];
 			for (let i=0; i<shapeData.animations.length; i++) {
 				let animation= shapeData.animations[i];
 				for (let j=0; j<animation.nodes.length; j++) {
@@ -330,18 +335,33 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car,roOffset)
 					  k++) {
 						let track= makeTrack(node.name,
 						  node.controllers[k]);
-						if (track)
-							tracks.push(track);
+						if (track && (prefixMatch(
+						  node.name,"rod") ||
+						  prefixMatch(node.name,
+						   "wheel")))
+							rodTracks.push(track);
+						if (track && prefixMatch(
+						  node.name,"pantograph"))
+							panTracks.push(track);
 					}
 				}
 			}
-			if (tracks.length > 0) {
-//				console.log("animtracks "+tracks.length);
+			if (rodTracks.length > 0) {
+				console.log("rodanimtracks "+rodTracks.length);
 				let clip=
-				  new THREE.AnimationClip("rods",-1,tracks);
+				  new THREE.AnimationClip("rods",-1,rodTracks);
 				let mixer= new THREE.AnimationMixer(root);
 				mixer.clipAction(clip).play();
-				car.animation= mixer;
+				car.rodAnimation= mixer;
+			}
+			if (panTracks.length > 0) {
+				console.log("pananimtracks "+panTracks.length);
+				let clip=
+				  new THREE.AnimationClip("pans",-1,panTracks);
+				let mixer= new THREE.AnimationMixer(root);
+				mixer.clipAction(clip).setLoop(THREE.LoopOnce).
+				  play();
+				car.panAnimation= mixer;
 			}
 		}
 	}

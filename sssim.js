@@ -171,7 +171,8 @@ let saveData= function(filename)
 		background: background,
 		sounds: sounds,
 		equipment: equipment,
-		consists: consists
+		consists: consists,
+		blockSheetColumns: blockSheetColumns
 	};
 	if (tdbPath)
 		data.tdbFile= fspath.basename(tdbPath);
@@ -216,12 +217,17 @@ let readData= function(filename)
 		trains= data.trains;
 	if (data.background)
 		background= data.background;
-	if (data.sounds)
-		sounds= data.sounds;
+	if (data.sounds) {
+		for (let i in data.sounds)
+			if (data.sounds.hasOwnProperty(i))
+				sounds[i]= data.sounds[i];
+	}
 	if (data.equipment)
 		equipment= data.equipment;
 	if (data.consists)
 		consists= data.consists;
+	if (data.blockSheetColumns)
+		blockSheetColumns= data.blockSheetColumns;
 	calcTrackDBUV();
 	makeTrack();
 	renderCanvas();

@@ -71,38 +71,56 @@ let sounds= {
 			wavFile: "NHRDC/Sound/x_sd_power_cruise8.wav" }
 	],
 	rodloco2: [
-		{ minSpeed: .5, maxSpeed: 1.2, volume: 1,
+		{ minSpeed1: .5, maxSpeed1: 1.2, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_150.wav" },
-		{ minSpeed: 1.2, maxSpeed: 2, volume: 1,
+		{ minSpeed1: 1.2, maxSpeed1: 2, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_100d.wav" },
-		{ minSpeed: 2, maxSpeed: 3.15, volume: 1,
+		{ minSpeed1: 2, maxSpeed1: 3.15, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_075d.wav" },
-		{ minSpeed: 3.15, maxSpeed: 4.25, volume: 1,
+		{ minSpeed1: 3.15, maxSpeed1: 4.25, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_050d.wav" },
-		{ minSpeed: 4.25, maxSpeed: 5, volume: 1,
+		{ minSpeed1: 4.25, maxSpeed1: 5, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_037d.wav" },
-		{ minSpeed: 5, maxSpeed: 5.8, volume: 1,
+		{ minSpeed1: 5, maxSpeed1: 5.8, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_032e.wav" },
-		{ minSpeed: 5.8, maxSpeed: 6.6, volume: 1,
+		{ minSpeed1: 5.8, maxSpeed1: 6.6, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_027e.wav" },
-		{ minSpeed: 6.6, maxSpeed: 8, volume: 1,
+		{ minSpeed1: 6.6, maxSpeed1: 8, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_024f.wav" },
-		{ minSpeed: 8, maxSpeed: 9.25, volume: 1,
+		{ minSpeed1: 8, maxSpeed1: 9.25, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_020g.wav" },
-		{ minSpeed: 9.25, maxSpeed: 11, volume: 1,
+		{ minSpeed1: 9.25, maxSpeed1: 11, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_017e.wav" },
-		{ minSpeed: 11, maxSpeed: 13, volume: 1,
+		{ minSpeed1: 11, maxSpeed1: 13, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_015g.wav" },
-		{ minSpeed: 13, maxSpeed: 16, volume: 1,
+		{ minSpeed1: 13, maxSpeed1: 16, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_012e.wav" },
-		{ minSpeed: 16, maxSpeed: 18, volume: 1,
+		{ minSpeed1: 16, maxSpeed1: 18, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_010g.wav" },
-		{ minSpeed: 18, maxSpeed: 24, volume: 1,
+		{ minSpeed1: 18, maxSpeed1: 24, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_009g.wav" },
-		{ minSpeed: 24, maxSpeed: 32, volume: 1,
+		{ minSpeed1: 24, maxSpeed1: 32, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_007h.wav" },
-		{ minSpeed: 32, maxSpeed: 100, volume: 1,
+		{ minSpeed1: 32, maxSpeed1: 100, volume: 1,
 			wavFile: "VSCSteamSound/x_es2_005f.wav" }
+	],
+	cliclak: [
+		{ minSpeed: 1.5, maxSpeed: 4, volume: 1,
+			wavFile: "NH_WB/Sound/cliclak0_5.wav" },
+		{ minSpeed: 4, maxSpeed: 7.5, volume: 1,
+			wavFile: "NH_WB/Sound/cliclak1.wav" },
+		{ minSpeed: 7.5, maxSpeed: 9, volume: 1,
+			wavFile: "NH_WB/Sound/cliclak2.wav" },
+		{ minSpeed: 9, maxSpeed: 13, volume: 1,
+			wavFile: "NH_WB/Sound/cliclak3.wav" },
+		{ minSpeed: 13, maxSpeed: 17, volume: 1,
+			wavFile: "NH_WB/Sound/cliclak4.wav" },
+		{ minSpeed: 17, maxSpeed: 20, volume: 1,
+			wavFile: "NH_WB/Sound/cliclak5.wav" },
+		{ minSpeed: 20, maxSpeed: 25, volume: 1,
+			wavFile: "NH_WB/Sound/cliclak6.wav" },
+		{ minSpeed: 25, maxSpeed: 100, volume: 1,
+			wavFile: "NH_WB/Sound/cliclak7.wav" }
 	]
 };
 
@@ -197,8 +215,9 @@ let updateRailcarSound= function(railcar,throttle,speed)
 		sc.current= -1;
 	} else {
 		speed= Math.abs(speed);
+		let speed1= speed;
 		if (railcar.mainWheelRadius > 0)
-			speed/= railcar.mainWheelRadius;
+			speed1/= railcar.mainWheelRadius;
 		for (let i=0; i<sc.soundTable.length; i++) {
 			let te= sc.soundTable[i];
 			if (!te.buffer)
@@ -208,6 +227,9 @@ let updateRailcarSound= function(railcar,throttle,speed)
 				continue;
 			if (te.maxSpeed &&
 			  (speed<te.minSpeed || speed>te.maxSpeed))
+				continue;
+			if (te.maxSpeed1 &&
+			  (speed1<te.minSpeed1 || speed1>te.maxSpeed1))
 				continue;
 			if (sc.current != i) {
 				if (sc.sound.isPlaying)

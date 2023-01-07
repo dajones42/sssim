@@ -93,7 +93,7 @@ class RailCar {
 			loc.move(offset+s*part.xOffset,0);
 			part.location= loc;
 			part.state= 0;
-			if (this.animation &&
+			if (this.rodAnimation &&
 			  part.radius>=this.mainWheelRadius-.01)
 				part.radius= 0;
 //			let p= loc.getPosition();
@@ -101,6 +101,8 @@ class RailCar {
 		}
 		this.mainWheelState= 0;
 		this.move(0);
+		if (this.panAnimation)
+			this.panAnimation.setTime(.999);
 	}
 	move(distance) {
 		for (let i=0; i<this.parts.length; i++)
@@ -178,8 +180,8 @@ class RailCar {
 		if (this.mainWheelRadius > 0) {
 			this.mainWheelState+=
 			  distance/(2*Math.PI*this.mainWheelRadius);
-			if (this.animation)
-				this.animation.setTime(this.mainWheelState);
+			if (this.rodAnimation)
+				this.rodAnimation.setTime(this.mainWheelState);
 		}
 	}
 	addLights(headend,tailend,lights) {
