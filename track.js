@@ -22,6 +22,7 @@ THE SOFTWARE.
 
 let edges= [];
 let vertices= [];
+let trackCircuits= {};
 
 class Edge {
 	constructor(vert1,n1,vert2,n2) {
@@ -321,7 +322,7 @@ let findLocation= function(x,y)
 		let dx= p2.x-p1.x;
 		let dy= p2.y-p1.y;
 		let d= dx*dx + dy*dy;
-		let n= dx*(p1.x-x) + dy*(p1.y-y);
+		let n= dx*(x-p1.x) + dy*(y-p1.y);
 		if (d==0 || n<=0) {
 			dx= p1.x-x;
 			dy= p1.y-y;

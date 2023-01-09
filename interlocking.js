@@ -96,12 +96,13 @@ class Interlocking {
 	// -1 if no train approaching
 	// 0 if train approaching STOP signal
 	// >0 if train appoaching CLEAR signal
-	getSignalState(lvr) {
+	getSignalState(lvr,approach) {
 		let lever= this.levers[lvr-1];
 		let result= Signal.MAXINDICATION+1;
 		for (let i=0; i<lever.signals.length; i++) {
 			let sig= lever.signals[i];
-			if (sig.trainDistance>0 && result>sig.indication)
+			if ((!approach || sig.trainDistance>0) &&
+			  result>sig.indication)
 				result= sig.indication;
 		}
 		return result>Signal.MAXINDICATION ? -1 : result;
@@ -278,6 +279,7 @@ let makeInterlocking= function()
 		let o= mapObjects[i];
 		if (o.type=="signal" && o.trackCircuit) {
 			let tc= { name: o.trackCircuit, occupied: 0 };
+			trackCircuits[o.trackCircuit]= tc;
 			let v= findVertex(o.u,o.v,false);
 			let e= o.direction ? v.edge2 : v.edge1;
 			while (e) {

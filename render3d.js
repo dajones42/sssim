@@ -26,6 +26,7 @@ let scene= null;
 let renderer= null;
 let center= null;
 let listener= null;
+let modelBoardLights= [];
 
 let initScene= function()
 {
@@ -55,6 +56,8 @@ let initScene= function()
 			center= new THREE.Vector3(o.u,o.v,v.position.z);
 			console.log("center "+center.x+" "+center.y+" "+
 			  center.z);
+			if (o.modelBoard)
+				createModelBoard(o);
 			break;
 		}
 	}
@@ -67,6 +70,7 @@ let render3D= function()
 {
 	if (!renderer)
 		initScene();
+	updateModelBoard();
 	let lookat= new THREE.Vector3(camera.position.x+Math.cos(cameraAngle),
 	  camera.position.y,camera.position.z+Math.sin(cameraAngle));
 	camera.lookAt(lookat);
@@ -149,5 +153,89 @@ let setBackground= function()
 		texture.flipY= false;
 		texture.needsUpdate= true;
 		scene.background= texture;
+	}
+}
+
+let createModelBoard= function(object)
+{
+	let loc= findLocation(object.u,object.v);
+	let tp= loc.loc.getPosition();
+	let dx= tp.x-center.x;
+	let dy= tp.y-center.y;
+	let d= Math.sqrt(dx*dx+dy*dy);
+	dx/= d;
+	dy/= d;
+	let mb= object.modelBoard;
+	let plane= new THREE.PlaneGeometry(mb.width,mb.height);
+	let mat= null;
+	if (mb.image) {
+		let path= sssimDir+fspath.sep+mb.image;
+		let img= readMstsAce(path,true);
+		let texture= new THREE.Texture(img);
+		texture.wrapS= THREE.RepeatWrapping;
+		texture.wrapT= THREE.RepeatWrapping;
+		texture.flipY= false;
+		texture.needsUpdate= true;
+		mat= new THREE.MeshBasicMaterial({ map: texture } );
+	} else {
+		mat= new THREE.MeshBasicMaterial({ color: 0x000000 } );
+	}
+	let mesh= new THREE.Mesh(plane,mat);
+	mesh.position.x= -mb.distance*dx;
+	mesh.position.y= camera.position.y+mb.vOffset;
+	mesh.position.z= mb.distance*dy;
+	mesh.rotation.y= Math.atan2(dy,dx)+Math.PI/2;
+	cameraAngle= Math.atan2(-dy,dx);
+	scene.add(mesh);
+	if (mb.lights) {
+		for (let i=0; i<mb.lights.length; i++) {
+			let light= mb.lights[i];
+			let geom= new THREE.CircleGeometry(light.radius);
+			let mat= new THREE.MeshBasicMaterial({ color:
+			   parseInt(light.color,16) });
+			let lmesh= new THREE.Mesh(geom,mat);
+			lmesh.position.x= light.x;
+			lmesh.position.y= light.y;
+			lmesh.position.z= .01;
+			mesh.add(lmesh);
+			if (light.trackCircuit) {
+				let tc= trackCircuits[light.trackCircuit];
+				if (tc) {
+					modelBoardLights.push({
+						trackCircuit: tc,
+						model: lmesh
+					});
+				} else {
+					console.error("unknown track circuit "+
+					  light.trackCircuit);
+				}
+			}
+			if (light.lever) {
+				modelBoardLights.push({
+					lever: light.lever,
+					model: lmesh
+				});
+			}
+		}
+	}
+}
+
+let updateModelBoard= function()
+{
+	for (let i=0; i<modelBoardLights.length; i++) {
+		let mbl= modelBoardLights[i];
+		if (mbl.trackCircuit) {
+			if (mbl.trackCircuit.occupied)
+				mbl.model.rotation.y= 0;
+			else
+				mbl.model.rotation.y= Math.PI;
+		}
+		if (mbl.lever) {
+			let ind= interlocking.getSignalState(mbl.lever,false);
+			if (ind > 0)
+				mbl.model.rotation.y= 0;
+			else
+				mbl.model.rotation.y= Math.PI;
+		}
 	}
 }

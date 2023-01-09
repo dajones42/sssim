@@ -78,6 +78,7 @@ let consists= {};
 let blockSheet= [[],[]];
 let blockSheetColumns= ["Northbound","Southbound"];
 let requests= [];
+let sssimDir= "";
 
 //	finds the center of MSTS route using TDB data
 //	adjusts default display settings
@@ -189,6 +190,7 @@ let saveData= function(filename)
 let readData= function(filename)
 {
 	console.log("read "+filename);
+	sssimDir= fspath.dirname(filename);
 	routeDir= fspath.dirname(fspath.dirname(filename));
 	mstsDir= fspath.dirname(fspath.dirname(routeDir));
 	console.log("mstsdir "+mstsDir);
@@ -541,7 +543,7 @@ let updateSimulation= function()
 		}
 		updateEvents(simTime);
 		//displayActiveTrains();
-		renderModelBoard();
+		renderLeverIndicators();
 		render3D();
 	}
 	window.setTimeout(updateSimulation,100);

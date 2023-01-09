@@ -82,11 +82,11 @@ let leverMouseDown= function(event)
 	event.preventDefault();
 }
 
-let renderModelBoard= function()
+let renderLeverIndicators= function()
 {
 	if (!interlocking)
 		return;
-	let canvas= document.getElementById("modelboardcanvas");
+	let canvas= document.getElementById("leverindcanvas");
 	let leverSpacing= 20;
 	let leverWidth= 8;
 	canvas.width= leverSpacing*interlocking.levers.length;
@@ -100,7 +100,7 @@ let renderModelBoard= function()
 			context.fillStyle= lever.color;
 			context.fillRect(x1,0,leverWidth,canvas.height);
 		} else {
-			let ind= interlocking.getSignalState(i+1);
+			let ind= interlocking.getSignalState(i+1,true);
 			if (ind == 0) {
 				context.fillStyle= "#f00";
 				context.fillRect(x1,0,leverWidth,canvas.height);
