@@ -571,7 +571,8 @@ let findNamedLocation= function(name)
 			return {
 			  loc: findLocation(o.u,o.v).loc,
 			  column: o.column?1:0,
-			  block: o.block
+			  block: o.block,
+			  track: o.track || null
 			 };
 		}
 	}
@@ -645,8 +646,10 @@ let startTrainEvent= function(e)
 	if (e.train.prevTrain)
 		column= 1-endLoc.column;
 	let startBlock= startLoc.block;
+	let startTrack= startLoc.track;
 	startLoc= startLoc.loc;
 	let endBlock= endLoc.block;
+	let endTrack= endLoc.track;
 	endLoc= endLoc.loc;
 	findSPT(endLoc,true);
 	let d= startLoc.dDistance(endLoc);
@@ -695,6 +698,10 @@ let startTrainEvent= function(e)
 	}
 	if (e.train.prevTrain)
 		train.times.arrived= simTime;
+	if (startTrack)
+		train.times.startTrack= startTrack;
+	if (endTrack)
+		train.times.endTrack= endTrack;
 	displayBlockSheet();
 }
 
@@ -839,14 +846,20 @@ let loadConsist= function()
 
 let displayBlockSheet= function()
 {
-	let s= "<table><tr><th colspan=7>"+blockSheetColumns[0]+"</th>"+
-	  "<th colspan=7>"+blockSheetColumns[1]+"</th></tr>"+
-	  "<tr><th>Train</th><th>Block Given</th><th>Block Entered</th>"+
-	  "<th>Block Received</th>"+
-	  "<th>Arrived</th><th>Departed</th><th>Block Cleared</th>"+
-	  "<th>Train</th><th>Block Given</th><th>Block Entered</th>"+
-	  "<th>Block Received</th>"+
-	  "<th>Arrived</th><th>Departed</th><th>Block Cleared</th></tr>";
+	let s= "<table><tr><th colspan=9>"+blockSheetColumns[0]+"</th>"+
+	  "<th colspan=9>"+blockSheetColumns[1]+"</th></tr>"+
+	  "<tr><th rowspan=2>Train</th><th rowspan=2>Block Given</th>"+
+	  "<th rowspan=2>Block Entered</th>"+
+	  "<th rowspan=2>Block Received</th>"+
+	  "<th colspan=2>Arrived</th><th colspan=2>Departed</th>"+
+	  "<th rowspan=2>Block Cleared</th>"+
+	  "<th rowspan=2>Train</th><th rowspan=2>Block Given</th>"+
+	  "<th rowspan=2>Block Entered</th>"+
+	  "<th rowspan=2>Block Received</th>"+
+	  "<th colspan=2>Arrived</th><th colspan=2>Departed</th>"+
+	  "<th rowspan=2>Block Cleared</th></tr>"+
+	  "<tr><th>Time</th><th>Trk</th><th>Time</th><th>Trk</th>"+
+	  "<th>Time</th><th>Trk</th><th>Time</th><th>Trk</th></tr>";
 	let addTime= function(t,func,name,label) {
 		s+= "<td>";
 		if (t)
@@ -854,6 +867,12 @@ let displayBlockSheet= function()
 		else if (func)
 			s+= "<button type='button' onclick='"+func+"(\""+name+
 			  "\")'>"+label+"</button>";
+		s+= "</td>";
+	}
+	let addTrack= function(track) {
+		s+= "<td>";
+		if (track)
+			s+= " "+track;
 		s+= "</td>";
 	}
 	let addTimes= function(times) {
@@ -865,14 +884,14 @@ let displayBlockSheet= function()
 			  "Request");
 		else
 			addTime(times.received);
-		addTime(times.arrived,"setArrivalTime",times.name,
-		  "Enter");
-		addTime(times.departed,"setDepartureTime",times.name,
-		  "Enter");
+		addTime(times.arrived,"setArrivalTime",times.name,"Enter");
+		addTrack(times.startTrack);
+		addTime(times.departed,"setDepartureTime",times.name,"Enter");
+		addTrack(times.endTrack);
 		addTime(times.cleared);
 	}
 	let blank= "<td></td><td></td><td></td><td></td><td></td>"+
-	  "<td></td><td></td>";
+	  "<td></td><td></td><td></td><td></td>";
 	for (let i=0; i<blockSheet[0].length || i<blockSheet[1].length; i++) {
 		s+= "<tr>";
 		if (i<blockSheet[0].length)
@@ -883,6 +902,7 @@ let displayBlockSheet= function()
 			addTimes(blockSheet[1][i]);
 		else
 			s+= blank;
+		s+= "</tr>";
 	}
 	s+= "</table>";
 	let trainList= document.getElementById("blocksheet");

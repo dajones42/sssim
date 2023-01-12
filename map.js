@@ -322,6 +322,7 @@ let addObject= function(type)
 		object.name= name.value;
 		object.column=
 		  parseInt(document.getElementById('locationcolumn'));
+		object.track= document.getElementById('locationtrack');
 	}
 	mapObjects.push(object);
 	renderCanvas();
@@ -452,6 +453,7 @@ let changeName= function()
 	let name= document.getElementById('locationname');
 	selected.name= name.value;
 	selected.column= parseInt(document.getElementById('locationcolumn'));
+	selected.track= document.getElementById('locationtrack');
 	renderCanvas();
 	updateLocations();
 }
