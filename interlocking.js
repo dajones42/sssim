@@ -326,9 +326,11 @@ let parseSignalLock= function(lever,lock)
 let addSignalLocking= function(lever,v,e,when)
 {
 //	console.log("addsignalocking "+lever+" "+when.length);
+	let pe= e;
 	while (e) {
 		v= v==e.v1 ? e.v2 : e.v1;
-		e= v.nextEdge(e);
+		pe= e;
+		e= e==v.edge1 ? v.edge2 : v.edge1;
 		let signal= v.getSignal(e);
 		if (signal && signal.lever) {
 //			console.log("back signal "+lever+" "+signal.lever);
@@ -346,15 +348,18 @@ let addSignalLocking= function(lever,v,e,when)
 	}
 	if (!e) {
 		console.log("path with no exit signal "+lever);
+		for (let i=0; i<when.length; i++)
+			console.log(" when "+when[i].lever+" "+when[i].state);
 		return;
 	}
 	if (v.lock)
 		interlocking.addLocking(lever,Interlocking.REVERSE,
 		  v.lock,Interlocking.REVERSE,when);
 	if (e == v.edge1) {
-//		console.log("trailing "+v.lever);
+//		console.log("trailing "+v.lever+" "+v.mainEdge+" "+
+//		  (v.swEdges[v.mainEdge]==pe)+" "+pe);
 		interlocking.addLocking(lever,Interlocking.REVERSE,
-		  v.lever,v.swEdges[v.mainEdge]==v.edge2?Interlocking.NORMAL:
+		  v.lever,v.swEdges[v.mainEdge]==pe?Interlocking.NORMAL:
 		  Interlocking.REVERSE,when);
 		addSignalLocking(lever,v,e,when);
 	} else {
