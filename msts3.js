@@ -246,6 +246,10 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car,roOffset)
 		car.mainWheelRadius= 0;
 		for (let i=0; i<shapeData.matrices.length; i++) {
 			let mat= shapeData.matrices[i];
+//			console.log("mat "+i+" "+mat.name+" "+mat.parent+"  "+
+//			  mat.object.position.x+" "+mat.object.position.y+" "+
+//			  mat.object.position.z+"  "+mat.object.rotation.x+" "+
+//			  mat.object.rotation.y+" "+mat.object.rotation.z);
 			if (mat.name.toLowerCase().substr(0,6)=="wheels") {
 				let radius= mat.object.position.y;
 				if (mat.parent>=0)
@@ -331,6 +335,8 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car,roOffset)
 				let animation= shapeData.animations[i];
 				for (let j=0; j<animation.nodes.length; j++) {
 					let node= animation.nodes[j];
+//					console.log("node "+node.name+" "+
+//					  node.controllers.length);
 					for (let k=0; k<node.controllers.length;
 					  k++) {
 						let track= makeTrack(node.name,
@@ -495,6 +501,10 @@ let loadTileModels= function(tx,tz)
 		let q= new THREE.Quaternion(
 		  qdir[0],qdir[1],qdir[2],qdir[3]);
 		model.setRotationFromQuaternion(q);
+//		if (object.type == "gantry")
+//			console.log("gantry "+model.position.x+" "+
+//			  model.position.y+" "+model.position.z+" "+
+//			  object.filename);
 //		if (object.type == "dyntrack") {
 //			console.log("rot "+model.rotation.x+" "+
 //			  model.rotation.y+" "+model.rotation.z+" "+

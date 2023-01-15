@@ -22,6 +22,7 @@ THE SOFTWARE.
 
 let camera= null;
 let cameraAngle= 0;
+let cameraPath= null;
 let scene= null;
 let renderer= null;
 let center= null;
@@ -56,8 +57,28 @@ let initScene= function()
 			center= new THREE.Vector3(o.u,o.v,v.position.z);
 			console.log("center "+center.x+" "+center.y+" "+
 			  center.z);
+			if (o.path)
+				cameraPath= o.path;
 			if (o.modelBoard)
 				createModelBoard(o);
+			if (o.building) {
+				let path= sssimDir+fspath.sep+o.building.shape;
+				let model=
+				  getMstsModel(path,sssimDir,null,null,0);
+				if (model) {
+					model.position.x= 0;
+					model.position.y= o.building.y;
+					model.position.z= 0;
+					model.rotation.y=
+					  o.angle*Math.PI/180-Math.PI/2;
+					scene.add(model);
+				}
+			}
+			if (o.angle)
+				cameraAngle= o.angle*Math.PI/180-Math.PI/2;
+			console.log("cameraangle "+cameraAngle+" "+
+			  Math.cos(cameraAngle)+" "+Math.sin(cameraAngle)+" "+
+			  o.angle+" "+(o.angle*Math.PI/180));
 			break;
 		}
 	}
@@ -87,6 +108,33 @@ let cameraRight= function()
 {
 	cameraAngle+= Math.PI/12;
 //	console.log("angle "+cameraAngle);
+}
+
+let moveCamera= function(up)
+{
+	if (!cameraPath)
+		return;
+	let besti= 0;
+	let bestd= 1e10;
+	for (let i=0; i<cameraPath.length; i++) {
+		let p= cameraPath[i];
+		let dx= p[0]-center.x - camera.position.x;
+		let dy= p[2] - camera.position.y;
+		let dz= camera.position.z - (center.y-p[1]);
+		let d= Math.sqrt(dx*dx + dy*dy + dz*dz);
+		if (d < bestd) {
+			bestd= d;
+			besti= i;
+		}
+	}
+	if (up && besti<cameraPath.length-1)
+		besti++;
+	else if (!up && besti>0)
+		besti--;
+	let p= cameraPath[besti];
+	camera.position.x= p[0]-center.x;
+	camera.position.y= p[2];
+	camera.position.z= center.y-p[1];
 }
 
 let makeTrackLines= function()

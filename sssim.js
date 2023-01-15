@@ -31,15 +31,25 @@ window.onload= function() {
 	window.addEventListener('keydown',function(e) {
 		if (e.keyCode == 37) {
 			cameraLeft();
+			e.preventDefault();
 		} else if (e.keyCode == 38) {
-			scale*= 1.4;
-			renderCanvas();
+			if (simTime > 0) {
+				moveCamera(true);
+			} else {
+				scale*= 1.4;
+				renderCanvas();
+			}
 			e.preventDefault();
 		} else if (e.keyCode == 39) {
 			cameraRight();
+			e.preventDefault();
 		} else if (e.keyCode == 40) {
-			scale/= 1.4;
-			renderCanvas();
+			if (simTime > 0) {
+				moveCamera(false);
+			} else {
+				scale/= 1.4;
+				renderCanvas();
+			}
 			e.preventDefault();
 //		} else {
 //			console.log("keydown "+e.keyCode+" "+e.key);
@@ -848,16 +858,16 @@ let displayBlockSheet= function()
 {
 	let s= "<table><tr><th colspan=9>"+blockSheetColumns[0]+"</th>"+
 	  "<th colspan=9>"+blockSheetColumns[1]+"</th></tr>"+
-	  "<tr><th rowspan=2>Train</th><th rowspan=2>Block Given</th>"+
-	  "<th rowspan=2>Block Entered</th>"+
-	  "<th rowspan=2>Block Received</th>"+
+	  "<tr><th rowspan=2>Train</th><th rowspan=2>Block<br>Given</th>"+
+	  "<th rowspan=2>Block<br>Entered</th>"+
+	  "<th rowspan=2>Block<br>Received</th>"+
 	  "<th colspan=2>Arrived</th><th colspan=2>Departed</th>"+
-	  "<th rowspan=2>Block Cleared</th>"+
-	  "<th rowspan=2>Train</th><th rowspan=2>Block Given</th>"+
-	  "<th rowspan=2>Block Entered</th>"+
-	  "<th rowspan=2>Block Received</th>"+
+	  "<th rowspan=2>Block<br>Cleared</th>"+
+	  "<th rowspan=2>Train</th><th rowspan=2>Block<br>Given</th>"+
+	  "<th rowspan=2>Block<br>Entered</th>"+
+	  "<th rowspan=2>Block<br>Received</th>"+
 	  "<th colspan=2>Arrived</th><th colspan=2>Departed</th>"+
-	  "<th rowspan=2>Block Cleared</th></tr>"+
+	  "<th rowspan=2>Block<br>Cleared</th></tr>"+
 	  "<tr><th>Time</th><th>Trk</th><th>Time</th><th>Trk</th>"+
 	  "<th>Time</th><th>Trk</th><th>Time</th><th>Trk</th></tr>";
 	let addTime= function(t,func,name,label) {

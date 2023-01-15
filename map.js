@@ -321,8 +321,8 @@ let addObject= function(type)
 		let name= document.getElementById('locationname');
 		object.name= name.value;
 		object.column=
-		  parseInt(document.getElementById('locationcolumn'));
-		object.track= document.getElementById('locationtrack');
+		  parseInt(document.getElementById('locationcolumn').value);
+		object.track= document.getElementById('locationtrack').value;
 	}
 	mapObjects.push(object);
 	renderCanvas();
