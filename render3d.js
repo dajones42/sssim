@@ -22,17 +22,20 @@ THE SOFTWARE.
 
 let camera= null;
 let cameraAngle= 0;
+let cameraVAngle= 0;
 let cameraPath= null;
 let scene= null;
 let renderer= null;
 let center= null;
 let listener= null;
 let modelBoardLights= [];
+let leversModel= null;
 
 let initScene= function()
 {
 	scene= new THREE.Scene();
 	let canvas= document.getElementById("canvas3d");
+	canvas.addEventListener('mousedown',mouseDown3d);
 	let aspect= canvas.width/canvas.height;
 	camera= new THREE.PerspectiveCamera(45,aspect,.1,1000);
 	camera.position.y= 2;
@@ -74,14 +77,28 @@ let initScene= function()
 					scene.add(model);
 				}
 			}
+			if (o.levers) {
+				leversModel= make3dLevers();
+				if (leversModel) {
+					leversModel.position.x= o.levers.u;
+					leversModel.position.y= o.levers.y;
+					leversModel.position.z= -o.levers.v;
+					leversModel.rotation.y=
+					  o.angle*Math.PI/180;
+					scene.add(leversModel);
+				}
+			}
 			if (o.angle)
-				cameraAngle= o.angle*Math.PI/180-Math.PI/2;
-			console.log("cameraangle "+cameraAngle+" "+
-			  Math.cos(cameraAngle)+" "+Math.sin(cameraAngle)+" "+
-			  o.angle+" "+(o.angle*Math.PI/180));
+				cameraAngle= Math.PI-o.angle*Math.PI/180;
+//			console.log("cameraangle "+cameraAngle+" "+
+//			  Math.cos(cameraAngle)+" "+Math.sin(cameraAngle)+" "+
+//			  o.angle+" "+(o.angle*Math.PI/180));
 			break;
 		}
 	}
+//	let axes= new THREE.AxesHelper(5);
+//	axes.position.y= 4;
+//	scene.add(axes);
 	//makeTrackLines();
 	loadModels();
 	setBackground();
@@ -92,8 +109,13 @@ let render3D= function()
 	if (!renderer)
 		initScene();
 	updateModelBoard();
-	let lookat= new THREE.Vector3(camera.position.x+Math.cos(cameraAngle),
-	  camera.position.y,camera.position.z+Math.sin(cameraAngle));
+	updateLeverModels();
+	let cos= Math.cos(cameraAngle);
+	let sin= Math.sin(cameraAngle);
+	let cosv= Math.cos(cameraVAngle);
+	let sinv= Math.sin(cameraVAngle);
+	let lookat= new THREE.Vector3(camera.position.x+cos*cosv,
+	  camera.position.y+sinv,camera.position.z+sin*cosv);
 	camera.lookAt(lookat);
 	renderer.render(scene,camera);
 }
@@ -101,13 +123,21 @@ let render3D= function()
 let cameraLeft= function()
 {
 	cameraAngle-= Math.PI/12;
-//	console.log("angle "+cameraAngle);
 }
 
 let cameraRight= function()
 {
 	cameraAngle+= Math.PI/12;
-//	console.log("angle "+cameraAngle);
+}
+
+let cameraUp= function()
+{
+	cameraVAngle+= Math.PI/12;
+}
+
+let cameraDown= function()
+{
+	cameraVAngle-= Math.PI/12;
 }
 
 let moveCamera= function(up)
@@ -213,6 +243,10 @@ let createModelBoard= function(object)
 	let d= Math.sqrt(dx*dx+dy*dy);
 	dx/= d;
 	dy/= d;
+	if (object.angle) {
+		dx= Math.cos(Math.PI-object.angle*Math.PI/180);
+		dy= -Math.sin(Math.PI-object.angle*Math.PI/180);
+	}
 	let mb= object.modelBoard;
 	let plane= new THREE.PlaneGeometry(mb.width,mb.height);
 	let mat= null;
@@ -232,8 +266,14 @@ let createModelBoard= function(object)
 	mesh.position.x= -mb.distance*dx;
 	mesh.position.y= camera.position.y+mb.vOffset;
 	mesh.position.z= mb.distance*dy;
-	mesh.rotation.y= Math.atan2(dy,dx)+Math.PI/2;
-	cameraAngle= Math.atan2(-dy,dx);
+	if (object.angle) {
+		mesh.rotation.y= object.angle*Math.PI/180-Math.PI/2;
+	} else {
+		mesh.rotation.y= Math.atan2(dy,dx)+Math.PI/2;
+		cameraAngle= Math.atan2(-dy,dx);
+	}
+	if (mb.distance < 0)
+		mesh.rotation.y+= Math.PI;
 	scene.add(mesh);
 	if (mb.lights) {
 		for (let i=0; i<mb.lights.length; i++) {
@@ -286,4 +326,238 @@ let updateModelBoard= function()
 				mbl.model.rotation.y= Math.PI;
 		}
 	}
+}
+
+let make3dLevers= function()
+{
+	let baseIndices= [ 0, 1, 2, 2, 1, 3, 2, 3, 4, 4, 3, 5, 4, 5, 6, 6, 5, 7,
+	  6, 7, 8, 8, 7, 9, 0, 2, 4, 0, 4, 6, 0, 6, 8, 9, 7, 5, 9, 5, 3,
+	  9, 3, 1 ];
+	let baseNormals= [ 0.38768, -0.155253, 0.908626,
+	  0.392018, 0.0463013, 0.918792, 0.321899, -0.00484563, 0.946762,
+	  0.245266, 0.0501866, 0.968156, 0.0554549, -0.0233173, 0.998189,
+	  -0.0554549, 0.0233173, 0.998189, -0.245266, -0.0501866, 0.968156,
+	  -0.321899, 0.00484563, 0.946762, -0.392018, -0.0463013, 0.918792,
+	  -0.38768, 0.155253, 0.908626 ];
+	let baseVertices= [ 0.3, -1.27, 0, 0.3, 1.27, 0, 0.15, -1.27,
+	  0.064, 0.15, 1.27, 0.064, 0, -1.27, 0.089, 0, 1.27, 0.089,
+	  -0.15, -1.27, 0.064, -0.15, 1.27, 0.064, -0.3, -1.27, 0,
+	  -0.3, 1.27, 0 ];
+
+	let handleIndices= [ 0, 1, 2, 0, 2, 3, 0, 3, 4, 0, 4, 5, 0, 5, 6,
+	  0, 6, 7, 0, 8, 1, 1, 8, 9, 1, 9, 2, 2, 9, 10, 2, 10, 3,
+	  3, 10, 11, 3, 11, 4, 4, 11, 12, 4, 12, 5, 5, 12, 13, 5, 13, 6,
+	  6, 13, 14, 6, 14, 7, 7, 14, 15, 7, 15, 0, 0, 15, 8, 8, 16, 9,
+	  9, 16, 17, 9, 17, 10, 10, 17, 18, 10, 18, 11, 11, 18, 19,
+	  11, 19, 12, 12, 19, 20, 12, 20, 13, 13, 20, 21, 13, 21, 14,
+	  14, 21, 22, 14, 22, 15, 15, 22, 23, 15, 23, 8, 8, 23, 16,
+	  16, 23, 27, 16, 27, 24, 16, 24, 17, 18, 17, 24, 18, 24, 25,
+	  18, 25, 19, 20, 19, 25, 20, 25, 26, 20, 26, 21, 22, 21, 26,
+	  22, 26, 27, 22, 27, 23 ];
+	let handleNormals= [ 0.975429, -0.121929, 0.183498,
+	  0.788019, 0.615639, 0.00384229, 0.123941, 0.991529, 0.0388524,
+	  -0.613979, 0.785893, 0.0735032, -0.988445, 0.123556, 0.0878034,
+	  -0.785893, -0.613979, 0.0735032, -0.123941, -0.991529, 0.0388524,
+	  0.615639, -0.788019, 0.00384229, 0.991498, 0.130121, 0, 0.615389,
+	  0.788224, 3.07017e-10, -0.130121, 0.991498, -3.08189e-10, -0.788224,
+	  0.615389, 3.07017e-10, -0.991498, -0.130121, -3.08189e-10, -0.615389,
+	  -0.788224, 3.07017e-10, 0.130121, -0.991498, -3.08189e-10, 0.788224,
+	  -0.615389, 3.07017e-10, 0.956089, 0.0769132, 0.282804, 0.628255,
+	  0.756729, 0.180711, -0.0645776, 0.981577, -0.179824, -0.756729,
+	  0.628255, 0.180711, -0.956089, -0.0769132, 0.282804, -0.628255,
+	  -0.756729, 0.180711, 0.0645776, -0.981577, -0.179824, 0.756729,
+	  -0.628255, 0.180711, 0.479138, 0.838492, -0.259534, -0.479138,
+	  0.838492, -0.259534, -0.479138, -0.838492, -0.259534, 0.479138,
+	  -0.838492, -0.259534 ];
+	let handleVertices= [ 0.02, 0, 1.32, 0.014, 0.014, 1.32, 0, 0.02,
+	  1.32, -0.014, 0.014, 1.32, -0.02, 0, 1.32, -0.014, -0.014, 1.32,
+	  0, -0.02, 1.32, 0.014, -0.014, 1.32, 0.017, 0, 1.038,
+	  0.012, 0.012, 1.038, 0, 0.017, 1.038, -0.012, 0.012, 1.038,
+	  -0.017, 0, 1.038, -0.012, -0.012, 1.038, 0, -0.017, 1.038,
+	  0.012, -0.012, 1.038, 0.02, 0, 1.012, 0.014, 0.014, 1.012,
+	  0, 0.02, 1.012, -0.014, 0.014, 1.012, -0.02, 0, 1.012,
+	  -0.014, -0.014, 1.012, 0, -0.02, 1.012, 0.014, -0.014, 1.012,
+	  0.025, 0.01, 1, -0.025, 0.01, 1, -0.025, -0.01, 1, 0.025, -0.01, 1 ];
+
+	let barIndices= [ 0, 4, 1, 1, 4, 5, 1, 5, 2, 2, 5, 6, 2, 6, 3, 3, 6, 7,
+	  3, 7, 0, 0, 7, 4, 8, 12, 9, 9, 12, 13, 9, 13, 10, 10, 13, 14,
+	  10, 14, 11, 11, 14, 15, 11, 15, 8, 8, 15, 12 ];
+	let barNormals= [ 0.624687, 0.780859, 0.0049975,
+	  -0.169907, 0.985459, 0.00135925, -0.624687, -0.780859, 0.0049975,
+	  0.169907, -0.985459, 0.00135925, 0.169907, 0.985459, 0.00135925,
+	  -0.518297, 0.855191, 0.00414638, -0.169907, -0.985459, 0.00135925,
+	  0.518297, -0.855191, 0.00414638, 0.948656, -0.316219, -0.00758925,
+	  0.316227, 0.94868, -0.00252981, -0.948656, 0.316219, 0.00758925,
+	  -0.316227, -0.94868, 0.00252981, 0.948656, 0.316219, -0.00758925,
+	  -0.316227, 0.94868, 0.00252981, -0.948656, -0.316219, 0.00758925,
+	  0.316227, -0.94868, -0.00252981 ];
+	let barVertices= [ 0.025, 0.01, 1, -0.025, 0.01, 1, -0.025,
+	  -0.01, 1, 0.025, -0.01, 1, 0.033, 0.01, 0, -0.033, 0.01,
+	  0, -0.033, -0.01, 0, 0.033, -0.01, 0, -0.032, 0,
+	  0.873, -0.038, 0.006, 0.873, -0.044, 0, 0.873, -0.038, -0.006,
+	  0.873, -0.04, 0, -0.127, -0.046, 0.006, -0.127, -0.052, 0,
+	  -0.127, -0.046, -0.006, -0.127 ];
+
+	let latchIndices= [ 0, 1, 2, 0, 2, 3, 4, 0, 5, 5, 0, 1, 5, 1, 6,
+	  6, 1, 2, 6, 2, 7, 7, 2, 3, 7, 3, 4, 4, 3, 0, 8, 4, 9, 9, 4, 5,
+	  9, 5, 10, 10, 5, 6, 10, 6, 11, 11, 6, 7, 11, 7, 8, 8, 7, 4,
+	  12, 8, 13, 13, 8, 9, 13, 9, 14, 14, 9, 10, 14, 10, 15, 15, 10, 11,
+	  15, 11, 12, 12, 11, 8, 16, 12, 17, 17, 12, 13, 17, 13, 18,
+	  18, 13, 14, 18, 14, 19, 19, 14, 15, 19, 15, 16, 16, 15, 12 ];
+	let latchNormals= [ 0.0822358, 0.314431, 0.945712,
+	  -0.352924, 0.311404, 0.882311, -0.0822358, -0.314431, 0.945712,
+	  0.352924, -0.311404, 0.882311, 0.453029, 0.888292, -0.0755049,
+	  -0.453029, 0.888292, 0.0755049, -0.453029, -0.888292, -0.0755049,
+	  0.453029, -0.888292, 0.0755049, 0.444967, 0.831042, 0.333726,
+	  -0.558056, 0.820671, 0.122772, -0.46657, -0.871389, 0.151635,
+	  0.501719, -0.737823, 0.451548, 0.532948, 0.790017, 0.303049,
+	  -0.763846, 0.630593, -0.13745, -0.55862, -0.828073, -0.0473184,
+	  0.732489, -0.604706, 0.312716, 0.87583, 0.364929, 0.31583,
+	  -0.386081, 0.920654, -0.0577771, -0.904414, -0.376839, -0.200067,
+	  0.381436, -0.909578, 0.164844, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+	let latchVertices= [ 0.03, 0.017, 0, -0.03, 0.017, 0,
+	  -0.03, -0.017, 0, 0.03, -0.017, 0, 0.035, 0.017, 0.01,
+	  -0.035, 0.017, 0.01, -0.035, -0.017, 0.01, 0.035, -0.017, 0.01,
+	  0.03, 0.017, 0.02, -0.03, 0.017, 0.02, -0.03, -0.017, 0.02,
+	  0.03, -0.017, 0.02, 0.01, 0.017, 0.04, -0.027, 0.017, 0.04,
+	  -0.027, -0.017, 0.04, 0.01, -0.017, 0.04, -0.028, 0.013, 0.15,
+	  -0.053, 0.013, 0.15, -0.053, -0.013, 0.15, -0.028, -0.013, 0.15,
+	  -0.068, 0.009, 0.28, -0.087, 0.009, 0.28, -0.087, -0.009, 0.28,
+	  -0.068, -0.009, 0.28 ];
+
+	let lhandleIndices= [ 4, 0, 5, 5, 0, 1, 5, 1, 6, 6, 1, 2, 6, 2, 7,
+	  7, 2, 3, 7, 3, 4, 4, 3, 0, 4, 5, 6, 4, 6, 7 ];
+	let lhandleNormals= [ 0.500417, 0.84686, 0.180032,
+	  -0.850519, 0.483249, -0.207574, -0.505865, -0.85608, -0.105962,
+	  0.836661, -0.475375, 0.272061, 0.851084, 0.367513, 0.374953,
+	  -0.378589, 0.92544, -0.0152083, -0.911723, -0.393699, -0.117313,
+	  0.371257, -0.907518, 0.196417 ];
+	let lhandleVertices= [ -0.028, 0.013, 0.15, -0.053, 0.013, 0.15,
+	  -0.053, -0.013, 0.15, -0.028, -0.013, 0.15, -0.068, 0.009, 0.28,
+	  -0.087, 0.009, 0.28, -0.087, -0.009, 0.28, -0.068, -0.009, 0.28 ];
+
+	let shoeIndices= [ 0, 1, 2, 0, 2, 3, 4, 7, 6, 4, 6, 5, 0, 4, 1,
+	   1, 4, 5, 1, 5, 2, 2, 5, 6, 2, 6, 3, 3, 6, 7, 3, 7, 0, 0, 7, 4 ];
+	let shoeNormals= [ 0.264857, 0.932297, -0.246317,
+	   0.719029, -0.675887, -0.161782, -0.265536, -0.934687, -0.236327,
+	   -0.722097, 0.678771, -0.133588, 0.735453, 0.603072, 0.30889,
+	   0.271495, -0.955661, 0.114028, -0.72855, -0.597411, 0.335133,
+	   -0.271143, 0.954424, 0.124726 ];
+	let shoeVertices= [ 0.034, 0.025, 0, 0.034, -0.025, 0,
+	   -0.06, -0.025, 0, -0.06, 0.025, 0, 0.032, 0.025, 0.2,
+	   0.032, -0.025, 0.2, -0.05, -0.025, 0.2, -0.05, 0.025, 0.2 ];
+
+	let makeGeometry= function(vertices,normals,indices) {
+		let geom= new THREE.BufferGeometry;
+		geom.setAttribute("position",
+		 new THREE.Float32BufferAttribute(vertices,3));
+		geom.setAttribute("normal",
+		 new THREE.Float32BufferAttribute(normals,3));
+		geom.setIndex(indices);
+		return geom;
+	}
+	let barGeom= makeGeometry(barVertices,barNormals,barIndices);
+	let latchGeom= makeGeometry(latchVertices,latchNormals,latchIndices);
+	let handleGeom= makeGeometry(handleVertices,handleNormals,
+	  handleIndices);
+	let lhandleGeom= makeGeometry(lhandleVertices,lhandleNormals,
+	  lhandleIndices);
+	let baseGeom= makeGeometry(baseVertices,baseNormals,baseIndices);
+	let shoeGeom= makeGeometry(shoeVertices,shoeNormals,shoeIndices);
+//	let handleMat= new THREE.MeshStandardMaterial({color:"#bbbbbb",
+//	  metalness:1,roughness:.2});
+//	let handleMat= new THREE.MeshBasicMaterial({color:"#bbbbbb"});
+	let handleMat= new THREE.MeshPhongMaterial({color:"#bbbbbb",
+	  shininess:128});
+	let redMat= new THREE.MeshBasicMaterial({color:"#aa0000"});
+	let blueMat= new THREE.MeshBasicMaterial({color:"#0000aa"});
+	let blackMat= new THREE.MeshBasicMaterial({color:"#000000"});
+	let greyMat= new THREE.MeshBasicMaterial({color:"#888888"});
+	let baseMat= new THREE.MeshBasicMaterial({color:"#444444"});
+	let shoeMat= new THREE.MeshBasicMaterial({color:"#333333"});
+	let root= new THREE.Group();
+	let base= new THREE.Mesh(baseGeom,baseMat);
+	let n= interlocking.levers.length;
+	base.scale.y= n/20;
+	root.add(base);
+	for (let i=0; i<n; i++) {
+		let lever= interlocking.levers[i];
+		let group= new THREE.Group();
+		group.position.x= .02;
+		group.position.y= .127*(i-(n-1)/2);
+		group.position.z= -.534;
+		group.rotation.y= -10/180*Math.PI;
+		lever.model= group;
+		group.userData.lever= i+1;
+		root.add(group);
+		let mesh= new THREE.Mesh(handleGeom,handleMat);
+		mesh.position.z= .483;
+		mesh.userData.lever= i+1;
+		group.add(mesh);
+		mesh= new THREE.Mesh(shoeGeom,shoeMat);
+		mesh.position.z= .583;
+		group.add(mesh);
+		let mat= null;
+		if (lever.color == "#a00")
+			mat= redMat;
+		else if (lever.color == "#00a")
+			mat= blueMat;
+		else if (lever.color == "#000")
+			mat= blackMat;
+		else
+			mat= greyMat;
+		mesh= new THREE.Mesh(barGeom,mat);
+		mesh.position.z= .483;
+		mesh.userData.lever= i+1;
+		group.add(mesh);
+		if (mat != greyMat) {
+			mesh= new THREE.Mesh(latchGeom,mat);
+			mesh.position.x= -.015;
+			mesh.position.z= 1.356;
+			mesh.userData.lever= i+1;
+			group.add(mesh);
+			mesh.add(new THREE.Mesh(lhandleGeom,handleMat));
+		}
+	}
+	root.rotation.x= -Math.PI/2;
+	let model= new THREE.Group();
+	model.add(root);
+	return model;
+}
+
+let updateLeverModels= function()
+{
+	for (let i=0; i<interlocking.levers.length; i++) {
+		let lever= interlocking.levers[i];
+		if (!lever.model)
+			continue;
+		let angle= 0;
+		if (lever.state == Interlocking.NORMAL)
+			angle= -10/180*Math.PI;
+		else if (lever.state == Interlocking.REVERSE)
+			angle= 17/180*Math.PI;
+		lever.model.rotation.y= angle;
+	}
+}
+
+let mouseDown3d= function(event)
+{
+	if (!leversModel)
+		return;
+	let canvas= document.getElementById('canvas3d');
+	downX= event.pageX-canvas.offsetLeft;
+	downY= event.pageY-canvas.offsetTop;
+	let click= new THREE.Vector2();
+	click.x= 2*(downX/canvas.width) - 1;
+	click.y= -2*(downY/canvas.height) + 1;
+	let raycaster= new THREE.Raycaster();
+	raycaster.setFromCamera(click,camera);
+	let intersects= raycaster.intersectObject(leversModel);
+	if (intersects.length <= 0)
+		return;
+	let lever= intersects[0].object.userData.lever;
+	if (lever>0 && lever<=interlocking.levers.length &&
+	  interlocking.toggleState(lever,simTime))
+		renderLevers();
+	event.preventDefault();
 }

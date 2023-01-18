@@ -34,7 +34,7 @@ window.onload= function() {
 			e.preventDefault();
 		} else if (e.keyCode == 38) {
 			if (simTime > 0) {
-				moveCamera(true);
+				cameraUp();
 			} else {
 				scale*= 1.4;
 				renderCanvas();
@@ -45,14 +45,24 @@ window.onload= function() {
 			e.preventDefault();
 		} else if (e.keyCode == 40) {
 			if (simTime > 0) {
-				moveCamera(false);
+				cameraDown();
 			} else {
 				scale/= 1.4;
 				renderCanvas();
 			}
 			e.preventDefault();
-//		} else {
-//			console.log("keydown "+e.keyCode+" "+e.key);
+		} else if (e.keyCode == 33) {
+			if (simTime > 0) {
+				moveCamera(true);
+				e.preventDefault();
+			}
+		} else if (e.keyCode == 34) {
+			if (simTime > 0) {
+				moveCamera(false);
+				e.preventDefault();
+			}
+		} else {
+			console.log("keydown "+e.keyCode+" "+e.key);
 		}
 		return true;
 	});
