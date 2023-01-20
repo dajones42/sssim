@@ -447,6 +447,26 @@ let make3dLevers= function()
 	   -0.06, -0.025, 0, -0.06, 0.025, 0, 0.032, 0.025, 0.2,
 	   0.032, -0.025, 0.2, -0.05, -0.025, 0.2, -0.05, 0.025, 0.2 ];
 
+	let makeNumber= function(number,color) {
+		let canvas= document.createElement("canvas");
+		let sz= 16;
+		canvas.width= sz;
+		canvas.height= sz;
+		let context= canvas.getContext("2d");
+		context.textAlign= "center";
+		context.fillStyle= color;
+		context.fillRect(0,0,sz,sz);
+		context.fillStyle= "white";
+		context.fillText(number.toString(),.5*sz,.75*sz);
+		let texture= new THREE.Texture(canvas);
+		texture.wrapS= THREE.RepeatWrapping;
+		texture.wrapT= THREE.RepeatWrapping;
+		texture.flipY= false;
+		texture.needsUpdate= true;
+		let mat= new THREE.MeshBasicMaterial({map:texture});
+		let plane= new THREE.PlaneGeometry(.05,.05);
+		return new THREE.Mesh(plane,mat);
+	}
 	let makeGeometry= function(vertices,normals,indices) {
 		let geom= new THREE.BufferGeometry;
 		geom.setAttribute("position",
@@ -518,6 +538,13 @@ let make3dLevers= function()
 			group.add(mesh);
 			mesh.add(new THREE.Mesh(lhandleGeom,handleMat));
 		}
+		mesh= makeNumber(i+1,lever.color);
+		mesh.position.z= 1.25;
+		mesh.position.x= .028;
+		mesh.rotation.x= Math.PI/2;
+		mesh.rotation.y= Math.PI/2;
+		mesh.scale.y= -1;
+		group.add(mesh);
 	}
 	root.rotation.x= -Math.PI/2;
 	let model= new THREE.Group();
