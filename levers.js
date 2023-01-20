@@ -32,7 +32,7 @@ let setupLevers= function()
 //	draw display in map canvas
 let renderLevers= function()
 {
-	if (!interlocking)
+	if (!interlocking || leversModel)
 		return;
 //	console.log("renderlevers");
 	let canvas= document.getElementById("levercanvas");
@@ -40,6 +40,7 @@ let renderLevers= function()
 	let leverWidth= 8;
 	let leverHeight= 100;
 	canvas.width= leverSpacing*interlocking.levers.length;
+	canvas.height= 100;
 	let context= canvas.getContext("2d");
 	context.clearRect(0,0,canvas.width,canvas.height);
 	context.textAlign= "center";
@@ -68,7 +69,7 @@ let renderLevers= function()
 //	handle mouse down event in lever canvas
 let leverMouseDown= function(event)
 {
-	if (!interlocking)
+	if (!interlocking || leversModel)
 		return;
 	let canvas= document.getElementById('levercanvas');
 	downX= event.pageX-canvas.offsetLeft;
@@ -84,12 +85,13 @@ let leverMouseDown= function(event)
 
 let renderLeverIndicators= function()
 {
-	if (!interlocking)
+	if (!interlocking || leversModel)
 		return;
 	let canvas= document.getElementById("leverindcanvas");
 	let leverSpacing= 20;
 	let leverWidth= 8;
 	canvas.width= leverSpacing*interlocking.levers.length;
+	canvas.height= 8;
 	let context= canvas.getContext("2d");
 	context.clearRect(0,0,canvas.width,canvas.height);
 	for (let i=0; i<interlocking.levers.length; i++) {

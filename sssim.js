@@ -465,7 +465,6 @@ let startSimulation= function()
 		return;
 	}
 	makeInterlocking();
-	renderLevers();
 	initBlocks();
 	for (let i=0; i<trains.length; i++) {
 		let train= trains[i];
@@ -494,6 +493,7 @@ let startSimulation= function()
 //	document.getElementById("canvas").style.visibility= "hidden";
 //	document.getElementById("canvas3d").style.visibility= "visible";
 	render3D();
+	renderLevers();
 	window.setTimeout(updateSimulation,timeStep*1000);
 }
 
