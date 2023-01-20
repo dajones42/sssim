@@ -22,7 +22,6 @@ THE SOFTWARE.
 
 let edges= [];
 let vertices= [];
-let trackCircuits= {};
 
 class Edge {
 	constructor(vert1,n1,vert2,n2) {
@@ -282,21 +281,14 @@ class Location {
 				v.occupied--;
 				this.edge.occupied--;
 				if (this.edge.trackCircuit!=e.trackCircuit &&
-				  e.trackCircuit) {
-					e.trackCircuit.occupied--;
-					console.log("tc "+e.trackCircuit.name+
-					  " "+e.trackCircuit.occupied);
-				}
+				  e.trackCircuit)
+					e.trackCircuit.decOccupied();
 			} else if (dOccupied > 0) {
 				v.occupied++
 				this.edge.occupied++
 				if (this.edge.trackCircuit!=e.trackCircuit &&
-				  this.edge.trackCircuit) {
-					this.edge.trackCircuit.occupied++;
-					console.log("tc "+
-					  this.edge.trackCircuit.name+" "+
-					  this.edge.trackCircuit.occupied);
-				}
+				  this.edge.trackCircuit)
+					this.edge.trackCircuit.incOccupied();
 			}
 			if (v == this.edge.v1) {
 				this.offset= 0;

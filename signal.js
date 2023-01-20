@@ -38,6 +38,10 @@ class Signal {
 		this.state= state;
 		this.update();
 	}
+	setDistant() {
+		this.isDistant= true;
+		this.indication= 1;
+	}
 	getIndication() {
 		return this.indication;
 	}
@@ -57,6 +61,7 @@ class Signal {
 			if (!e)
 				break;
 			if (e.trackCircuit && e.trackCircuit.occupied>0) {
+				e.trackCircuit.addSignal(this);
 				clear= false;
 				break;
 			}
@@ -79,6 +84,8 @@ class Signal {
 		}
 	}
 	setIndication(ind) {
+		if (this.isDistant && ind==0)
+			ind= 1;
 		if (this.indication == ind)
 			return;
 		this.indication= ind;

@@ -270,7 +270,7 @@ let makeInterlocking= function()
 			else
 				v.signal2= signal;
 			if (o.lock && o.lock!="calc")
-				parseSignalLock(o.lever,o.lock);
+				parseSignalLock(o.lever,o.lock,signal);
 			if (o.maxSpeed)
 				signal.maxSpeed= o.maxSpeed/2.23693;
 		}
@@ -278,14 +278,19 @@ let makeInterlocking= function()
 	for (let i=0; i<mapObjects.length; i++) {
 		let o= mapObjects[i];
 		if (o.type=="signal" && o.trackCircuit) {
-			let tc= { name: o.trackCircuit, occupied: 0 };
-			trackCircuits[o.trackCircuit]= tc;
+			let dir= o.direction;
+			let name= o.trackCircuit;
+			if (name.substr(0,1) == "^") {
+				name= name.substr(1);
+				dir= !dir;
+			}
+			let tc= TrackCircuit.get(name);
 			let v= findVertex(o.u,o.v,false);
-			let e= o.direction ? v.edge2 : v.edge1;
+			let e= dir ? v.edge2 : v.edge1;
 			while (e) {
 				e.trackCircuit= tc;
 				v= v==e.v1 ? e.v2 : e.v1;
-				if (v.getSignal(e))
+				if (v.signal1 || v.signal2)
 					break;
 				e= v.nextEdge(e);
 			}
@@ -300,10 +305,15 @@ let makeInterlocking= function()
 }
 
 //	creates locking from lock string
-let parseSignalLock= function(lever,lock)
+let parseSignalLock= function(lever,lock,signal)
 {
 	let locks= lock.split(',');
 	for (let i=0; i<locks.length; i++) {
+		if (locks[i] == "D") {
+			signal.setDistant();
+			console.log("distant "+lever);
+			continue;
+		}
 		let lever2= parseInt(locks[i]);
 		if (lever2<1 || lever2>interlocking.levers.length) {
 			console.log("signal lock out of range "+

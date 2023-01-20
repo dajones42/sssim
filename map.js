@@ -174,7 +174,11 @@ let renderMap= function()
 			let s= object.lever.toString();
 			if (object.lock)
 				s+= ","+object.lock;
+			if (object.trackCircuit)
+				s+= ","+object.trackCircuit;
 			context.fillText(s,u+5,v);
+		} else if (object.trackCircuit) {
+			context.fillText(object.trackCircuit,u+5,v);
 		} else if (object.name) {
 			context.fillText(object.name,u+5,v);
 		}
