@@ -61,10 +61,10 @@ class Train {
 		this.restrictedSpeedDistance= 0;
 		this.nextRestrictedSpeed= 0;
 	}
-	addStop(dist,time) {
+	addStop(dist,time,wait) {
 		if (this.stops.length == 0)
 			this.stopDistance= dist;
-		this.stops.push({dist:dist,time:time});
+		this.stops.push({dist:dist,time:time,wait:(wait||0)});
 	}
 	move(dt,simTime) {
 		let ind= this.signal ? this.signal.getIndication() :
@@ -110,12 +110,16 @@ class Train {
 		if (ind==0 && dt*this.speed>d)
 			this.speed= 0;
 		if (this.speed==0 && this.stops.length>0 && 
-		  this.stopDistance<10 && simTime>this.stops[0].time) {
-			this.stops.splice(0,1);
-			if (this.stops.length > 0)
-				this.stopDistance= this.stops[0].dist;
-			else if (this.nextTrain)
-				startNextTrain(this);
+		  this.stopDistance<10) {
+			if (this.stops[0].wait > 0) {
+				this.stops[0].wait-= dt;
+			} else if (simTime > this.stops[0].time) {
+				this.stops.splice(0,1);
+				if (this.stops.length > 0)
+					this.stopDistance= this.stops[0].dist;
+				else if (this.nextTrain)
+					startNextTrain(this);
+			}
 		}
 		let dx= this.speed*dt;
 		if (dx == 0)

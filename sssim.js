@@ -343,8 +343,11 @@ let addTrain= function()
 	};
 	let stop= document.getElementById("trainstop").value;
 	let stopTime= document.getElementById("trainstoptime").value;
+	let stopWait=
+	  parseInt(document.getElementById("trainstopduration").value);
 	if (stopTime.length > 0)
-		train.stops= [{stop:stop, stopTime:stopTime}];
+		train.stops= [{stop:stop, stopTime:stopTime,
+		  stopWait:stopWait}];
 	trains.push(train);
 	displayTrains();
 }
@@ -369,6 +372,8 @@ let deleteTrain= function(name)
 				  train.stops[0].stop;
 				document.getElementById("trainstoptime").value=
 				  train.stops[0].stopTime;
+				document.getElementById("trainstopduration").
+				  value= (train.stops[0].stopWait||"0");
 			} else {
 				document.getElementById("trainstoptime").value=
 				  "";
@@ -411,9 +416,12 @@ let displayTrains= function()
 		  train.consist+"</td>";
 		if (train.stops) {
 			s+= "<td>";
-			for (let j=0; j<train.stops.length; j++)
+			for (let j=0; j<train.stops.length; j++) {
 				s+= train.stops[j].stop+" "+
 				  train.stops[j].stopTime+" ";
+				if (train.stops[j].stopWait)
+					s+= "("+train.stops[j].stopWait+") ";
+			}
 			s+= "</td>";
 		} else {
 			s+= "<td></td>";
@@ -697,7 +705,8 @@ let startTrainEvent= function(e)
 				break;
 			loc= loc.loc;
 			train.addStop(d-loc.spDistance()+train.length/2,
-			  hmToTime(e.train.stops[i].stopTime));
+			  hmToTime(e.train.stops[i].stopTime),
+			  e.train.stops[i].wait);
 			d= loc.spDistance();
 		}
 		if (e.train.nextTrain)
