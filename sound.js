@@ -250,3 +250,13 @@ let updateRailcarSound= function(railcar,throttle,speed)
 		sc.current= -1;
 	}
 }
+
+let stopRailcarSound= function(railcar)
+{
+	if (!railcar.soundControl)
+		return;
+	let sc= railcar.soundControl;
+	if (sc.sound.isPlaying)
+		sc.sound.stop();
+	sc.current= -1;
+}

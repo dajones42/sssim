@@ -50,8 +50,9 @@ class Train {
 		} else {
 			this.length= 25;
 		}
+		this.location.edge.occupied++;
 		if (this.location.edge.trackCircuit)
-			this.location.edge.trackCircuit.occupied++;
+			this.location.edge.trackCircuit.incOccupied();
 		this.location.move(this.length,1);
 		this.maxDistance= maxd;
 		this.distance= 0;
@@ -111,14 +112,18 @@ class Train {
 			this.speed= 0;
 		if (this.speed==0 && this.stops.length>0 && 
 		  this.stopDistance<10) {
-			if (this.stops[0].wait > 0) {
+			if (this.stops[0].wait > 0)
 				this.stops[0].wait-= dt;
-			} else if (simTime > this.stops[0].time) {
+			if (this.stops[0].wait<=0 &&
+			  simTime>this.stops[0].time) {
 				this.stops.splice(0,1);
-				if (this.stops.length > 0)
-					this.stopDistance= this.stops[0].dist;
-				else if (this.nextTrain)
-					startNextTrain(this);
+				if (this.stops.length > 0) {
+					this.stopDistance+= this.stops[0].dist;
+				} else {
+					this.stopDistance= 0;
+					if (this.nextTrain)
+						startNextTrain(this);
+				}
 			}
 		}
 		let dx= this.speed*dt;
@@ -254,15 +259,17 @@ class Train {
 			let car= this.cars[i];
 			if (car.model)
 				scene.remove(car.model);
+			stopRailcarSound(car);
 		}
 		this.endLocation.move(this.length,-1);
+		this.location.edge.occupied--;
 		if (this.location.edge.trackCircuit)
-			this.location.edge.trackCircuit.occupied--;
+			this.location.edge.trackCircuit.decOccupied();
 	}
 	reverse() {
 		let t= this.location;
 		this.location= this.endLocation;
-		this.location= t;
+		this.endLocation= t;
 		this.location.rev= !this.location.rev;
 		this.endLocation.rev= !this.endLocation.rev;
 		this.cars.reverse();

@@ -698,13 +698,13 @@ let startTrainEvent= function(e)
 		activeTrains.push(train);
 	}
 	if (e.train.stops) {
-		d= startLoc.spDistance();
+		d= startLoc.spDistance()+train.length/2;
 		for (let i=0; i<e.train.stops.length; i++) {
 			let loc= findNamedLocation(e.train.stops[i].stop);
 			if (!loc)
 				break;
 			loc= loc.loc;
-			train.addStop(d-loc.spDistance()+train.length/2,
+			train.addStop(d-loc.spDistance(),
 			  hmToTime(e.train.stops[i].stopTime),
 			  e.train.stops[i].wait);
 			d= loc.spDistance();
@@ -771,8 +771,11 @@ let displayActiveTrains= function()
 		  "</td><td>"+Math.sqrt(du*du+dv*dv).toFixed(0)+"</td>"+
 		  "<td>"+t.signalDistance.toFixed(1)+"</td>"+
 		  "<td>"+(t.signal?t.signal.indication:-1)+"</td>"+
-		  "<td>"+(t.signal?t.signal.state:-1)+"</td>"+
-		  "</tr>";
+		  "<td>"+(t.signal?t.signal.state:-1)+"</td>";
+		if (t.stops && t.stops.length>0)
+			s+= "<td>"+t.stopDistance.toFixed(0)+"</td>"+
+			  "<td>"+t.stops.length+"</td>";
+		s+= "</tr>";
 	}
 	s+= "</table>";
 	let trainList= document.getElementById("activetrains");
