@@ -341,50 +341,82 @@ let addTrain= function()
 		randomDelay:
 		  parseInt(document.getElementById("trainrandomdelay").value)
 	};
-	let stop= document.getElementById("trainstop").value;
-	let stopTime= document.getElementById("trainstoptime").value;
+	let stop= document.getElementById("trainstop1").value;
+	let stopTime= document.getElementById("trainstoptime1").value;
 	let stopWait=
-	  parseInt(document.getElementById("trainstopduration").value);
-	if (stopTime.length > 0)
+	  parseInt(document.getElementById("trainstopduration1").value);
+	if (stopTime.length > 0) {
 		train.stops= [{stop:stop, stopTime:stopTime,
 		  stopWait:stopWait}];
+		stop= document.getElementById("trainstop2").value;
+		stopTime= document.getElementById("trainstoptime2").value;
+		stopWait= parseInt(
+		  document.getElementById("trainstopduration2").value);
+		if (stopTime.length > 0)
+			train.stops.push({stop:stop, stopTime:stopTime,
+			  stopWait:stopWait});
+		stop= document.getElementById("trainstop3").value;
+		stopTime= document.getElementById("trainstoptime3").value;
+		stopWait= parseInt(
+		  document.getElementById("trainstopduration3").value);
+		if (stopTime.length > 0)
+			train.stops.push({stop:stop, stopTime:stopTime,
+			  stopWait:stopWait});
+	}
 	trains.push(train);
 	displayTrains();
 }
 
 let deleteTrain= function(name)
 {
+	let setValue= function(field,value) {
+		document.getElementById(field).value= value;
+	}
 	for (let i=0; i<trains.length; i++) {
 		let train= trains[i];
 		if (train.name == name) {
-			document.getElementById("trainname").value= name;
-			document.getElementById("trainentrance").value=
-			  train.entrance
-			document.getElementById("trainexit").value= train.exit;
-			document.getElementById("trainstart").value=
-			  train.startTime;
-			document.getElementById("trainconsist").value=
-			  train.consist;
-			document.getElementById("trainmaxspeed").value=
-			  train.maxSpeed.toFixed(0);
+			setValue("trainname",name);
+			setValue("trainentrance",train.entrance);
+			setValue("trainexit",train.exit);
+			setValue("trainstart",train.startTime);
+			setValue("trainconsist",train.consist);
+			setValue("trainmaxspeed",train.maxSpeed.toFixed(0));
 			if (train.stops && train.stops.length>0) {
-				document.getElementById("trainstop").value=
-				  train.stops[0].stop;
-				document.getElementById("trainstoptime").value=
-				  train.stops[0].stopTime;
-				document.getElementById("trainstopduration").
-				  value= (train.stops[0].stopWait||"0");
+				setValue("trainstop1",train.stops[0].stop);
+				setValue("trainstoptime1",
+				  train.stops[0].stopTime);
+				setValue("trainstopduration1",
+				  (train.stops[0].stopWait||"0"));
+				if (train.stops.length > 1) {
+					setValue("trainstop2",
+					  train.stops[1].stop);
+					setValue("trainstoptime2",
+					  train.stops[1].stopTime);
+					setValue("trainstopduration2",
+					  (train.stops[1].stopWait||"0"));
+				} else {
+					setValue("trainstoptime2","");
+				}
+				if (train.stops.length > 2) {
+					setValue("trainstop3",
+					  train.stops[2].stop);
+					setValue("trainstoptime3",
+					  train.stops[2].stopTime);
+					setValue("trainstopduration3",
+					  (train.stops[2].stopWait||"0"));
+				} else {
+					setValue("trainstoptime3","");
+				}
 			} else {
-				document.getElementById("trainstoptime").value=
-				  "";
+				setValue("trainstoptime1","");
+				setValue("trainstoptime2","");
+				setValue("trainstoptime3","");
 			}
 			if (train.randomDelay)
-				document.getElementById(
-				  "trainrandomdelay").value=
-				  train.randomDelay.toFixed(0);
+				setValue("trainrandomdelay",
+				  train.randomDelay.toFixed(0));
 			else
-				document.getElementById(
-				  "trainrandomdelay").value= "";
+				setValue("trainrandomdelay","");
 			trains.splice(i,1);
 			displayTrains();
 			return;
@@ -449,7 +481,9 @@ let updateLocations= function()
 	}
 	document.getElementById("trainentrance").innerHTML= s;
 	document.getElementById("trainexit").innerHTML= s;
-	document.getElementById("trainstop").innerHTML= s;
+	document.getElementById("trainstop1").innerHTML= s;
+	document.getElementById("trainstop2").innerHTML= s;
+	document.getElementById("trainstop3").innerHTML= s;
 }
 
 let updateConsists= function()

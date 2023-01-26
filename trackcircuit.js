@@ -1,4 +1,3 @@
-
 /*
 Copyright © 2023 Doug Jones
 
@@ -26,9 +25,6 @@ THE SOFTWARE.
 let trackCircuits= {};
 
 class TrackCircuit {
-	static STOP= 0;
-	static CLEAR= 1;
-	static MAXINDICATION= 3;
 	constructor (name) {
 		this.name= name;
 		this.occupied= 0;
