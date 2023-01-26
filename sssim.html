@@ -101,17 +101,29 @@ THE SOFTWARE.
 </table>
 <p>
 <button id="trainadd">Add Train</button>
+To change a train, delete and add back.
+</p>
+<p>
+Set Start Time to previous train name to reverse direction of previous train.
+Previous train must have scheduled stop at the exit location.
 </p>
 <hr>
 <p>
 Add Consist: <input id="consistfile" type="file" accept=".con"/>
+</p>
+<p>
+Referenced MSTS wag and eng files are read to find shape file names,
+model length, lights and sound name.
+Open Rails extensions are not recognized and SMS files are not read.
+A limited number of sounds are built into the code.
+Addition sounds can be added by editing a saved json file.
 </p>
 <div id="consistdisplay"></div>
 <hr>
 <canvas id="canvas" height="567px" width="990px">
 </canvas>
 <hr>
-<h4>Options</h4>
+<h4>Editing Options</h4>
 <table>
 <tr>
 <td align=left>Lever:</td>
@@ -167,12 +179,10 @@ Save: save data to a json file.
 <h4>Edit Menu</h4>
 <bl>
 <li>
-Change Lever: Change the lever nummber assigned to the selected
+Change Lever: Change the lever number assigned to the selected
 switch or signal.
 <li>
 Change Lock: Change the lock associated with the selected switch or signal.
-For a switch this is a lever that locks the switch in either state.
-For a signal this is a list of lever states that lock the signal lever.
 <li>
 Change Maximum Speed: Change the maximum speed for the selected signal.
 <li>
@@ -185,6 +195,17 @@ to the track.
 <li>
 Delete: Delete the selected object.
 <le>
+<p>
+For a switch the lock should be the lever that locks the switch in either state.
+For a signal the lock should be either "calc" or a comma separated list of
+lever states locked by the signal lever when reversed.
+Each lever state should be a lever number followed by N, R or B for Normal,
+Reverse or Both, respectively.
+To create a distant signal add D to the list of lever states.
+If the lock is set to "calc", conditional locks will be calculated by following
+all possible paths starting at the signal and ending at a controlled signal
+facing the opposite direction.
+</p>
 <h4>Run Menu</h4>
 <bl>
 <li>

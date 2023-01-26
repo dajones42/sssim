@@ -1,5 +1,12 @@
 Signal Station Simulator
 
+Signal Station is a New Haven railroad term for what others might call
+a Signal Tower or Signal Box.  This simulator uses Microsoft Train
+Simulator (MSTS) compatible routes and equipment to display trains
+passing by.  Most features follow past north american railroad practice
+with automatic signals between manually controlled interlockings.
+Some features also support manual block signalling.
+
 See help at the bottom of main page (sssim.html).
 
 This program is designed to be run with NW.js which is available at
