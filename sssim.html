@@ -222,6 +222,14 @@ Start: Start the simulation.
 <li>
 Pause: Pause the simulation.
 <le>
+<p>
+The simulation uses an automatic variable speed clock.
+Time runs at the normal rate if there are moving trains near by (500 meters).
+Time runs at 8 times speed if all near by trains are stopped and
+32 times speed if no trains are near.
+If there are no active trains, time will jump to the start time of the next
+scheduled train.
+</p>
 <h4>Simulation Controls</h4>
 <bl>
 <li>

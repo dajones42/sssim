@@ -41,7 +41,8 @@ let initScene= function()
 	camera.position.y= 2;
 	listener= new THREE.AudioListener();
 	camera.add(listener);
-	renderer= new THREE.WebGLRenderer({canvas:canvas});
+//	renderer= new THREE.WebGLRenderer({canvas:canvas});
+	renderer= new THREE.WebGL1Renderer({canvas:canvas});
 	renderer.setClearColor(0x00dddd);
 //	renderer.sortObjects= false;
 	let alight= new THREE.AmbientLight(0xaaaaaa);
@@ -49,9 +50,10 @@ let initScene= function()
 	let dlight= new THREE.DirectionalLight(0xffffff,.5);
 	dlight.position.set(0,100,50);
 	scene.add(dlight);
+	setBackground();
 	for (let i=0; i<mapObjects.length; i++) {
 		let o= mapObjects[i];
-		if (o.type == "camera") {
+		if (o.type=="camera" && !center) {
 			centerU= o.u;
 			centerV= o.v;
 			if (o.y)
@@ -69,22 +71,17 @@ let initScene= function()
 				let model=
 				  getMstsModel(path,sssimDir,null,null,0);
 				if (model) {
-					model.position.x= 0;
-					model.position.y= o.building.y;
-					model.position.z= 0;
-					model.rotation.y=
-					  o.angle*Math.PI/180-Math.PI/2;
+					setCameraModelPosition(model,o.angle,
+					  o.building);
 					scene.add(model);
 				}
 			}
 			if (o.levers) {
 				leversModel= make3dLevers();
 				if (leversModel) {
-					leversModel.position.x= o.levers.u;
-					leversModel.position.y= o.levers.y;
-					leversModel.position.z= -o.levers.v;
-					leversModel.rotation.y=
-					  o.angle*Math.PI/180;
+					setCameraModelPosition(leversModel,
+					  o.angle,o.levers);
+					leversModel.rotation.y+= Math.PI/2;
 					scene.add(leversModel);
 				}
 			}
@@ -93,7 +90,14 @@ let initScene= function()
 //			console.log("cameraangle "+cameraAngle+" "+
 //			  Math.cos(cameraAngle)+" "+Math.sin(cameraAngle)+" "+
 //			  o.angle+" "+(o.angle*Math.PI/180));
-			break;
+		} else if (o.type == "camera") {
+			if (!cameraPath)
+				cameraPath= [
+					[centerU, centerV, camera.position.y]
+				];
+			let y= o.y || 2;
+			cameraPath.push([o.u,o.v,y]);
+			console.log("path "+o.u+" "+o.v+" "+o.y);
 		}
 	}
 //	let axes= new THREE.AxesHelper(5);
@@ -101,7 +105,6 @@ let initScene= function()
 //	scene.add(axes);
 	//makeTrackLines();
 	loadModels();
-	setBackground();
 }
 
 let render3D= function()
@@ -231,7 +234,39 @@ let setBackground= function()
 		texture.flipY= false;
 		texture.needsUpdate= true;
 		scene.background= texture;
+		scene.environment= texture;
 	}
+}
+
+let setCameraModelPosition= function(mesh,angle,modelData)
+{
+	let loc= findLocation(centerU,centerV);
+	let tp= loc.loc.getPosition();
+	let dx= tp.x-center.x;
+	let dy= tp.y-center.y;
+	let d= Math.sqrt(dx*dx+dy*dy);
+	dx/= d;
+	dy/= d;
+	if (angle) {
+		dx= Math.cos(Math.PI-angle*Math.PI/180);
+		dy= -Math.sin(Math.PI-angle*Math.PI/180);
+		mesh.rotation.y= angle*Math.PI/180-Math.PI/2;
+	} else {
+		mesh.rotation.y= Math.atan2(dy,dx)+Math.PI/2;
+	}
+	if (modelData.rotation)
+		mesh.rotation.y+= modelData.rotation*Math.PI/180;
+	if (modelData.distance) {
+		mesh.position.x= -modelData.distance*dx;
+		mesh.position.z= modelData.distance*dy;
+		if (modelData.distance < 0)
+			mesh.rotation.y+= Math.PI;
+	} else if (modelData.u && modelData.v) {
+		mesh.position.x= modelData.u;
+		mesh.position.z= -modelData.v;
+	}
+	mesh.position.y= modelData.y;
+	scene.add(mesh);
 }
 
 let createModelBoard= function(object)
@@ -463,7 +498,8 @@ let make3dLevers= function()
 		texture.wrapT= THREE.RepeatWrapping;
 		texture.flipY= false;
 		texture.needsUpdate= true;
-		let mat= new THREE.MeshBasicMaterial({map:texture});
+		let mat= new THREE.MeshStandardMaterial(
+		  {map:texture,metalness:0,roughness:.5});
 		let plane= new THREE.PlaneGeometry(.05,.05);
 		return new THREE.Mesh(plane,mat);
 	}
@@ -484,17 +520,20 @@ let make3dLevers= function()
 	  lhandleIndices);
 	let baseGeom= makeGeometry(baseVertices,baseNormals,baseIndices);
 	let shoeGeom= makeGeometry(shoeVertices,shoeNormals,shoeIndices);
-//	let handleMat= new THREE.MeshStandardMaterial({color:"#bbbbbb",
-//	  metalness:1,roughness:.2});
-//	let handleMat= new THREE.MeshBasicMaterial({color:"#bbbbbb"});
-	let handleMat= new THREE.MeshPhongMaterial({color:"#bbbbbb",
-	  shininess:128});
-	let redMat= new THREE.MeshBasicMaterial({color:"#aa0000"});
-	let blueMat= new THREE.MeshBasicMaterial({color:"#0000aa"});
-	let blackMat= new THREE.MeshBasicMaterial({color:"#000000"});
-	let greyMat= new THREE.MeshBasicMaterial({color:"#888888"});
-	let baseMat= new THREE.MeshBasicMaterial({color:"#444444"});
-	let shoeMat= new THREE.MeshBasicMaterial({color:"#333333"});
+	let handleMat= new THREE.MeshStandardMaterial({color:"#ffffff",
+	  metalness:.5,roughness:.1,envMapIntensity:.75});
+	let redMat= new THREE.MeshStandardMaterial({color:"#aa0000",
+	  metalness:0,roughness:.25});
+	let blueMat= new THREE.MeshStandardMaterial({color:"#0000aa",
+	  metalness:0,roughness:.25});
+	let blackMat= new THREE.MeshStandardMaterial({color:"#000000",
+	  metalness:0,roughness:.25});
+	let greyMat= new THREE.MeshStandardMaterial({color:"#888888",
+	  metalness:0,roughness:.25});
+	let baseMat= new THREE.MeshStandardMaterial({color:"#444444",
+	  metalness:0,roughness:.5});
+	let shoeMat= new THREE.MeshStandardMaterial({color:"#333333",
+	  metalness:0,roughness:.5});
 	let root= new THREE.Group();
 	let base= new THREE.Mesh(baseGeom,baseMat);
 	let n= interlocking.levers.length;
