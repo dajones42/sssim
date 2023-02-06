@@ -237,9 +237,11 @@ let readTerrain= function(tile)
 	tile.terrain= Buffer.alloc(size);
 	let path= routeDir+fspath.sep+"TILES"+fspath.sep+tile.filename+"_y.raw";
 	console.log("read "+path);
-	let fd= fs.openSync(path,"r");
-	if (!fd)
-		throw 'cannot open file '+path;
+	let fd= openFixCase(path);
+	if (!fd) {
+		console.error('cannot open file '+path);
+		return;
+	}
 	fs.readSync(fd,tile.terrain,0,size);
 	fs.closeSync(fd);
 }

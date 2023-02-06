@@ -356,7 +356,7 @@ class MstsBinFileParser {
 	getString() {
 		let len= this.buffer.readUInt8(this.offset);
 		this.offset++;
-		return getStringU(len);;
+		return this.getStringU(len);;
 	}
 	getInt() {
 		let n= this.buffer.readInt32LE(this.offset);
@@ -1015,12 +1015,13 @@ let readMstsWorld= function(tile)
 		}
 		let parser= new MstsBinFileParser(buffer);
 		for (; parser.offset<parser.buffer.length; ) {
-			let code= parser.getInt();
+			let code= parser.getShort();
+			let flags= parser.getShort();
 			if (code == 0)
 				break;
 			let len= parser.getInt();
-			let offset0= offset;
-//			console.log("code "+code+" "+len+" "+offset);
+			let offset0= parser.offset;
+//			console.log("code "+code+" "+len+" "+offset0);
 			switch (code) {
 			 case 75: // world_file
 				parser.getString();
