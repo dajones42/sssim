@@ -1,0 +1,1935 @@
+{
+ "centerTX": -10934,
+ "centerTZ": 14495,
+ "centerU": 350.38519256749964,
+ "centerV": -10597.394323895158,
+ "scale": 5.419360453845968,
+ "mapObjects": [
+  {
+   "type": "camera",
+   "u": 382.78897264883545,
+   "v": -10633.70013206501
+  },
+  {
+   "type": "switch",
+   "u": 327.791,
+   "v": -10587.477,
+   "lever": 8
+  },
+  {
+   "type": "location",
+   "u": 420.279,
+   "v": -10658.812,
+   "name": "Bellows Falls B&M"
+  },
+  {
+   "type": "switch",
+   "u": 603.532,
+   "v": -11060.747,
+   "lever": 7
+  },
+  {
+   "type": "signal",
+   "u": 617.06,
+   "v": -11210.024,
+   "du": 0.04608632380858699,
+   "dv": -0.9989374608842188,
+   "lever": 5,
+   "direction": 0,
+   "lock": "6N,7R,9N,10N",
+   "maxSpeed": 15
+  },
+  {
+   "type": "signal",
+   "u": 612.081,
+   "v": -11210.254,
+   "du": 0.04608632380858699,
+   "dv": -0.9989374608842188,
+   "lever": 6,
+   "direction": 0,
+   "lock": "7N,9N,10N",
+   "maxSpeed": 15
+  },
+  {
+   "type": "signal",
+   "u": 590.916,
+   "v": -11009.999,
+   "du": -0.3249252171215177,
+   "dv": 0.9457397122245288,
+   "lever": 9,
+   "direction": 1,
+   "lock": "7"
+  },
+  {
+   "type": "signal",
+   "u": 372.033,
+   "v": -10631.117,
+   "du": -0.9989314140978697,
+   "dv": 0.04621720381449429,
+   "lever": 1,
+   "direction": 1,
+   "lock": "2N,3N",
+   "maxSpeed": 12
+  },
+  {
+   "type": "signal",
+   "u": 320.017,
+   "v": -10620.849,
+   "du": -0.9989314140978697,
+   "dv": 0.04621720381449429,
+   "lever": 1,
+   "direction": 1,
+   "lock": "2N,3N",
+   "maxSpeed": 12
+  },
+  {
+   "type": "signal",
+   "u": 389.485,
+   "v": -10631.923999999999,
+   "du": 0.9989314140978697,
+   "dv": -0.04621720381449429,
+   "lever": 2,
+   "direction": 0,
+   "lock": "1N,3N",
+   "maxSpeed": 12
+  },
+  {
+   "type": "signal",
+   "u": 378.645,
+   "v": -10623.562,
+   "du": 0.9989314140978697,
+   "dv": -0.04621720381449429,
+   "lever": 2,
+   "direction": 0,
+   "lock": "1N,3N",
+   "maxSpeed": 12
+  },
+  {
+   "type": "signal",
+   "u": 388.585,
+   "v": -10634.378,
+   "du": 0.7917663231556664,
+   "dv": -0.6108241068561038,
+   "lever": 3,
+   "direction": 1,
+   "maxSpeed": 15
+  },
+  {
+   "type": "signal",
+   "u": 345.036,
+   "v": -10600.781,
+   "du": -0.7917724313571463,
+   "dv": 0.6108161891623314,
+   "lever": 3,
+   "direction": 0,
+   "maxSpeed": 15
+  },
+  {
+   "type": "signal",
+   "u": 161.683,
+   "v": -10384.584,
+   "du": -0.606461474537362,
+   "dv": 0.7951128724287947,
+   "lever": 10,
+   "direction": 1,
+   "lock": "8R",
+   "maxSpeed": 15
+  },
+  {
+   "type": "location",
+   "u": 415.947,
+   "v": -10633.148,
+   "name": "Bellows Falls Rutland"
+  },
+  {
+   "type": "location",
+   "u": -367.277,
+   "v": 119.787,
+   "name": "Charlestown Southbound",
+   "column": 1
+  },
+  {
+   "type": "location",
+   "u": -362.415,
+   "v": 120.893,
+   "name": "Charlestown Northbound",
+   "column": 0
+  },
+  {
+   "type": "location",
+   "u": 2091.5797000000002,
+   "v": -16334.7308,
+   "name": "Westminster Northbound",
+   "column": 0
+  },
+  {
+   "type": "location",
+   "u": 2086.5958,
+   "v": -16334.6572,
+   "name": "Westminster Southbound",
+   "column": 1
+  },
+  {
+   "type": "location",
+   "u": 2688.2799999999997,
+   "v": -16477.991,
+   "name": "Walpole",
+   "column": 0
+  },
+  {
+   "type": "location",
+   "u": -940.415,
+   "v": -8046.851,
+   "name": "Riverside",
+   "column": 1,
+   "blockDelay": 180
+  },
+  {
+   "type": "signal",
+   "u": 165.643,
+   "v": -10381.559,
+   "du": 0.6064535233783147,
+   "dv": -0.7951189370037843,
+   "lever": 0,
+   "direction": 0
+  },
+  {
+   "type": "location",
+   "u": 1102.5430000000001,
+   "v": -11145.693,
+   "name": "Walpole Yard",
+   "column": 0
+  },
+  {
+   "type": "signal",
+   "u": 1065.243,
+   "v": -11052.911,
+   "du": -0.37300467005502974,
+   "dv": 0.9278294649972798,
+   "lever": null,
+   "direction": 0
+  },
+  {
+   "type": "signal",
+   "u": 201.084,
+   "v": -10610.511,
+   "du": 0.9868596916947248,
+   "dv": -0.1615795435944563,
+   "lever": null,
+   "direction": 1
+  },
+  {
+   "type": "camera",
+   "u": 329.9030709324225,
+   "v": -10585.861597749281
+  }
+ ],
+ "trains": [
+  {
+   "name": "js2",
+   "entrance": "Charlestown Southbound",
+   "exit": "Westminster Southbound",
+   "startTime": "07:05",
+   "consist": "ConnRiv_BM_SJ-1",
+   "maxSpeed": 40
+  },
+  {
+   "name": "73",
+   "entrance": "Westminster Northbound",
+   "exit": "Charlestown Northbound",
+   "startTime": "07:29",
+   "maxSpeed": 50,
+   "stops": [
+    {
+     "stop": "Bellows Falls B&M",
+     "stopTime": "07:50"
+    }
+   ],
+   "consist": "73"
+  },
+  {
+   "name": "ej1",
+   "entrance": "Westminster Northbound",
+   "exit": "Charlestown Northbound",
+   "startTime": "08:25",
+   "consist": "B&M_EJ-1",
+   "maxSpeed": 40,
+   "randomDelay": 30
+  },
+  {
+   "name": "cv430",
+   "entrance": "Charlestown Southbound",
+   "exit": "Westminster Southbound",
+   "startTime": "08:35",
+   "maxSpeed": 30,
+   "consist": "cv430"
+  },
+  {
+   "name": "551",
+   "entrance": "Walpole",
+   "exit": "Bellows Falls Rutland",
+   "startTime": "10:31",
+   "consist": "551",
+   "maxSpeed": 50,
+   "stops": [
+    {
+     "stop": "Bellows Falls Rutland",
+     "stopTime": "10:40"
+    }
+   ]
+  },
+  {
+   "name": "sj1",
+   "entrance": "Westminster Northbound",
+   "exit": "Charlestown Northbound",
+   "startTime": "11:45",
+   "consist": "ConnRiv_BM_SJ-1",
+   "maxSpeed": 40,
+   "randomDelay": 30
+  },
+  {
+   "name": "r120",
+   "entrance": "Riverside",
+   "exit": "Walpole Yard",
+   "startTime": "11:48",
+   "consist": "ConnRiv_RUT_RX-2",
+   "maxSpeed": 30
+  },
+  {
+   "name": "r165",
+   "entrance": "Walpole Yard",
+   "exit": "Riverside",
+   "startTime": "12:33",
+   "consist": "r165",
+   "maxSpeed": 40,
+   "stops": [
+    {
+     "stop": "Bellows Falls Rutland",
+     "stopTime": "12:40"
+    }
+   ]
+  },
+  {
+   "name": "78",
+   "entrance": "Charlestown Southbound",
+   "exit": "Westminster Southbound",
+   "startTime": "12:46",
+   "maxSpeed": 50,
+   "stops": [
+    {
+     "stop": "Bellows Falls B&M",
+     "stopTime": "12:59"
+    }
+   ],
+   "consist": "78"
+  },
+  {
+   "name": "75",
+   "entrance": "Westminster Northbound",
+   "exit": "Charlestown Northbound",
+   "startTime": "13:54",
+   "maxSpeed": 50,
+   "stops": [
+    {
+     "stop": "Bellows Falls B&M",
+     "stopTime": "14:07"
+    }
+   ],
+   "consist": "75"
+  },
+  {
+   "name": "74",
+   "entrance": "Charlestown Southbound",
+   "exit": "Westminster Southbound",
+   "startTime": "14:35",
+   "maxSpeed": 50,
+   "stops": [
+    {
+     "stop": "Bellows Falls B&M",
+     "stopTime": "14:50"
+    }
+   ],
+   "consist": "74"
+  },
+  {
+   "name": "554dh",
+   "entrance": "Walpole Yard",
+   "exit": "Bellows Falls Rutland",
+   "startTime": "14:40",
+   "consist": "551",
+   "maxSpeed": 50,
+   "stops": [
+    {
+     "stop": "Bellows Falls Rutland",
+     "stopTime": "14:45"
+    }
+   ]
+  },
+  {
+   "name": "551dh",
+   "entrance": "Bellows Falls Rutland",
+   "exit": "Walpole Yard",
+   "startTime": "551",
+   "consist": "551",
+   "maxSpeed": 50,
+   "stops": [
+    {
+     "stop": "Bellows Falls Rutland",
+     "stopTime": "10:50"
+    }
+   ]
+  },
+  {
+   "name": "554",
+   "entrance": "Bellows Falls Rutland",
+   "exit": "Walpole",
+   "startTime": "554dh",
+   "consist": "551",
+   "maxSpeed": 50,
+   "stops": [
+    {
+     "stop": "Bellows Falls Rutland",
+     "stopTime": "15:00"
+    }
+   ]
+  }
+ ],
+ "background": "daysky.ace",
+ "sounds": {
+  "gp38": [
+   {
+    "minThrottle": 0,
+    "maxThrottle": 0.16,
+    "volume": 1,
+    "wavFile": "GP38/SOUND/x_gp_power_cruise1.wav"
+   },
+   {
+    "minThrottle": 0.16,
+    "maxThrottle": 0.33,
+    "volume": 1,
+    "wavFile": "GP38/SOUND/x_gp_power_cruise2.wav"
+   },
+   {
+    "minThrottle": 0.33,
+    "maxThrottle": 0.5,
+    "volume": 1,
+    "wavFile": "GP38/SOUND/x_gp_power_cruise3.wav"
+   },
+   {
+    "minThrottle": 0.5,
+    "maxThrottle": 0.66,
+    "volume": 1,
+    "wavFile": "GP38/SOUND/x_gp_power_cruise4.wav"
+   },
+   {
+    "minThrottle": 0.66,
+    "maxThrottle": 0.84,
+    "volume": 1,
+    "wavFile": "GP38/SOUND/x_gp_power_cruise5.wav"
+   },
+   {
+    "minThrottle": 0.84,
+    "maxThrottle": 1,
+    "volume": 1,
+    "wavFile": "GP38/SOUND/x_gp_power_cruise6.wav"
+   }
+  ],
+  "als4": [
+   {
+    "minThrottle": 0,
+    "maxThrottle": 0.16,
+    "volume": 1,
+    "wavFile": "Common.Snd/als4/x_Alco_power_cruise1.wav"
+   },
+   {
+    "minThrottle": 0.16,
+    "maxThrottle": 0.33,
+    "volume": 1,
+    "wavFile": "Common.Snd/als4/x_Alco_power_cruise2.wav"
+   },
+   {
+    "minThrottle": 0.33,
+    "maxThrottle": 0.5,
+    "volume": 1,
+    "wavFile": "Common.Snd/als4/x_Alco_power_cruise3.wav"
+   },
+   {
+    "minThrottle": 0.5,
+    "maxThrottle": 0.66,
+    "volume": 1,
+    "wavFile": "Common.Snd/als4/x_Alco_power_cruise4.wav"
+   },
+   {
+    "minThrottle": 0.66,
+    "maxThrottle": 0.84,
+    "volume": 1,
+    "wavFile": "Common.Snd/als4/x_Alco_power_cruise5.wav"
+   },
+   {
+    "minThrottle": 0.84,
+    "maxThrottle": 1,
+    "volume": 1,
+    "wavFile": "Common.Snd/als4/x_Alco_power_cruise6.wav"
+   }
+  ],
+  "rdc": [
+   {
+    "minThrottle": 0,
+    "maxThrottle": 0.06,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise0.wav"
+   },
+   {
+    "minThrottle": 0.06,
+    "maxThrottle": 0.18,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise1.wav"
+   },
+   {
+    "minThrottle": 0.18,
+    "maxThrottle": 0.3,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise2.wav"
+   },
+   {
+    "minThrottle": 0.3,
+    "maxThrottle": 0.42,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise3.wav"
+   },
+   {
+    "minThrottle": 0.42,
+    "maxThrottle": 0.54,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise4.wav"
+   },
+   {
+    "minThrottle": 0.54,
+    "maxThrottle": 0.66,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise5.wav"
+   },
+   {
+    "minThrottle": 0.66,
+    "maxThrottle": 0.78,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise6.wav"
+   },
+   {
+    "minThrottle": 0.78,
+    "maxThrottle": 0.9,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise7.wav"
+   },
+   {
+    "minThrottle": 0.9,
+    "maxThrottle": 1,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise8.wav"
+   }
+  ],
+  "rodloco2": [
+   {
+    "minSpeed1": 0.5,
+    "maxSpeed1": 1.2,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_150.wav"
+   },
+   {
+    "minSpeed1": 1.2,
+    "maxSpeed1": 2,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_100d.wav"
+   },
+   {
+    "minSpeed1": 2,
+    "maxSpeed1": 3.15,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_075d.wav"
+   },
+   {
+    "minSpeed1": 3.15,
+    "maxSpeed1": 4.25,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_050d.wav"
+   },
+   {
+    "minSpeed1": 4.25,
+    "maxSpeed1": 5,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_037d.wav"
+   },
+   {
+    "minSpeed1": 5,
+    "maxSpeed1": 5.8,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_032e.wav"
+   },
+   {
+    "minSpeed1": 5.8,
+    "maxSpeed1": 6.6,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_027e.wav"
+   },
+   {
+    "minSpeed1": 6.6,
+    "maxSpeed1": 8,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_024f.wav"
+   },
+   {
+    "minSpeed1": 8,
+    "maxSpeed1": 9.25,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_020g.wav"
+   },
+   {
+    "minSpeed1": 9.25,
+    "maxSpeed1": 11,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_017e.wav"
+   },
+   {
+    "minSpeed1": 11,
+    "maxSpeed1": 13,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_015g.wav"
+   },
+   {
+    "minSpeed1": 13,
+    "maxSpeed1": 16,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_012e.wav"
+   },
+   {
+    "minSpeed1": 16,
+    "maxSpeed1": 18,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_010g.wav"
+   },
+   {
+    "minSpeed1": 18,
+    "maxSpeed1": 24,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_009g.wav"
+   },
+   {
+    "minSpeed1": 24,
+    "maxSpeed1": 32,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_007h.wav"
+   },
+   {
+    "minSpeed1": 32,
+    "maxSpeed1": 100,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_005f.wav"
+   }
+  ],
+  "cliclak": [
+   {
+    "minSpeed": 1.5,
+    "maxSpeed": 4,
+    "volume": 1,
+    "wavFile": "NH_WB/Sound/cliclak0_5.wav"
+   },
+   {
+    "minSpeed": 4,
+    "maxSpeed": 7.5,
+    "volume": 1,
+    "wavFile": "NH_WB/Sound/cliclak1.wav"
+   },
+   {
+    "minSpeed": 7.5,
+    "maxSpeed": 9,
+    "volume": 1,
+    "wavFile": "NH_WB/Sound/cliclak2.wav"
+   },
+   {
+    "minSpeed": 9,
+    "maxSpeed": 13,
+    "volume": 1,
+    "wavFile": "NH_WB/Sound/cliclak3.wav"
+   },
+   {
+    "minSpeed": 13,
+    "maxSpeed": 17,
+    "volume": 1,
+    "wavFile": "NH_WB/Sound/cliclak4.wav"
+   },
+   {
+    "minSpeed": 17,
+    "maxSpeed": 20,
+    "volume": 1,
+    "wavFile": "NH_WB/Sound/cliclak5.wav"
+   },
+   {
+    "minSpeed": 20,
+    "maxSpeed": 25,
+    "volume": 1,
+    "wavFile": "NH_WB/Sound/cliclak6.wav"
+   },
+   {
+    "minSpeed": 25,
+    "maxSpeed": 100,
+    "volume": 1,
+    "wavFile": "NH_WB/Sound/cliclak7.wav"
+   }
+  ]
+ },
+ "equipment": {
+  "cv703": {
+   "directory": "CV_2-10-4_T3a",
+   "shape": "CV_703_T3a.S",
+   "length": 18.12,
+   "sound": "rodloco2",
+   "lights": [
+    {
+     "x": 0,
+     "y": 3.32,
+     "z": 8.56,
+     "radius": 0.23,
+     "unit": 2,
+     "color": "ffddaa"
+    }
+   ]
+  },
+  "cv703tender": {
+   "directory": "CV_2-10-4_T3a",
+   "shape": "CV_703_T3a_Tender.S",
+   "length": 10.68
+  },
+  "cv4008van": {
+   "directory": "CV_Vans",
+   "shape": "CV_4008.s",
+   "length": 11.26
+  },
+  "bm6154rdc": {
+   "directory": "B&M_RDCs",
+   "shape": "B&M-RDC1_6154.s",
+   "length": 24.36,
+   "sound": "rdc",
+   "lights": [
+    {
+     "x": 0.09,
+     "y": 3.71,
+     "z": 11.9,
+     "radius": 0.15,
+     "unit": 2,
+     "color": "ffddaa"
+    },
+    {
+     "x": -0.09,
+     "y": 3.71,
+     "z": 11.9,
+     "radius": 0.15,
+     "unit": 2,
+     "color": "ffddaa"
+    },
+    {
+     "x": -1.13,
+     "y": 3.2,
+     "z": -11.9,
+     "radius": 0.05,
+     "unit": 3,
+     "color": "ff0000"
+    },
+    {
+     "x": 1.13,
+     "y": 3.2,
+     "z": -11.9,
+     "radius": 0.05,
+     "unit": 3,
+     "color": "ff0000"
+    }
+   ]
+  },
+  "pinetreestate": {
+   "directory": "NHStateSleepers",
+   "shape": "PineTreeState.s",
+   "length": 26.12,
+   "lights": [
+    {
+     "x": -1.19,
+     "y": 3.62,
+     "z": -12.69,
+     "radius": 0.05,
+     "unit": 3,
+     "color": "ff0000"
+    },
+    {
+     "x": 1.19,
+     "y": 3.62,
+     "z": -12.69,
+     "radius": 0.05,
+     "unit": 3,
+     "color": "ff0000"
+    }
+   ]
+  },
+  "bm3112he": {
+   "directory": "BMHEADEND",
+   "shape": "ZHE3112.s",
+   "length": 19.498
+  },
+  "nh5307he": {
+   "directory": "NHHE",
+   "shape": "ZHE5307.s",
+   "length": 19.498
+  },
+  "bm3201he": {
+   "directory": "BMHEADEND",
+   "shape": "ZHE3201.s",
+   "length": 19.498
+  },
+  "bm3204he": {
+   "directory": "BMHEADEND",
+   "shape": "ZHE3204.s",
+   "length": 19.498
+  },
+  "bm4592pass": {
+   "directory": "BMPASS",
+   "shape": "ZAF4592.s",
+   "length": 25.5
+  },
+  "bm3801e7": {
+   "directory": "BM_E7_3801",
+   "shape": "BM-E7a-3801.s",
+   "length": 20.8,
+   "sound": "gp38",
+   "lights": [
+    {
+     "x": 0,
+     "y": 3.32,
+     "z": 9.92,
+     "radius": 0.23,
+     "unit": 2,
+     "color": "ffddaa"
+    }
+   ]
+  },
+  "milk": {
+   "directory": "milkcars",
+   "shape": "MaPaHeadend42.s",
+   "length": 16.964
+  },
+  "bm4585pass": {
+   "directory": "BMPASS",
+   "shape": "ZAF4585.s",
+   "length": 25.5
+  },
+  "nh8205pass": {
+   "directory": "ZTNHAF",
+   "shape": "ZAF8205.s",
+   "length": 25.5
+  },
+  "nh954pass": {
+   "directory": "NALW_NH_ZT",
+   "shape": "ZSS_954.s",
+   "length": 25.8,
+   "lights": [
+    {
+     "x": -1.375,
+     "y": 3.22,
+     "z": -12.604,
+     "radius": 0.05,
+     "unit": 3,
+     "color": "ff0000"
+    },
+    {
+     "x": 1.375,
+     "y": 3.22,
+     "z": -12.604,
+     "radius": 0.05,
+     "unit": 3,
+     "color": "ff0000"
+    }
+   ]
+  },
+  "stjlc280/stjlc38.eng": {
+   "directory": "stjlc280",
+   "shape": "stjlc38.s",
+   "length": 12.01,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "F8EAA6",
+     "x": 0,
+     "y": 3.08,
+     "z": 5.62,
+     "radius": 0.15
+    }
+   ],
+   "sound": "rodloco2"
+  },
+  "stjlc280/stjlc38t.wag": {
+   "directory": "stjlc280",
+   "shape": "stjlc38t.s",
+   "length": 9.48
+  },
+  "Rutland Reefer/R_389_BM_LD.wag": {
+   "directory": "Rutland Reefer",
+   "shape": "R_389_BM.s",
+   "length": 13.4,
+   "fashape": "parts_rev-389.s"
+  },
+  "UTLX_6K_55210/UTLX_6K_55210_ld.wag": {
+   "directory": "UTLX_6K_55210",
+   "shape": "UTLX_6K_55210.s",
+   "length": 9.39
+  },
+  "MILW_USRA_701017/MILW_USRA_701017.wag": {
+   "directory": "MILW_USRA_701017",
+   "shape": "MILW_USRA_701017.s",
+   "length": 13.45,
+   "fashape": "usra_ss_50xm_parts.s"
+  },
+  "CNR_7206a/CNR_7206.wag": {
+   "directory": "CNR_7206a",
+   "shape": "CNR_7206.s",
+   "length": 19.612
+  },
+  "stjlc70tonners/stjlc47ge70tonner.eng": {
+   "directory": "stjlc70tonners",
+   "shape": "stjlc47ge70tonner.s",
+   "length": 11.14,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffffff",
+     "x": 0,
+     "y": 3.28,
+     "z": 4.45,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ffffff",
+     "x": 0,
+     "y": 3.85,
+     "z": -4.275,
+     "radius": 0.06
+    }
+   ],
+   "sound": "als4"
+  },
+  "stjlc70tonners/stjlc49ge70tonner.eng": {
+   "directory": "stjlc70tonners",
+   "shape": "stjlc49ge70tonner.s",
+   "length": 11.14,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ffffff",
+     "x": 0,
+     "y": 3.28,
+     "z": 4.45,
+     "radius": 0.06
+    }
+   ]
+  },
+  "PRR_X29_571777/PRR_x29_571777.wag": {
+   "directory": "PRR_X29_571777",
+   "shape": "PRR_x29_571777.s",
+   "length": 13.45,
+   "fashape": "X29_parts3.s"
+  },
+  "LV_Cars3/DL&W_50t_hop_loaded.wag": {
+   "directory": "LV_Cars3",
+   "shape": "DL&W_50t_hop_loaded.s",
+   "length": 10.8
+  },
+  "3DT_F7_BM4266/AUnitSkin_BM_4266.eng": {
+   "directory": "3DT_F7_BM4266",
+   "shape": "AUnitSkin_BM_4266.s",
+   "length": 15.1488,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "f9ec95",
+     "x": 0,
+     "y": 3.3,
+     "z": 7.22,
+     "radius": 0.15
+    }
+   ],
+   "sound": "gp38"
+  },
+  "BM_FT_4213/BM4213bs.eng": {
+   "directory": "BM_FT_4213",
+   "shape": "BM4213bs.s",
+   "length": 13.28,
+   "fashape": "FTa-coupler.s",
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ff0000",
+     "x": -1.06,
+     "y": 1.75,
+     "z": -7.17,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ff0000",
+     "x": 1.06,
+     "y": 1.75,
+     "z": -7.17,
+     "radius": 0.06
+    }
+   ],
+   "sound": "gp38"
+  },
+  "BM_FT_4213/BM4213a.eng": {
+   "directory": "BM_FT_4213",
+   "shape": "BM4213a.s",
+   "length": 14.58,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "FDCF53",
+     "x": 0,
+     "y": 3.302,
+     "z": 6.9,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "FDCF53",
+     "x": 0.14,
+     "y": 3.302,
+     "z": 6.9,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "FDCF53",
+     "x": -0.14,
+     "y": 3.302,
+     "z": 6.9,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "FDCF53",
+     "x": 0.067,
+     "y": 3.392,
+     "z": 6.9,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "FDCF53",
+     "x": -0.067,
+     "y": 3.392,
+     "z": 6.9,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "FDCF53",
+     "x": 0.067,
+     "y": 3.21,
+     "z": 6.9,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "FDCF53",
+     "x": -0.067,
+     "y": 3.21,
+     "z": 6.9,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ff0000",
+     "x": -1.06,
+     "y": 1.75,
+     "z": -7.17,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ff0000",
+     "x": 1.06,
+     "y": 1.75,
+     "z": -7.17,
+     "radius": 0.06
+    }
+   ],
+   "sound": "gp38"
+  },
+  "NYC_110952/NYC_110952.wag": {
+   "directory": "NYC_110952",
+   "shape": "NYC_110952.s",
+   "length": 13.46
+  },
+  "Tankcar_8k_GATC_T103/UTLX_78214_8k_MT.wag": {
+   "directory": "Tankcar_8k_GATC_T103",
+   "shape": "UTLX_78214.s",
+   "length": 11.69,
+   "fashape": "Hose.s"
+  },
+  "E_Hop/ERIE_Offset_CL.wag": {
+   "directory": "E_Hop",
+   "shape": "ERIE_Offset_CL.s",
+   "length": 11,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -5.4,
+     "radius": 0.06
+    }
+   ]
+  },
+  "East coast 40ft box car pack1/CNJ40ftb_23506.wag": {
+   "directory": "East coast 40ft box car pack1",
+   "shape": "CNJ40ftb_23506.s",
+   "length": 13.65,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -7,
+     "radius": 0.06
+    }
+   ]
+  },
+  "Midwest 40ft box car pack1/XM1932_L&N17575.wag": {
+   "directory": "Midwest 40ft box car pack1",
+   "shape": "XM1932_L&N17575.s",
+   "length": 13.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "East coast 40ft box car pack1/LNE40ftb_8927.wag": {
+   "directory": "East coast 40ft box car pack1",
+   "shape": "LNE40ftb_8927.s",
+   "length": 13.65,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -7,
+     "radius": 0.06
+    }
+   ]
+  },
+  "34 foot Hopper/CO_Ribside_CL.wag": {
+   "directory": "34 foot Hopper",
+   "shape": "CO_Ribside_CL.s",
+   "length": 11,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -5.4,
+     "radius": 0.06
+    }
+   ]
+  },
+  "34 foot Hopper/BO_Offset_CL.wag": {
+   "directory": "34 foot Hopper",
+   "shape": "BO_Offset_CL.s",
+   "length": 11,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -5.4,
+     "radius": 0.06
+    }
+   ]
+  },
+  "BAR_1295/BAR_1295.wag": {
+   "directory": "BAR_1295",
+   "shape": "BAR_1295.s",
+   "length": 13.7
+  },
+  "Midwest 40ft box car pack1/XM1932_CEI66844.wag": {
+   "directory": "Midwest 40ft box car pack1",
+   "shape": "XM1932_CEI66844.s",
+   "length": 13.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "Midwest 40ft box car pack1/XM1932_CGW5325.wag": {
+   "directory": "Midwest 40ft box car pack1",
+   "shape": "XM1932_CGW5325.s",
+   "length": 13.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "Midwest 40ft box car pack1/XM1932_CMO22422.wag": {
+   "directory": "Midwest 40ft box car pack1",
+   "shape": "XM1932_CMO22422.s",
+   "length": 13.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "Midwest 40ft box car pack1/XM1932_CNW1555.wag": {
+   "directory": "Midwest 40ft box car pack1",
+   "shape": "XM1932_CNW1555.s",
+   "length": 13.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "CNDcpk02/CN_521072.wag": {
+   "directory": "CNDcpk02",
+   "shape": "CN_521072.s",
+   "length": 13.46
+  },
+  "CNDcpk02/CN_523641.wag": {
+   "directory": "CNDcpk02",
+   "shape": "CN_523641.s",
+   "length": 13.46
+  },
+  "CNDcpk02/CN_541929.wag": {
+   "directory": "CNDcpk02",
+   "shape": "CN_541929.s",
+   "length": 13.46
+  },
+  "NYC_290507/NYC_290507.wag": {
+   "directory": "NYC_290507",
+   "shape": "NYC_290507.s",
+   "length": 13.46
+  },
+  "Tankcar_8k_GATC_T103/NATX_752_8k_LD.wag": {
+   "directory": "Tankcar_8k_GATC_T103",
+   "shape": "NATX_752.s",
+   "length": 11.69,
+   "fashape": "Hose.s"
+  },
+  "Tankcar_8k_GATC_T103/GATX_54269_8k_MT.wag": {
+   "directory": "Tankcar_8k_GATC_T103",
+   "shape": "GATX_54269.s",
+   "length": 11.69,
+   "fashape": "Hose.s"
+  },
+  "Tankcar_8k_GATC_T103/TCX_2792_8k_MT.wag": {
+   "directory": "Tankcar_8k_GATC_T103",
+   "shape": "TCX_2792.s",
+   "length": 11.69,
+   "fashape": "Hose.s"
+  },
+  "Tankcar_8k_GATC_T103/GATX_22526_8k_MT.wag": {
+   "directory": "Tankcar_8k_GATC_T103",
+   "shape": "GATX_22526.s",
+   "length": 11.69,
+   "fashape": "Hose.s"
+  },
+  "East coast 40ft box car pack1/WAB40ftb_7609.wag": {
+   "directory": "East coast 40ft box car pack1",
+   "shape": "WAB40ftb_7609.s",
+   "length": 13.65,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -7,
+     "radius": 0.06
+    }
+   ]
+  },
+  "NYC_277419/NYC_277419.wag": {
+   "directory": "NYC_277419",
+   "shape": "NYC_277419.s",
+   "length": 13.46
+  },
+  "Midwest 40ft box car pack1/XM1932_MP39075.wag": {
+   "directory": "Midwest 40ft box car pack1",
+   "shape": "XM1932_MP39075.s",
+   "length": 13.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "East coast 40ft box car pack1/MONON40ftb_843.wag": {
+   "directory": "East coast 40ft box car pack1",
+   "shape": "MONON40ftb_843.s",
+   "length": 13.65,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -7,
+     "radius": 0.06
+    }
+   ]
+  },
+  "East coast 40ft box car pack1/D&H40ftb_20244.wag": {
+   "directory": "East coast 40ft box car pack1",
+   "shape": "D&H40ftb_20244.s",
+   "length": 13.65,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -7,
+     "radius": 0.06
+    }
+   ]
+  },
+  "CNDcpk03/CN_146507.wag": {
+   "directory": "CNDcpk03",
+   "shape": "CN_146507.s",
+   "length": 17.23
+  },
+  "Midwest 40ft box car pack1/XM1932_MKT97772.wag": {
+   "directory": "Midwest 40ft box car pack1",
+   "shape": "XM1932_MKT97772.s",
+   "length": 13.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "E_Hop/Montour_Offset_CL.wag": {
+   "directory": "E_Hop",
+   "shape": "Montour_Offset_CL.s",
+   "length": 11,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -5.4,
+     "radius": 0.06
+    }
+   ]
+  },
+  "East coast 40ft box car pack1/SOO40ftb_137796.wag": {
+   "directory": "East coast 40ft box car pack1",
+   "shape": "SOO40ftb_137796.s",
+   "length": 13.65,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -7,
+     "radius": 0.06
+    }
+   ]
+  },
+  "Tankcar_8k_GATC_T103/GATX_2531_8k_LD.wag": {
+   "directory": "Tankcar_8k_GATC_T103",
+   "shape": "GATX_2531.s",
+   "length": 11.69,
+   "fashape": "Hose.s"
+  },
+  "East coast 40ft box car pack1/VGN40ftb_63226.wag": {
+   "directory": "East coast 40ft box car pack1",
+   "shape": "VGN40ftb_63226.s",
+   "length": 13.65,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -7,
+     "radius": 0.06
+    }
+   ]
+  },
+  "CNDcpk03/CN_661143.wag": {
+   "directory": "CNDcpk03",
+   "shape": "CN_661143.s",
+   "length": 16.36
+  },
+  "Midwest 40ft box car pack1/XM1932_CG3448.wag": {
+   "directory": "Midwest 40ft box car pack1",
+   "shape": "XM1932_CG3448.s",
+   "length": 13.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "BM_70451/BM_70451.wag": {
+   "directory": "BM_70451",
+   "shape": "BM_70451.s",
+   "length": 13.4
+  },
+  "WAB_HM_36561/WAB_HM_36561_LD.wag": {
+   "directory": "WAB_HM_36561",
+   "shape": "WAB_HM_36561.s",
+   "length": 10.9,
+   "fashape": "2B-H-Coal.s"
+  },
+  "MW_Hop/WABASH_Offset_CL.wag": {
+   "directory": "MW_Hop",
+   "shape": "WABASH_Offset_CL.s",
+   "length": 11,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -5.4,
+     "radius": 0.06
+    }
+   ]
+  },
+  "BM_C17/BM_C17.wag": {
+   "directory": "BM_C17",
+   "shape": "BM_C17.s",
+   "length": 10.55,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "BM_RS3_1517/BM_RS3_1517.eng": {
+   "directory": "BM_RS3_1517",
+   "shape": "BM_RS3_1517.s",
+   "length": 16.15,
+   "fashape": "Horn_3.s",
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffffff",
+     "x": 0,
+     "y": 3.2,
+     "z": 7.38,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ffe289",
+     "x": 0,
+     "y": 3.2,
+     "z": -7.35,
+     "radius": 0.06
+    }
+   ],
+   "sound": "als4"
+  },
+  "BM_70262/BM_70262.wag": {
+   "directory": "BM_70262",
+   "shape": "BM_70262.s",
+   "length": 13.4
+  },
+  "NYC_38681/NYC_38681.wag": {
+   "directory": "NYC_38681",
+   "shape": "NYC_38681.s",
+   "length": 13.46
+  },
+  "34 foot Hopper/PRR_50t_Blk_CL.wag": {
+   "directory": "34 foot Hopper",
+   "shape": "PRR_50t_Blk_CL.s",
+   "length": 11,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -5.4,
+     "radius": 0.06
+    }
+   ]
+  },
+  "Tankcar_8k_GATC_T103/GATX_2566_8k_LD.wag": {
+   "directory": "Tankcar_8k_GATC_T103",
+   "shape": "GATX_2566.s",
+   "length": 11.69,
+   "fashape": "Hose.s"
+  },
+  "Tankcar_8k_GATC_T103/UTLX_78214_8k_LD.wag": {
+   "directory": "Tankcar_8k_GATC_T103",
+   "shape": "UTLX_78214.s",
+   "length": 11.69,
+   "fashape": "Hose.s"
+  },
+  "BM_GP7_1565/BM_GP7_1565.eng": {
+   "directory": "BM_GP7_1565",
+   "shape": "BM_GP7_1565.s",
+   "length": 16.75,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "color": "FFFFFF",
+     "x": 0,
+     "y": 4.2,
+     "z": 7.38,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "color": "FFFFFF",
+     "x": 0,
+     "y": 3.94,
+     "z": 7.38,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "color": "FFFFFF",
+     "x": 0,
+     "y": 4.22,
+     "z": -7.24,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "color": "FFFFFF",
+     "x": 0,
+     "y": 3.94,
+     "z": -7.24,
+     "radius": 0.06
+    }
+   ]
+  },
+  "Rutland201/rutland201.eng": {
+   "directory": "Rutland201",
+   "shape": "rutland201.s",
+   "length": 16.76,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffffff",
+     "x": 0,
+     "y": 3.26,
+     "z": 7.38,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffffff",
+     "x": -0.017,
+     "y": 3.26,
+     "z": -7.45,
+     "radius": 0.15
+    }
+   ],
+   "sound": "als4"
+  },
+  "RUT_Boxes/RUT_8018.wag": {
+   "directory": "RUT_Boxes",
+   "shape": "RUT_8018.s",
+   "length": 13.46
+  },
+  "34 foot Hopper/PRR_50t_Red_CL.wag": {
+   "directory": "34 foot Hopper",
+   "shape": "PRR_50t_Red_CL.s",
+   "length": 11,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -5.4,
+     "radius": 0.06
+    }
+   ]
+  },
+  "CNDcpk02/CN_478925.wag": {
+   "directory": "CNDcpk02",
+   "shape": "CN_478925.s",
+   "length": 13.46
+  },
+  "Rutland_Vans/Rutland_35.wag": {
+   "directory": "Rutland_Vans",
+   "shape": "Rutland_35.s",
+   "length": 11.4162
+  }
+ },
+ "consists": {
+  "73": [
+   "bm3801e7",
+   "bm3112he",
+   "nh5307he",
+   "bm3201he",
+   "bm3204he",
+   "bm4592pass",
+   "pinetreestate"
+  ],
+  "74": [
+   "bm3801e7",
+   "bm3204he",
+   "bm3201he",
+   "bm3112he",
+   "bm4585pass",
+   "bm4592pass",
+   "nh8205pass",
+   "nh954pass"
+  ],
+  "75": [
+   "bm6154rdc",
+   "bm6154rdc"
+  ],
+  "78": [
+   "bm3801e7",
+   "milk",
+   "bm3204he",
+   "bm3112he",
+   "bm4585pass",
+   "nh8205pass"
+  ],
+  "551": [
+   "bm6154rdc"
+  ],
+  "cv430": [
+   "cv703",
+   "cv703tender",
+   "NYC_110952/NYC_110952.wag",
+   "Tankcar_8k_GATC_T103/UTLX_78214_8k_MT.wag",
+   "E_Hop/ERIE_Offset_CL.wag",
+   "East coast 40ft box car pack1/CNJ40ftb_23506.wag",
+   "Midwest 40ft box car pack1/XM1932_L&N17575.wag",
+   "East coast 40ft box car pack1/LNE40ftb_8927.wag",
+   "34 foot Hopper/CO_Ribside_CL.wag",
+   "34 foot Hopper/BO_Offset_CL.wag",
+   "BAR_1295/BAR_1295.wag",
+   "Midwest 40ft box car pack1/XM1932_CEI66844.wag",
+   "Midwest 40ft box car pack1/XM1932_CGW5325.wag",
+   "Midwest 40ft box car pack1/XM1932_CMO22422.wag",
+   "East coast 40ft box car pack1/CNJ40ftb_23506.wag",
+   "Midwest 40ft box car pack1/XM1932_CNW1555.wag",
+   "CNDcpk02/CN_521072.wag",
+   "CNDcpk02/CN_523641.wag",
+   "CNDcpk02/CN_541929.wag",
+   "NYC_290507/NYC_290507.wag",
+   "Tankcar_8k_GATC_T103/NATX_752_8k_LD.wag",
+   "Tankcar_8k_GATC_T103/NATX_752_8k_LD.wag",
+   "Tankcar_8k_GATC_T103/GATX_54269_8k_MT.wag",
+   "Tankcar_8k_GATC_T103/TCX_2792_8k_MT.wag",
+   "Tankcar_8k_GATC_T103/GATX_22526_8k_MT.wag",
+   "East coast 40ft box car pack1/WAB40ftb_7609.wag",
+   "NYC_277419/NYC_277419.wag",
+   "Midwest 40ft box car pack1/XM1932_MP39075.wag",
+   "East coast 40ft box car pack1/MONON40ftb_843.wag",
+   "East coast 40ft box car pack1/D&H40ftb_20244.wag",
+   "CNDcpk03/CN_146507.wag",
+   "Midwest 40ft box car pack1/XM1932_MKT97772.wag",
+   "E_Hop/Montour_Offset_CL.wag",
+   "E_Hop/Montour_Offset_CL.wag",
+   "E_Hop/Montour_Offset_CL.wag",
+   "Midwest 40ft box car pack1/XM1932_CMO22422.wag",
+   "East coast 40ft box car pack1/SOO40ftb_137796.wag",
+   "East coast 40ft box car pack1/SOO40ftb_137796.wag",
+   "Tankcar_8k_GATC_T103/GATX_2531_8k_LD.wag",
+   "East coast 40ft box car pack1/VGN40ftb_63226.wag",
+   "East coast 40ft box car pack1/WAB40ftb_7609.wag",
+   "CNDcpk03/CN_661143.wag",
+   "Midwest 40ft box car pack1/XM1932_CG3448.wag",
+   "Midwest 40ft box car pack1/XM1932_CEI66844.wag",
+   "BM_70451/BM_70451.wag",
+   "Midwest 40ft box car pack1/XM1932_L&N17575.wag",
+   "WAB_HM_36561/WAB_HM_36561_LD.wag",
+   "MW_Hop/WABASH_Offset_CL.wag",
+   "cv4008van"
+  ],
+  "ConnRiv_BM_SJ-1": [
+   "BM_RS3_1517/BM_RS3_1517.eng",
+   "^BM_FT_4213/BM4213bs.eng",
+   "^BM_FT_4213/BM4213a.eng",
+   "NYC_110952/NYC_110952.wag",
+   "Tankcar_8k_GATC_T103/UTLX_78214_8k_MT.wag",
+   "E_Hop/ERIE_Offset_CL.wag",
+   "East coast 40ft box car pack1/CNJ40ftb_23506.wag",
+   "Midwest 40ft box car pack1/XM1932_L&N17575.wag",
+   "East coast 40ft box car pack1/LNE40ftb_8927.wag",
+   "34 foot Hopper/CO_Ribside_CL.wag",
+   "34 foot Hopper/BO_Offset_CL.wag",
+   "BAR_1295/BAR_1295.wag",
+   "Midwest 40ft box car pack1/XM1932_CEI66844.wag",
+   "Midwest 40ft box car pack1/XM1932_CGW5325.wag",
+   "Midwest 40ft box car pack1/XM1932_CMO22422.wag",
+   "East coast 40ft box car pack1/CNJ40ftb_23506.wag",
+   "Midwest 40ft box car pack1/XM1932_CNW1555.wag",
+   "CNDcpk02/CN_521072.wag",
+   "CNDcpk02/CN_523641.wag",
+   "CNDcpk02/CN_541929.wag",
+   "NYC_290507/NYC_290507.wag",
+   "Tankcar_8k_GATC_T103/NATX_752_8k_LD.wag",
+   "Tankcar_8k_GATC_T103/NATX_752_8k_LD.wag",
+   "Tankcar_8k_GATC_T103/GATX_54269_8k_MT.wag",
+   "Tankcar_8k_GATC_T103/TCX_2792_8k_MT.wag",
+   "Tankcar_8k_GATC_T103/GATX_22526_8k_MT.wag",
+   "East coast 40ft box car pack1/WAB40ftb_7609.wag",
+   "NYC_277419/NYC_277419.wag",
+   "Midwest 40ft box car pack1/XM1932_MP39075.wag",
+   "East coast 40ft box car pack1/MONON40ftb_843.wag",
+   "East coast 40ft box car pack1/D&H40ftb_20244.wag",
+   "CNDcpk03/CN_146507.wag",
+   "Midwest 40ft box car pack1/XM1932_MKT97772.wag",
+   "E_Hop/Montour_Offset_CL.wag",
+   "E_Hop/Montour_Offset_CL.wag",
+   "E_Hop/Montour_Offset_CL.wag",
+   "Midwest 40ft box car pack1/XM1932_CMO22422.wag",
+   "East coast 40ft box car pack1/SOO40ftb_137796.wag",
+   "East coast 40ft box car pack1/SOO40ftb_137796.wag",
+   "Tankcar_8k_GATC_T103/GATX_2531_8k_LD.wag",
+   "East coast 40ft box car pack1/VGN40ftb_63226.wag",
+   "East coast 40ft box car pack1/WAB40ftb_7609.wag",
+   "CNDcpk03/CN_661143.wag",
+   "Midwest 40ft box car pack1/XM1932_CG3448.wag",
+   "Midwest 40ft box car pack1/XM1932_CEI66844.wag",
+   "BM_70451/BM_70451.wag",
+   "Midwest 40ft box car pack1/XM1932_L&N17575.wag",
+   "WAB_HM_36561/WAB_HM_36561_LD.wag",
+   "MW_Hop/WABASH_Offset_CL.wag",
+   "MW_Hop/WABASH_Offset_CL.wag",
+   "BM_C17/BM_C17.wag"
+  ],
+  "B&M_EJ-1": [
+   "BM_RS3_1517/BM_RS3_1517.eng",
+   "^BM_GP7_1565/BM_GP7_1565.eng",
+   "^BM_FT_4213/BM4213bs.eng",
+   "^BM_FT_4213/BM4213a.eng",
+   "BM_70262/BM_70262.wag",
+   "NYC_38681/NYC_38681.wag",
+   "34 foot Hopper/PRR_50t_Blk_CL.wag",
+   "East coast 40ft box car pack1/WAB40ftb_7609.wag",
+   "Tankcar_8k_GATC_T103/GATX_2566_8k_LD.wag",
+   "Tankcar_8k_GATC_T103/UTLX_78214_8k_LD.wag",
+   "BM_70451/BM_70451.wag",
+   "NYC_110952/NYC_110952.wag",
+   "Tankcar_8k_GATC_T103/UTLX_78214_8k_MT.wag",
+   "E_Hop/ERIE_Offset_CL.wag",
+   "East coast 40ft box car pack1/CNJ40ftb_23506.wag",
+   "Midwest 40ft box car pack1/XM1932_L&N17575.wag",
+   "East coast 40ft box car pack1/LNE40ftb_8927.wag",
+   "34 foot Hopper/CO_Ribside_CL.wag",
+   "34 foot Hopper/BO_Offset_CL.wag",
+   "BAR_1295/BAR_1295.wag",
+   "Midwest 40ft box car pack1/XM1932_CEI66844.wag",
+   "Midwest 40ft box car pack1/XM1932_CGW5325.wag",
+   "Midwest 40ft box car pack1/XM1932_CMO22422.wag",
+   "East coast 40ft box car pack1/CNJ40ftb_23506.wag",
+   "Midwest 40ft box car pack1/XM1932_CNW1555.wag",
+   "CNDcpk02/CN_521072.wag",
+   "CNDcpk02/CN_523641.wag",
+   "CNDcpk02/CN_541929.wag",
+   "NYC_290507/NYC_290507.wag",
+   "Tankcar_8k_GATC_T103/NATX_752_8k_LD.wag",
+   "Tankcar_8k_GATC_T103/NATX_752_8k_LD.wag",
+   "Tankcar_8k_GATC_T103/GATX_54269_8k_MT.wag",
+   "Tankcar_8k_GATC_T103/TCX_2792_8k_MT.wag",
+   "Tankcar_8k_GATC_T103/GATX_22526_8k_MT.wag",
+   "East coast 40ft box car pack1/WAB40ftb_7609.wag",
+   "NYC_277419/NYC_277419.wag",
+   "Midwest 40ft box car pack1/XM1932_MP39075.wag",
+   "East coast 40ft box car pack1/MONON40ftb_843.wag",
+   "East coast 40ft box car pack1/D&H40ftb_20244.wag",
+   "CNDcpk03/CN_146507.wag",
+   "Midwest 40ft box car pack1/XM1932_MKT97772.wag",
+   "E_Hop/Montour_Offset_CL.wag",
+   "E_Hop/Montour_Offset_CL.wag",
+   "E_Hop/Montour_Offset_CL.wag",
+   "Midwest 40ft box car pack1/XM1932_CMO22422.wag",
+   "East coast 40ft box car pack1/SOO40ftb_137796.wag",
+   "East coast 40ft box car pack1/SOO40ftb_137796.wag",
+   "Tankcar_8k_GATC_T103/GATX_2531_8k_LD.wag",
+   "East coast 40ft box car pack1/VGN40ftb_63226.wag",
+   "East coast 40ft box car pack1/WAB40ftb_7609.wag",
+   "CNDcpk03/CN_661143.wag",
+   "Midwest 40ft box car pack1/XM1932_CG3448.wag",
+   "Midwest 40ft box car pack1/XM1932_CEI66844.wag",
+   "BM_70451/BM_70451.wag",
+   "Midwest 40ft box car pack1/XM1932_L&N17575.wag",
+   "WAB_HM_36561/WAB_HM_36561_LD.wag",
+   "MW_Hop/WABASH_Offset_CL.wag",
+   "BM_C17/BM_C17.wag"
+  ],
+  "r165": [
+   "Rutland201/rutland201.eng",
+   "bm3112he",
+   "bm4585pass"
+  ],
+  "ConnRiv_RUT_RX-2": [
+   "Rutland201/rutland201.eng",
+   "RUT_Boxes/RUT_8018.wag",
+   "34 foot Hopper/PRR_50t_Red_CL.wag",
+   "E_Hop/ERIE_Offset_CL.wag",
+   "CNDcpk02/CN_478925.wag",
+   "Rutland Reefer/R_389_BM_LD.wag",
+   "Rutland_Vans/Rutland_35.wag"
+  ]
+ },
+ "blockSheetColumns": [
+  "Northbound",
+  "Southbound"
+ ],
+ "tdbFile": "ConnRiv.tdb"
+}

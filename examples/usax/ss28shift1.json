@@ -1,0 +1,3763 @@
+{
+ "centerTX": -10945,
+ "centerTZ": 14375,
+ "centerU": -27461.57323967694,
+ "centerV": 2111.7132883845384,
+ "scale": 3.0640230258282974,
+ "mapObjects": [
+  {
+   "type": "camera",
+   "u": -27212.33400412284,
+   "v": 2261.879738376776,
+   "y": 4.675,
+   "building": {
+    "shape": "ss28tower.s",
+    "y": -1,
+    "distance": 1.6
+   },
+   "levers": {
+    "y": 3.2,
+    "distance": 2.1,
+    "rotation": 180
+   },
+   "modelBoard": {
+    "width": 2,
+    "height": 0.71,
+    "distance": 2.2,
+    "vOffset": 0.3,
+    "image": "ss28modelboard.ace",
+    "lights": [
+     {
+      "trackCircuit": "3ap",
+      "x": 0.895,
+      "y": 0.06,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "3ap",
+      "x": 0.82,
+      "y": 0.06,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "3a",
+      "x": 0.668,
+      "y": 0.06,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "3a",
+      "x": 0.518,
+      "y": 0.06,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "3b",
+      "x": 0.256,
+      "y": 0.06,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "3b",
+      "x": 0.066,
+      "y": 0.06,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "3b",
+      "x": -0.059,
+      "y": 0.06,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "3b",
+      "x": -0.311,
+      "y": 0.06,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "3c",
+      "x": -0.516,
+      "y": 0.06,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "3c",
+      "x": -0.592,
+      "y": 0.06,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "1ap",
+      "x": 0.895,
+      "y": -0.002,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "1ap",
+      "x": 0.82,
+      "y": -0.002,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "1a",
+      "x": 0.668,
+      "y": -0.002,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "1a",
+      "x": 0.518,
+      "y": -0.002,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "1b",
+      "x": 0.324,
+      "y": -0.002,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "1b",
+      "x": -0.389,
+      "y": -0.002,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "1c",
+      "x": -0.518,
+      "y": -0.002,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "1c",
+      "x": -0.594,
+      "y": -0.002,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "2ap",
+      "x": -0.863,
+      "y": -0.065,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "2ap",
+      "x": -0.787,
+      "y": -0.065,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "2a",
+      "x": -0.666,
+      "y": -0.065,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "2a",
+      "x": -0.543,
+      "y": -0.065,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "2b",
+      "x": -0.389,
+      "y": -0.065,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "2b",
+      "x": 0.324,
+      "y": -0.065,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "2c",
+      "x": 0.475,
+      "y": -0.065,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "2c",
+      "x": 0.605,
+      "y": -0.065,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "4ap",
+      "x": -0.863,
+      "y": -0.127,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "4ap",
+      "x": -0.787,
+      "y": -0.127,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "4a",
+      "x": -0.666,
+      "y": -0.127,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "4a",
+      "x": -0.543,
+      "y": -0.127,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "4b",
+      "x": -0.459,
+      "y": -0.127,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "4b",
+      "x": -0.262,
+      "y": -0.127,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "4b",
+      "x": -0.158,
+      "y": -0.127,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "4b",
+      "x": 0.254,
+      "y": -0.127,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "4c",
+      "x": 0.477,
+      "y": -0.127,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "trackCircuit": "4c",
+      "x": 0.607,
+      "y": -0.127,
+      "color": "ff0000",
+      "radius": 0.009
+     },
+     {
+      "lever": 1,
+      "x": -0.516,
+      "y": -0.26,
+      "color": "00cc00",
+      "radius": 0.009
+     },
+     {
+      "lever": 1,
+      "x": -0.465,
+      "y": -0.26,
+      "color": "00cc00",
+      "radius": 0.009
+     },
+     {
+      "lever": 2,
+      "x": -0.516,
+      "y": -0.198,
+      "color": "00cc00",
+      "radius": 0.009
+     },
+     {
+      "lever": 2,
+      "x": -0.465,
+      "y": -0.198,
+      "color": "00cc00",
+      "radius": 0.009
+     },
+     {
+      "lever": 3,
+      "x": -0.516,
+      "y": 0.152,
+      "color": "00cc00",
+      "radius": 0.009
+     },
+     {
+      "lever": 3,
+      "x": -0.465,
+      "y": 0.152,
+      "color": "00cc00",
+      "radius": 0.009
+     },
+     {
+      "lever": 4,
+      "x": -0.516,
+      "y": 0.215,
+      "color": "00cc00",
+      "radius": 0.009
+     },
+     {
+      "lever": 4,
+      "x": -0.465,
+      "y": 0.215,
+      "color": "00cc00",
+      "radius": 0.009
+     },
+     {
+      "lever": 17,
+      "x": 0.441,
+      "y": -0.247,
+      "color": "00cc00",
+      "radius": 0.009
+     },
+     {
+      "lever": 17,
+      "x": 0.389,
+      "y": -0.247,
+      "color": "00cc00",
+      "radius": 0.009
+     },
+     {
+      "lever": 18,
+      "x": 0.441,
+      "y": -0.184,
+      "color": "00cc00",
+      "radius": 0.009
+     },
+     {
+      "lever": 18,
+      "x": 0.389,
+      "y": -0.184,
+      "color": "00cc00",
+      "radius": 0.009
+     },
+     {
+      "lever": 19,
+      "x": 0.434,
+      "y": 0.152,
+      "color": "00cc00",
+      "radius": 0.009
+     },
+     {
+      "lever": 19,
+      "x": 0.387,
+      "y": 0.152,
+      "color": "00cc00",
+      "radius": 0.009
+     },
+     {
+      "lever": 20,
+      "x": 0.434,
+      "y": 0.219,
+      "color": "00cc00",
+      "radius": 0.009
+     },
+     {
+      "lever": 20,
+      "x": 0.387,
+      "y": 0.219,
+      "color": "00cc00",
+      "radius": 0.009
+     }
+    ]
+   }
+  },
+  {
+   "type": "switch",
+   "u": -27358.01,
+   "v": 2148.554,
+   "lever": 5,
+   "lock": "6"
+  },
+  {
+   "type": "switch",
+   "u": -27309.69,
+   "v": 2184.471,
+   "lever": 5,
+   "lock": "6"
+  },
+  {
+   "type": "switch",
+   "u": -27292.706,
+   "v": 2195.032,
+   "lever": 7,
+   "lock": "8"
+  },
+  {
+   "type": "switch",
+   "u": -27244.386,
+   "v": 2230.95,
+   "lever": 7,
+   "lock": "8"
+  },
+  {
+   "type": "switch",
+   "u": -27159.465,
+   "v": 2283.756,
+   "lever": 9,
+   "lock": "10"
+  },
+  {
+   "type": "switch",
+   "u": -27111.145,
+   "v": 2319.673,
+   "lever": 9,
+   "lock": "10"
+  },
+  {
+   "type": "switch",
+   "u": -27365.907,
+   "v": 2161.254,
+   "lever": 11,
+   "lock": "12"
+  },
+  {
+   "type": "switch",
+   "u": -27312.322,
+   "v": 2188.704,
+   "lever": 11,
+   "lock": "12"
+  },
+  {
+   "type": "switch",
+   "u": -27227.401,
+   "v": 2241.511,
+   "lever": 13,
+   "lock": "14"
+  },
+  {
+   "type": "switch",
+   "u": -27173.817,
+   "v": 2268.9610000000002,
+   "lever": 13,
+   "lock": "14"
+  },
+  {
+   "type": "switch",
+   "u": -27156.833,
+   "v": 2279.523,
+   "lever": 15,
+   "lock": "16"
+  },
+  {
+   "type": "switch",
+   "u": -27103.248,
+   "v": 2306.973,
+   "lever": 15,
+   "lock": "16"
+  },
+  {
+   "type": "signal",
+   "u": -27442.93,
+   "v": 2095.7476,
+   "du": -0.8492007939082947,
+   "dv": -0.5280700821155484,
+   "lever": 1,
+   "direction": 1,
+   "lock": "calc",
+   "trackCircuit": "4b"
+  },
+  {
+   "type": "signal",
+   "u": -27445.563,
+   "v": 2099.9813,
+   "du": -0.849199392623925,
+   "dv": -0.5280723355442482,
+   "lever": 2,
+   "direction": 0,
+   "lock": "calc",
+   "trackCircuit": "2b"
+  },
+  {
+   "type": "signal",
+   "u": -27448.195,
+   "v": 2104.2145,
+   "du": -0.849199392623925,
+   "dv": -0.5280723355442482,
+   "lever": 3,
+   "direction": 0,
+   "lock": "calc",
+   "trackCircuit": "^1c"
+  },
+  {
+   "type": "signal",
+   "u": -27450.828,
+   "v": 2108.4474,
+   "du": -0.8492007939082947,
+   "dv": -0.5280700821155484,
+   "lever": 4,
+   "direction": 1,
+   "lock": "calc",
+   "trackCircuit": "^3c"
+  },
+  {
+   "type": "signal",
+   "u": -27018.328,
+   "v": 2359.7799999999997,
+   "du": 0.849199392623925,
+   "dv": 0.5280723355442482,
+   "lever": 17,
+   "direction": 1,
+   "lock": "calc",
+   "trackCircuit": "^4c"
+  },
+  {
+   "type": "signal",
+   "u": -27020.961,
+   "v": 2364.014,
+   "du": 0.849199392623925,
+   "dv": 0.5280723355442482,
+   "lever": 18,
+   "direction": 1,
+   "lock": "calc",
+   "trackCircuit": "^2c"
+  },
+  {
+   "type": "signal",
+   "u": -27023.593,
+   "v": 2368.247,
+   "du": 0.849199392623925,
+   "dv": 0.5280723355442482,
+   "lever": 19,
+   "direction": 1,
+   "lock": "calc",
+   "trackCircuit": "1b"
+  },
+  {
+   "type": "signal",
+   "u": -27026.225,
+   "v": 2372.48,
+   "du": 0.8492007939082947,
+   "dv": 0.5280700821155484,
+   "lever": 20,
+   "direction": 0,
+   "lock": "calc",
+   "trackCircuit": "3b"
+  },
+  {
+   "type": "location",
+   "u": -30760.6706,
+   "v": -36.6984,
+   "name": "3w",
+   "column": 0,
+   "track": "3"
+  },
+  {
+   "type": "location",
+   "u": -30760.0742,
+   "v": -41.6476,
+   "name": "1w",
+   "column": 0,
+   "track": "1"
+  },
+  {
+   "type": "location",
+   "u": -30759.4778,
+   "v": -46.5968,
+   "name": "2w",
+   "column": 0,
+   "track": "2"
+  },
+  {
+   "type": "location",
+   "u": -30758.8814,
+   "v": -51.546,
+   "name": "4w",
+   "column": 0,
+   "track": "4"
+  },
+  {
+   "type": "location",
+   "u": -28293.311,
+   "v": 1727.872,
+   "name": "4greenwich"
+  },
+  {
+   "type": "location",
+   "u": -28295.101,
+   "v": 1742.72,
+   "name": "3greenwich"
+  },
+  {
+   "type": "location",
+   "u": -26314.938,
+   "v": 2702.971,
+   "name": "3CosCob"
+  },
+  {
+   "type": "location",
+   "u": -26311.861,
+   "v": 2688.3360000000002,
+   "name": "4CosCob"
+  },
+  {
+   "type": "location",
+   "u": -22293.353,
+   "v": 4360.6,
+   "name": "4e",
+   "column": 1,
+   "track": "4"
+  },
+  {
+   "type": "location",
+   "u": -22296.681,
+   "v": 4364.312,
+   "name": "2e",
+   "column": 1,
+   "track": "2"
+  },
+  {
+   "type": "location",
+   "u": -22300.009,
+   "v": 4368.024,
+   "name": "1e",
+   "column": 1,
+   "track": "1"
+  },
+  {
+   "type": "location",
+   "u": -22303.337,
+   "v": 4371.736,
+   "name": "3e",
+   "column": 1,
+   "track": "3"
+  },
+  {
+   "type": "signal",
+   "u": -28195.82,
+   "v": 1754.69,
+   "du": 0.9928090755746594,
+   "dv": 0.11970856049836372,
+   "lever": null,
+   "direction": 0
+  },
+  {
+   "type": "signal",
+   "u": -28195.223,
+   "v": 1749.741,
+   "du": 0.9928087579137496,
+   "dv": 0.11971119500597194,
+   "lever": null,
+   "direction": 1
+  },
+  {
+   "type": "signal",
+   "u": -28393.189,
+   "v": 1720.851,
+   "du": -0.9928099549760591,
+   "dv": -0.11970126691240779,
+   "lever": null,
+   "direction": 0,
+   "trackCircuit": "2a"
+  },
+  {
+   "type": "signal",
+   "u": -28392.592,
+   "v": 1715.902,
+   "du": -0.9928090755746594,
+   "dv": -0.11970856049836372,
+   "lever": null,
+   "direction": 1,
+   "trackCircuit": "4a"
+  },
+  {
+   "type": "signal",
+   "u": -29635.671,
+   "v": 749.237,
+   "du": -0.5465151947918375,
+   "dv": -0.8374491876296972,
+   "lever": null,
+   "direction": 0,
+   "trackCircuit": "2ap"
+  },
+  {
+   "type": "signal",
+   "u": -29631.491,
+   "v": 746.511,
+   "du": -0.5465132297910115,
+   "dv": -0.8374504699762232,
+   "lever": null,
+   "direction": 1,
+   "trackCircuit": "4ap"
+  },
+  {
+   "type": "signal",
+   "u": -26409.72,
+   "v": 2667.757,
+   "du": -0.9785945168580268,
+   "dv": -0.20579789011407584,
+   "lever": null,
+   "direction": 0
+  },
+  {
+   "type": "signal",
+   "u": -26410.746,
+   "v": 2672.635,
+   "du": -0.9785945168580268,
+   "dv": -0.20579789011407584,
+   "lever": null,
+   "direction": 0
+  },
+  {
+   "type": "signal",
+   "u": -26217.079,
+   "v": 2723.551,
+   "du": 0.9785945168580268,
+   "dv": 0.20579789011407584,
+   "lever": null,
+   "direction": 1,
+   "trackCircuit": "3a"
+  },
+  {
+   "type": "signal",
+   "u": -26216.053,
+   "v": 2718.673,
+   "du": 0.9785945168580268,
+   "dv": 0.20579789011407584,
+   "lever": null,
+   "direction": 1,
+   "trackCircuit": "1a"
+  },
+  {
+   "type": "signal",
+   "u": -25553.431,
+   "v": 2847.477,
+   "du": 0.9994634725858875,
+   "dv": 0.03275312147809427,
+   "lever": null,
+   "direction": 1,
+   "trackCircuit": "3ap"
+  },
+  {
+   "type": "signal",
+   "u": -25553.268,
+   "v": 2842.494,
+   "du": 0.9994634725858875,
+   "dv": 0.03275312147809427,
+   "lever": null,
+   "direction": 1,
+   "trackCircuit": "1ap"
+  }
+ ],
+ "trains": [
+  {
+   "name": "361",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "07:01",
+   "consist": "nh361",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "209",
+   "entrance": "1e",
+   "exit": "3w",
+   "startTime": "07:12",
+   "consist": "nhwb8w",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "211",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "07:13",
+   "consist": "nhwb8w",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "3CosCob",
+     "stopTime": "07:21"
+    }
+   ]
+  },
+  {
+   "name": "169",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "07:19",
+   "consist": "nh169",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "363",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "07:21",
+   "consist": "nh363",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "206",
+   "entrance": "4w",
+   "exit": "4e",
+   "startTime": "07:24",
+   "consist": "nhwb3e",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "4greenwich",
+     "stopTime": "07:28"
+    }
+   ]
+  },
+  {
+   "name": "213",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "07:26",
+   "consist": "nhwb8w",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "225",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "07:30",
+   "consist": "nhwb10wc",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "3CosCob",
+     "stopTime": "07:40"
+    }
+   ]
+  },
+  {
+   "name": "215",
+   "entrance": "1e",
+   "exit": "3w",
+   "startTime": "07:32",
+   "consist": "nhwb10w",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "221",
+   "entrance": "1e",
+   "exit": "3w",
+   "startTime": "07:35",
+   "consist": "nhwb10w",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "64",
+   "entrance": "2w",
+   "exit": "2e",
+   "startTime": "07:39",
+   "consist": "nh64",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "349",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "07:40",
+   "consist": "nh349",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "208",
+   "entrance": "4w",
+   "exit": "4e",
+   "startTime": "07:43",
+   "consist": "nhwb3e",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "4greenwich",
+     "stopTime": "07:48"
+    }
+   ]
+  },
+  {
+   "name": "229",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "07:45",
+   "consist": "nhwb10w",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "3CosCob",
+     "stopTime": "07:53"
+    }
+   ]
+  },
+  {
+   "name": "365",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "07:51",
+   "consist": "nh363",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "233",
+   "entrance": "3e",
+   "exit": "1w",
+   "startTime": "07:55",
+   "consist": "nhwb10w",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "3CosCob",
+     "stopTime": "08:06"
+    }
+   ]
+  },
+  {
+   "name": "367",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "07:57",
+   "consist": "nh363",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "331",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "08:01",
+   "consist": "nhwb10wc",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "231",
+   "entrance": "1e",
+   "exit": "3w",
+   "startTime": "08:03",
+   "consist": "nhwb10w2c",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "235",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "08:04",
+   "consist": "nhwb10w",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "3CosCob",
+     "stopTime": "08:13"
+    }
+   ]
+  },
+  {
+   "name": "353",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "08:08",
+   "consist": "nh353",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "6",
+   "entrance": "2w",
+   "exit": "2e",
+   "startTime": "08:09",
+   "consist": "nh6",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "237",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "08:15",
+   "consist": "nhwb6w",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "333",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "08:23",
+   "consist": "nhwb8w",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "hn-2",
+   "entrance": "2w",
+   "exit": "2e",
+   "startTime": "08:24",
+   "consist": "nhgp9frt",
+   "maxSpeed": 45,
+   "randomDelay": null
+  },
+  {
+   "name": "210",
+   "entrance": "4w",
+   "exit": "4e",
+   "startTime": "08:24",
+   "consist": "nhwb3e",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "4greenwich",
+     "stopTime": "08:29"
+    }
+   ]
+  },
+  {
+   "name": "369",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "08:28",
+   "consist": "nh369",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "241",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "08:30",
+   "consist": "nhwb6w",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "3CosCob",
+     "stopTime": "08:38"
+    }
+   ]
+  },
+  {
+   "name": "8",
+   "entrance": "2w",
+   "exit": "2e",
+   "startTime": "08:39",
+   "consist": "nh8",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "67",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "08:40",
+   "consist": "nh67",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "140",
+   "entrance": "4w",
+   "exit": "4e",
+   "startTime": "08:45",
+   "consist": "nh140",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "351",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "08:47",
+   "consist": "nh351",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "212",
+   "entrance": "4w",
+   "exit": "4e",
+   "startTime": "08:49",
+   "consist": "nhwb3e",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "4greenwich",
+     "stopTime": "08:54"
+    }
+   ]
+  },
+  {
+   "name": "243",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "09:09",
+   "consist": "nhwb3w",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "371",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "09:15",
+   "consist": "nh371",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "364",
+   "entrance": "2w",
+   "exit": "2e",
+   "startTime": "09:19",
+   "consist": "nh364",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "373",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "09:34",
+   "consist": "nh373",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "216",
+   "entrance": "4w",
+   "exit": "4e",
+   "startTime": "09:36",
+   "consist": "nhwb3e",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "4greenwich",
+     "stopTime": "09:42"
+    }
+   ]
+  },
+  {
+   "name": "69",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "09:38",
+   "consist": "nh69",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "245",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "09:45",
+   "consist": "nhwb3w",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "3CosCob",
+     "stopTime": "09:53"
+    }
+   ]
+  },
+  {
+   "name": "218",
+   "entrance": "4w",
+   "exit": "4e",
+   "startTime": "09:49",
+   "consist": "nhwb3e",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "66",
+   "entrance": "2w",
+   "exit": "2e",
+   "startTime": "09:59",
+   "consist": "nh66",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "247",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "10:09",
+   "consist": "nhwb3w",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "ng-3",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "10:10",
+   "consist": "nhgp9frt",
+   "maxSpeed": 45,
+   "randomDelay": null
+  },
+  {
+   "name": "220",
+   "entrance": "4w",
+   "exit": "4e",
+   "startTime": "10:18",
+   "consist": "nhwb3e",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "4greenwich",
+     "stopTime": "10:23"
+    }
+   ]
+  },
+  {
+   "name": "381",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "10:26",
+   "consist": "nh381",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "249",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "10:30",
+   "consist": "nhwb3w",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "3CosCob",
+     "stopTime": "10:38"
+    }
+   ]
+  },
+  {
+   "name": "12",
+   "entrance": "2w",
+   "exit": "2e",
+   "startTime": "10:39",
+   "consist": "nh12",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "141",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "10:43",
+   "consist": "nh141",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "222",
+   "entrance": "4w",
+   "exit": "4e",
+   "startTime": "10:45",
+   "consist": "nhwb3e",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "4greenwich",
+     "stopTime": "10:50"
+    }
+   ]
+  },
+  {
+   "name": "251",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "11:09",
+   "consist": "nhwb3w",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "17",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "11:10",
+   "consist": "nh17",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "181",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "11:13",
+   "consist": "nh181",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "224",
+   "entrance": "4w",
+   "exit": "4e",
+   "startTime": "11:20",
+   "consist": "nhwb3e",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "4greenwich",
+     "stopTime": "11:25"
+    }
+   ]
+  },
+  {
+   "name": "253",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "11:30",
+   "consist": "nhwb3w",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "3CosCob",
+     "stopTime": "11:38"
+    }
+   ]
+  },
+  {
+   "name": "171",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "11:38",
+   "consist": "nh171",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "170",
+   "entrance": "2w",
+   "exit": "2e",
+   "startTime": "11:53",
+   "consist": "nh170",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "255",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "12:10",
+   "consist": "nhwb3w",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "226",
+   "entrance": "4w",
+   "exit": "4e",
+   "startTime": "12:16",
+   "consist": "nhwb3e",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "4greenwich",
+     "stopTime": "12:21"
+    }
+   ]
+  },
+  {
+   "name": "257",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "12:30",
+   "consist": "nhwb3w",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "3CosCob",
+     "stopTime": "12:38"
+    }
+   ]
+  },
+  {
+   "name": "9",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "12:35",
+   "consist": "nh9",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "50",
+   "entrance": "2w",
+   "exit": "2e",
+   "startTime": "13:09",
+   "consist": "nh50",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "228",
+   "entrance": "4w",
+   "exit": "4e",
+   "startTime": "13:15",
+   "consist": "nhwb3e",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "4greenwich",
+     "stopTime": "13:20"
+    }
+   ]
+  },
+  {
+   "name": "71",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "13:17",
+   "consist": "nh71",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "259",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "13:30",
+   "consist": "nhwb3w",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "3CosCob",
+     "stopTime": "13:38"
+    }
+   ]
+  },
+  {
+   "name": "22",
+   "entrance": "2w",
+   "exit": "2e",
+   "startTime": "13:39",
+   "consist": "nh22",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "173",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "13:50",
+   "consist": "nh173",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "230",
+   "entrance": "4w",
+   "exit": "4e",
+   "startTime": "14:15",
+   "consist": "nhwb3e",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "4greenwich",
+     "stopTime": "14:20"
+    }
+   ]
+  },
+  {
+   "name": "gb-8",
+   "entrance": "2w",
+   "exit": "2e",
+   "startTime": "14:20",
+   "consist": "nhgp9frt",
+   "maxSpeed": 45,
+   "randomDelay": null
+  },
+  {
+   "name": "261",
+   "entrance": "3e",
+   "exit": "3w",
+   "startTime": "14:30",
+   "consist": "nhwb3w",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "3CosCob",
+     "stopTime": "14:38"
+    }
+   ]
+  },
+  {
+   "name": "76",
+   "entrance": "2w",
+   "exit": "2e",
+   "startTime": "14:39",
+   "consist": "nh76",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "13",
+   "entrance": "1e",
+   "exit": "1w",
+   "startTime": "14:40",
+   "consist": "nh13",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "172",
+   "entrance": "2w",
+   "exit": "2e",
+   "startTime": "14:43",
+   "consist": "nh172",
+   "maxSpeed": 60,
+   "randomDelay": null
+  },
+  {
+   "name": "232",
+   "entrance": "4w",
+   "exit": "4e",
+   "startTime": "14:45",
+   "consist": "nhwb3e",
+   "maxSpeed": 60,
+   "randomDelay": null,
+   "stops": [
+    {
+     "stop": "4greenwich",
+     "stopTime": "14:50"
+    }
+   ]
+  },
+  {
+   "name": "78",
+   "entrance": "2w",
+   "exit": "2e",
+   "startTime": "14:54",
+   "consist": "nh78",
+   "maxSpeed": 60,
+   "randomDelay": null
+  }
+ ],
+ "background": "BP_Clouds4.ace",
+ "sounds": {
+  "gp38": [
+   {
+    "minThrottle": 0,
+    "maxThrottle": 0.16,
+    "volume": 1,
+    "wavFile": "GP38/SOUND/x_gp_power_cruise1.wav"
+   },
+   {
+    "minThrottle": 0.16,
+    "maxThrottle": 0.33,
+    "volume": 1,
+    "wavFile": "GP38/SOUND/x_gp_power_cruise2.wav"
+   },
+   {
+    "minThrottle": 0.33,
+    "maxThrottle": 0.5,
+    "volume": 1,
+    "wavFile": "GP38/SOUND/x_gp_power_cruise3.wav"
+   },
+   {
+    "minThrottle": 0.5,
+    "maxThrottle": 0.66,
+    "volume": 1,
+    "wavFile": "GP38/SOUND/x_gp_power_cruise4.wav"
+   },
+   {
+    "minThrottle": 0.66,
+    "maxThrottle": 0.84,
+    "volume": 1,
+    "wavFile": "GP38/SOUND/x_gp_power_cruise5.wav"
+   },
+   {
+    "minThrottle": 0.84,
+    "maxThrottle": 1,
+    "volume": 1,
+    "wavFile": "GP38/SOUND/x_gp_power_cruise6.wav"
+   }
+  ],
+  "als4": [
+   {
+    "minThrottle": 0,
+    "maxThrottle": 0.16,
+    "volume": 1,
+    "wavFile": "Common.Snd/als4/x_Alco_power_cruise1.wav"
+   },
+   {
+    "minThrottle": 0.16,
+    "maxThrottle": 0.33,
+    "volume": 1,
+    "wavFile": "Common.Snd/als4/x_Alco_power_cruise2.wav"
+   },
+   {
+    "minThrottle": 0.33,
+    "maxThrottle": 0.5,
+    "volume": 1,
+    "wavFile": "Common.Snd/als4/x_Alco_power_cruise3.wav"
+   },
+   {
+    "minThrottle": 0.5,
+    "maxThrottle": 0.66,
+    "volume": 1,
+    "wavFile": "Common.Snd/als4/x_Alco_power_cruise4.wav"
+   },
+   {
+    "minThrottle": 0.66,
+    "maxThrottle": 0.84,
+    "volume": 1,
+    "wavFile": "Common.Snd/als4/x_Alco_power_cruise5.wav"
+   },
+   {
+    "minThrottle": 0.84,
+    "maxThrottle": 1,
+    "volume": 1,
+    "wavFile": "Common.Snd/als4/x_Alco_power_cruise6.wav"
+   }
+  ],
+  "rdc": [
+   {
+    "minThrottle": 0,
+    "maxThrottle": 0.06,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise0.wav"
+   },
+   {
+    "minThrottle": 0.06,
+    "maxThrottle": 0.18,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise1.wav"
+   },
+   {
+    "minThrottle": 0.18,
+    "maxThrottle": 0.3,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise2.wav"
+   },
+   {
+    "minThrottle": 0.3,
+    "maxThrottle": 0.42,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise3.wav"
+   },
+   {
+    "minThrottle": 0.42,
+    "maxThrottle": 0.54,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise4.wav"
+   },
+   {
+    "minThrottle": 0.54,
+    "maxThrottle": 0.66,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise5.wav"
+   },
+   {
+    "minThrottle": 0.66,
+    "maxThrottle": 0.78,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise6.wav"
+   },
+   {
+    "minThrottle": 0.78,
+    "maxThrottle": 0.9,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise7.wav"
+   },
+   {
+    "minThrottle": 0.9,
+    "maxThrottle": 1,
+    "volume": 1,
+    "wavFile": "NHRDC/Sound/x_sd_power_cruise8.wav"
+   }
+  ],
+  "rodloco2": [
+   {
+    "minSpeed": 0.5,
+    "maxSpeed": 1.2,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_150.wav"
+   },
+   {
+    "minSpeed": 1.2,
+    "maxSpeed": 2,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_100d.wav"
+   },
+   {
+    "minSpeed": 2,
+    "maxSpeed": 3.15,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_075d.wav"
+   },
+   {
+    "minSpeed": 3.15,
+    "maxSpeed": 4.25,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_050d.wav"
+   },
+   {
+    "minSpeed": 4.25,
+    "maxSpeed": 5,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_037d.wav"
+   },
+   {
+    "minSpeed": 5,
+    "maxSpeed": 5.8,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_032e.wav"
+   },
+   {
+    "minSpeed": 5.8,
+    "maxSpeed": 6.6,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_027e.wav"
+   },
+   {
+    "minSpeed": 6.6,
+    "maxSpeed": 8,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_024f.wav"
+   },
+   {
+    "minSpeed": 8,
+    "maxSpeed": 9.25,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_020g.wav"
+   },
+   {
+    "minSpeed": 9.25,
+    "maxSpeed": 11,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_017e.wav"
+   },
+   {
+    "minSpeed": 11,
+    "maxSpeed": 13,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_015g.wav"
+   },
+   {
+    "minSpeed": 13,
+    "maxSpeed": 16,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_012e.wav"
+   },
+   {
+    "minSpeed": 16,
+    "maxSpeed": 18,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_010g.wav"
+   },
+   {
+    "minSpeed": 18,
+    "maxSpeed": 24,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_009g.wav"
+   },
+   {
+    "minSpeed": 24,
+    "maxSpeed": 32,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_007h.wav"
+   },
+   {
+    "minSpeed": 32,
+    "maxSpeed": 100,
+    "volume": 1,
+    "wavFile": "VSCSteamSound/x_es2_005f.wav"
+   }
+  ],
+  "cliclak": [
+   {
+    "minSpeed": 1.5,
+    "maxSpeed": 4,
+    "volume": 1,
+    "wavFile": "NH_WB/Sound/cliclak0_5.wav"
+   },
+   {
+    "minSpeed": 4,
+    "maxSpeed": 7.5,
+    "volume": 1,
+    "wavFile": "NH_WB/Sound/cliclak1.wav"
+   },
+   {
+    "minSpeed": 7.5,
+    "maxSpeed": 9,
+    "volume": 1,
+    "wavFile": "NH_WB/Sound/cliclak2.wav"
+   },
+   {
+    "minSpeed": 9,
+    "maxSpeed": 13,
+    "volume": 1,
+    "wavFile": "NH_WB/Sound/cliclak3.wav"
+   },
+   {
+    "minSpeed": 13,
+    "maxSpeed": 17,
+    "volume": 1,
+    "wavFile": "NH_WB/Sound/cliclak4.wav"
+   },
+   {
+    "minSpeed": 17,
+    "maxSpeed": 20,
+    "volume": 1,
+    "wavFile": "NH_WB/Sound/cliclak5.wav"
+   },
+   {
+    "minSpeed": 20,
+    "maxSpeed": 25,
+    "volume": 1,
+    "wavFile": "NH_WB/Sound/cliclak6.wav"
+   },
+   {
+    "minSpeed": 25,
+    "maxSpeed": 100,
+    "volume": 1,
+    "wavFile": "NH_WB/Sound/cliclak7.wav"
+   }
+  ],
+  "blower": [
+   {
+    "volume": 1,
+    "wavFile": "STRC_20/Sound/x_blower.wav"
+   }
+  ]
+ },
+ "equipment": {
+  "ZC-NH-FL9/NH2000.eng": {
+   "directory": "ZC-NH-FL9",
+   "shape": "NH2000.s",
+   "length": 18.25,
+   "fashape": "NH2000-Body.s",
+   "sound": "gp38"
+  },
+  "ZC-NH-FL9/NH2002.eng": {
+   "directory": "ZC-NH-FL9",
+   "shape": "NH2002.s",
+   "length": 18.25,
+   "fashape": "NH2002-Body.s",
+   "sound": "gp38",
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffffca",
+     "x": -0.1,
+     "y": 3.346,
+     "z": 8.668,
+     "radius": 0.1
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffffca",
+     "x": 0.1,
+     "y": 3.346,
+     "z": 8.668,
+     "radius": 0.1
+    }
+   ]
+  },
+  "NHHE/ZHE5307.wag": {
+   "directory": "NHHE",
+   "shape": "ZHE5307.s",
+   "length": 19.498
+  },
+  "NHAFCoach/NH5107.wag": {
+   "directory": "NHAFCoach",
+   "shape": "NH5107.s",
+   "length": 25.1
+  },
+  "ZTNHAF/ZAF8377.wag": {
+   "directory": "ZTNHAF",
+   "shape": "ZAF8377.s",
+   "length": 25.5
+  },
+  "ZTNHAF/ZAF8511.wag": {
+   "directory": "ZTNHAF",
+   "shape": "ZAF8511.s",
+   "length": 25.5,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ff0000",
+     "x": -1.584,
+     "y": 3.05,
+     "z": -12.591,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ff0000",
+     "x": 1.584,
+     "y": 3.05,
+     "z": -12.591,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ffff00",
+     "x": -1.481,
+     "y": 3.05,
+     "z": -12.488,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ffff00",
+     "x": 1.481,
+     "y": 3.05,
+     "z": -12.488,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ffff00",
+     "x": -1.687,
+     "y": 3.05,
+     "z": -12.488,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ffff00",
+     "x": 1.687,
+     "y": 3.05,
+     "z": -12.488,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ffff00",
+     "x": -1.584,
+     "y": 3.05,
+     "z": -12.385,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ffff00",
+     "x": 1.584,
+     "y": 3.05,
+     "z": -12.385,
+     "radius": 0.06
+    }
+   ]
+  },
+  "ZTNHAF/ZAF8237.wag": {
+   "directory": "ZTNHAF",
+   "shape": "ZAF8237.s",
+   "length": 25.5
+  },
+  "ZTNHAF/ZAF8529.wag": {
+   "directory": "ZTNHAF",
+   "shape": "ZAF8529.s",
+   "length": 25.5
+  },
+  "NHPointSleepers/WilsonPoint.wag": {
+   "directory": "NHPointSleepers",
+   "shape": "WilsonPoint.s",
+   "length": 26.12
+  },
+  "NHStateSleepers/BayState.wag": {
+   "directory": "NHStateSleepers",
+   "shape": "BayState.s",
+   "length": 26.12
+  },
+  "New Haven EP-5/NH372-EP5.eng": {
+   "directory": "New Haven EP-5",
+   "shape": "NH372-EP5.s",
+   "length": 18.08,
+   "sound": "blower",
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffffff",
+     "x": 0,
+     "y": 2.667,
+     "z": 8.55,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ff0000",
+     "x": 1.316,
+     "y": 2.911,
+     "z": -7.987,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ff0000",
+     "x": -1.316,
+     "y": 2.911,
+     "z": -7.987,
+     "radius": 0.15
+    }
+   ]
+  },
+  "NHHE/ZHE5404.wag": {
+   "directory": "NHHE",
+   "shape": "ZHE5404.s",
+   "length": 19.498
+  },
+  "NHHE/ZHE5524.wag": {
+   "directory": "NHHE",
+   "shape": "ZHE5524.s",
+   "length": 22.59
+  },
+  "NALW_NH_ZT/ZSS_212.wag": {
+   "directory": "NALW_NH_ZT",
+   "shape": "ZSS_212.s",
+   "length": 25.8
+  },
+  "NALW_NH_ZT/ZSS_401.wag": {
+   "directory": "NALW_NH_ZT",
+   "shape": "ZSS_401.s",
+   "length": 25.8
+  },
+  "NALW_NH_ZT/ZSS_954.wag": {
+   "directory": "NALW_NH_ZT",
+   "shape": "ZSS_954.s",
+   "length": 25.8
+  },
+  "NALW_NH_ZT/ZSS_964.wag": {
+   "directory": "NALW_NH_ZT",
+   "shape": "ZSS_964.s",
+   "length": 25.8
+  },
+  "NALW_NH_ZT/ZSS8603.wag": {
+   "directory": "NALW_NH_ZT",
+   "shape": "ZSS8603.s",
+   "length": 25.8
+  },
+  "NALW_NH_ZT/ZSS8624.wag": {
+   "directory": "NALW_NH_ZT",
+   "shape": "ZSS8624.s",
+   "length": 25.8
+  },
+  "NALW_NH_ZT/ZSS8686.wag": {
+   "directory": "NALW_NH_ZT",
+   "shape": "ZSS8686.s",
+   "length": 25.8
+  },
+  "NH_WB/NH_WBclubMcg.eng": {
+   "directory": "NH_WB",
+   "shape": "NH_WBclubMcG.s",
+   "length": 26.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffffff",
+     "x": 0,
+     "y": 3.83,
+     "z": 12.83,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ff0000",
+     "x": 1.28,
+     "y": 3.32,
+     "z": -12.59,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ff0000",
+     "x": -1.28,
+     "y": 3.32,
+     "z": -12.59,
+     "radius": 0.06
+    }
+   ]
+  },
+  "NH_WB/NH_WBcoMcgS.eng": {
+   "directory": "NH_WB",
+   "shape": "NH_WBcoMcG.s",
+   "length": 26.1,
+   "sound": "cliclak"
+  },
+  "NH_WB/NH_WBcoMcg.eng": {
+   "directory": "NH_WB",
+   "shape": "NH_WBcoMcG.s",
+   "length": 26.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffffff",
+     "x": 0,
+     "y": 3.83,
+     "z": 12.83,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ff0000",
+     "x": 1.28,
+     "y": 3.32,
+     "z": -12.59,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ff0000",
+     "x": -1.28,
+     "y": 3.32,
+     "z": -12.59,
+     "radius": 0.06
+    }
+   ]
+  },
+  "NH_WB/NH_WBcoGrn.eng": {
+   "directory": "NH_WB",
+   "shape": "NH_WBcoGrn.s",
+   "length": 26.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffffff",
+     "x": 0,
+     "y": 3.83,
+     "z": 12.83,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ff0000",
+     "x": 1.28,
+     "y": 3.32,
+     "z": -12.59,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "ff0000",
+     "x": -1.28,
+     "y": 3.32,
+     "z": -12.59,
+     "radius": 0.06
+    }
+   ]
+  },
+  "NH_EF4/NewHavenEF4_300.eng": {
+   "directory": "NH_EF4",
+   "shape": "NewHavenEF4_300.s",
+   "length": 20.59,
+   "sound": "blower",
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "FFCA63",
+     "x": 0,
+     "y": 3.81,
+     "z": 9.945,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "FFCA63",
+     "x": 0,
+     "y": 3.61,
+     "z": 9.94,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 5,
+     "color": "FFCA63",
+     "x": 0,
+     "y": 3.61,
+     "z": -9.26,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 5,
+     "color": "FFCA63",
+     "x": 0,
+     "y": 3.81,
+     "z": -9.265,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "F9EC95",
+     "x": 0,
+     "y": 3.61,
+     "z": 9.94,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "F9EC95",
+     "x": 0,
+     "y": 3.81,
+     "z": 9.945,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 5,
+     "color": "F9EC95",
+     "x": 0,
+     "y": 3.61,
+     "z": -9.26,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 5,
+     "color": "F9EC95",
+     "x": 0,
+     "y": 3.81,
+     "z": -9.265,
+     "radius": 0.06
+    }
+   ]
+  },
+  "NH_EF4/NewHavenEF4_303.eng": {
+   "directory": "NH_EF4",
+   "shape": "NewHavenEF4_303.s",
+   "length": 20.59,
+   "sound": "blower",
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "FFCA63",
+     "x": 0,
+     "y": 3.81,
+     "z": 9.945,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "FFCA63",
+     "x": 0,
+     "y": 3.61,
+     "z": 9.94,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 5,
+     "color": "FFCA63",
+     "x": 0,
+     "y": 3.61,
+     "z": -9.26,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 5,
+     "color": "FFCA63",
+     "x": 0,
+     "y": 3.81,
+     "z": -9.265,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "F9EC95",
+     "x": 0,
+     "y": 3.61,
+     "z": 9.94,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "F9EC95",
+     "x": 0,
+     "y": 3.81,
+     "z": 9.945,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 5,
+     "color": "F9EC95",
+     "x": 0,
+     "y": 3.61,
+     "z": -9.26,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 5,
+     "color": "F9EC95",
+     "x": 0,
+     "y": 3.81,
+     "z": -9.265,
+     "radius": 0.06
+    }
+   ]
+  },
+  "NYC_110952/NYC_110952.wag": {
+   "directory": "NYC_110952",
+   "shape": "NYC_110952.s",
+   "length": 13.46
+  },
+  "Tankcar_8k_GATC_T103/UTLX_78214_8k_MT.wag": {
+   "directory": "Tankcar_8k_GATC_T103",
+   "shape": "UTLX_78214.s",
+   "length": 11.69,
+   "fashape": "Hose.s"
+  },
+  "E_Hop/ERIE_Offset_CL.wag": {
+   "directory": "E_Hop",
+   "shape": "ERIE_Offset_CL.s",
+   "length": 11,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -5.4,
+     "radius": 0.06
+    }
+   ]
+  },
+  "East coast 40ft box car pack1/CNJ40ftb_23506.wag": {
+   "directory": "East coast 40ft box car pack1",
+   "shape": "CNJ40ftb_23506.s",
+   "length": 13.65,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -7,
+     "radius": 0.06
+    }
+   ]
+  },
+  "Midwest 40ft box car pack1/XM1932_L&N17575.wag": {
+   "directory": "Midwest 40ft box car pack1",
+   "shape": "XM1932_L&N17575.s",
+   "length": 13.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "East coast 40ft box car pack1/LNE40ftb_8927.wag": {
+   "directory": "East coast 40ft box car pack1",
+   "shape": "LNE40ftb_8927.s",
+   "length": 13.65,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -7,
+     "radius": 0.06
+    }
+   ]
+  },
+  "34 foot Hopper/CO_Ribside_CL.wag": {
+   "directory": "34 foot Hopper",
+   "shape": "CO_Ribside_CL.s",
+   "length": 11,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -5.4,
+     "radius": 0.06
+    }
+   ]
+  },
+  "34 foot Hopper/BO_Offset_CL.wag": {
+   "directory": "34 foot Hopper",
+   "shape": "BO_Offset_CL.s",
+   "length": 11,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -5.4,
+     "radius": 0.06
+    }
+   ]
+  },
+  "BAR_1295/BAR_1295.wag": {
+   "directory": "BAR_1295",
+   "shape": "BAR_1295.s",
+   "length": 13.7
+  },
+  "Midwest 40ft box car pack1/XM1932_CEI66844.wag": {
+   "directory": "Midwest 40ft box car pack1",
+   "shape": "XM1932_CEI66844.s",
+   "length": 13.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "Midwest 40ft box car pack1/XM1932_CGW5325.wag": {
+   "directory": "Midwest 40ft box car pack1",
+   "shape": "XM1932_CGW5325.s",
+   "length": 13.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "Midwest 40ft box car pack1/XM1932_CMO22422.wag": {
+   "directory": "Midwest 40ft box car pack1",
+   "shape": "XM1932_CMO22422.s",
+   "length": 13.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "Midwest 40ft box car pack1/XM1932_CNW1555.wag": {
+   "directory": "Midwest 40ft box car pack1",
+   "shape": "XM1932_CNW1555.s",
+   "length": 13.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "CNDcpk02/CN_521072.wag": {
+   "directory": "CNDcpk02",
+   "shape": "CN_521072.s",
+   "length": 13.46
+  },
+  "CNDcpk02/CN_523641.wag": {
+   "directory": "CNDcpk02",
+   "shape": "CN_523641.s",
+   "length": 13.46
+  },
+  "CNDcpk02/CN_541929.wag": {
+   "directory": "CNDcpk02",
+   "shape": "CN_541929.s",
+   "length": 13.46
+  },
+  "NYC_290507/NYC_290507.wag": {
+   "directory": "NYC_290507",
+   "shape": "NYC_290507.s",
+   "length": 13.46
+  },
+  "Tankcar_8k_GATC_T103/NATX_752_8k_LD.wag": {
+   "directory": "Tankcar_8k_GATC_T103",
+   "shape": "NATX_752.s",
+   "length": 11.69,
+   "fashape": "Hose.s"
+  },
+  "Tankcar_8k_GATC_T103/GATX_54269_8k_MT.wag": {
+   "directory": "Tankcar_8k_GATC_T103",
+   "shape": "GATX_54269.s",
+   "length": 11.69,
+   "fashape": "Hose.s"
+  },
+  "Tankcar_8k_GATC_T103/TCX_2792_8k_MT.wag": {
+   "directory": "Tankcar_8k_GATC_T103",
+   "shape": "TCX_2792.s",
+   "length": 11.69,
+   "fashape": "Hose.s"
+  },
+  "Tankcar_8k_GATC_T103/GATX_22526_8k_MT.wag": {
+   "directory": "Tankcar_8k_GATC_T103",
+   "shape": "GATX_22526.s",
+   "length": 11.69,
+   "fashape": "Hose.s"
+  },
+  "East coast 40ft box car pack1/WAB40ftb_7609.wag": {
+   "directory": "East coast 40ft box car pack1",
+   "shape": "WAB40ftb_7609.s",
+   "length": 13.65,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -7,
+     "radius": 0.06
+    }
+   ]
+  },
+  "NYC_277419/NYC_277419.wag": {
+   "directory": "NYC_277419",
+   "shape": "NYC_277419.s",
+   "length": 13.46
+  },
+  "Midwest 40ft box car pack1/XM1932_MP39075.wag": {
+   "directory": "Midwest 40ft box car pack1",
+   "shape": "XM1932_MP39075.s",
+   "length": 13.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "East coast 40ft box car pack1/MONON40ftb_843.wag": {
+   "directory": "East coast 40ft box car pack1",
+   "shape": "MONON40ftb_843.s",
+   "length": 13.65,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -7,
+     "radius": 0.06
+    }
+   ]
+  },
+  "East coast 40ft box car pack1/D&H40ftb_20244.wag": {
+   "directory": "East coast 40ft box car pack1",
+   "shape": "D&H40ftb_20244.s",
+   "length": 13.65,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -7,
+     "radius": 0.06
+    }
+   ]
+  },
+  "CNDcpk03/CN_146507.wag": {
+   "directory": "CNDcpk03",
+   "shape": "CN_146507.s",
+   "length": 17.23
+  },
+  "Midwest 40ft box car pack1/XM1932_MKT97772.wag": {
+   "directory": "Midwest 40ft box car pack1",
+   "shape": "XM1932_MKT97772.s",
+   "length": 13.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "E_Hop/Montour_Offset_CL.wag": {
+   "directory": "E_Hop",
+   "shape": "Montour_Offset_CL.s",
+   "length": 11,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -5.4,
+     "radius": 0.06
+    }
+   ]
+  },
+  "East coast 40ft box car pack1/SOO40ftb_137796.wag": {
+   "directory": "East coast 40ft box car pack1",
+   "shape": "SOO40ftb_137796.s",
+   "length": 13.65,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -7,
+     "radius": 0.06
+    }
+   ]
+  },
+  "Tankcar_8k_GATC_T103/GATX_2531_8k_LD.wag": {
+   "directory": "Tankcar_8k_GATC_T103",
+   "shape": "GATX_2531.s",
+   "length": 11.69,
+   "fashape": "Hose.s"
+  },
+  "East coast 40ft box car pack1/VGN40ftb_63226.wag": {
+   "directory": "East coast 40ft box car pack1",
+   "shape": "VGN40ftb_63226.s",
+   "length": 13.65,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -7,
+     "radius": 0.06
+    }
+   ]
+  },
+  "CNDcpk03/CN_661143.wag": {
+   "directory": "CNDcpk03",
+   "shape": "CN_661143.s",
+   "length": 16.36
+  },
+  "Midwest 40ft box car pack1/XM1932_CG3448.wag": {
+   "directory": "Midwest 40ft box car pack1",
+   "shape": "XM1932_CG3448.s",
+   "length": 13.1,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "BM_70451/BM_70451.wag": {
+   "directory": "BM_70451",
+   "shape": "BM_70451.s",
+   "length": 13.4
+  },
+  "WAB_HM_36561/WAB_HM_36561_LD.wag": {
+   "directory": "WAB_HM_36561",
+   "shape": "WAB_HM_36561.s",
+   "length": 10.9,
+   "fashape": "2B-H-Coal.s"
+  },
+  "MW_Hop/WABASH_Offset_CL.wag": {
+   "directory": "MW_Hop",
+   "shape": "WABASH_Offset_CL.s",
+   "length": 11,
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -5.4,
+     "radius": 0.06
+    }
+   ]
+  },
+  "NHNE2/NH-C501.wag": {
+   "directory": "NHNE2",
+   "shape": "NH-C501.s",
+   "length": 10.55,
+   "sound": "cliclak",
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "000000",
+     "x": 0,
+     "y": 1.25,
+     "z": -6.5,
+     "radius": 0.06
+    }
+   ]
+  },
+  "NHGP-9/NH1212-GP9.eng": {
+   "directory": "NHGP-9",
+   "shape": "NH1212-GP9.s",
+   "length": 17.6,
+   "fashape": "NH1212-GP9-Body.s",
+   "sound": "gp38",
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffe4ab",
+     "x": 0,
+     "y": 4.1,
+     "z": 7.56,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffe4ab",
+     "x": 0,
+     "y": 3.855,
+     "z": 7.56,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "fedf93",
+     "x": 0,
+     "y": 4.1,
+     "z": -7.567,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "fedf93",
+     "x": 0,
+     "y": 3.855,
+     "z": -7.566,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "fedf93",
+     "x": -1.43,
+     "y": 1.26,
+     "z": 5,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "fedf93",
+     "x": 1.43,
+     "y": 1.26,
+     "z": 5,
+     "radius": 0.15
+    }
+   ]
+  },
+  "NHGP-9/NH1217-GP9.eng": {
+   "directory": "NHGP-9",
+   "shape": "NH1217-GP9.s",
+   "length": 17.6,
+   "fashape": "NH1217-GP9-Body.s",
+   "sound": "gp38",
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffe4ab",
+     "x": 0,
+     "y": 4.1,
+     "z": 7.56,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffe4ab",
+     "x": 0,
+     "y": 3.855,
+     "z": 7.56,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "fedf93",
+     "x": 0,
+     "y": 4.1,
+     "z": -7.567,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "fedf93",
+     "x": 0,
+     "y": 3.855,
+     "z": -7.566,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "fedf93",
+     "x": -1.43,
+     "y": 1.26,
+     "z": 5,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "fedf93",
+     "x": 1.43,
+     "y": 1.26,
+     "z": 5,
+     "radius": 0.15
+    }
+   ]
+  },
+  "NHGP-9/NH1222-GP9.eng": {
+   "directory": "NHGP-9",
+   "shape": "NH1222-GP9.s",
+   "length": 17.6,
+   "fashape": "NH1222-GP9-Body.s",
+   "sound": "gp38",
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffe4ab",
+     "x": 0,
+     "y": 4.1,
+     "z": 7.56,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffe4ab",
+     "x": 0,
+     "y": 3.855,
+     "z": 7.56,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "fedf93",
+     "x": 0,
+     "y": 4.1,
+     "z": -7.567,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 3,
+     "color": "fedf93",
+     "x": 0,
+     "y": 3.855,
+     "z": -7.566,
+     "radius": 0.06
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "fedf93",
+     "x": -1.43,
+     "y": 1.26,
+     "z": 5,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "fedf93",
+     "x": 1.43,
+     "y": 1.26,
+     "z": 5,
+     "radius": 0.15
+    }
+   ]
+  },
+  "NHSW1200/NH_sw1200_647.eng": {
+   "directory": "NHSW1200",
+   "shape": "NH_sw1200_647.s",
+   "length": 13.19,
+   "sound": "gp38",
+   "lights": [
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffffff",
+     "x": 0,
+     "y": 3.5,
+     "z": 5.68,
+     "radius": 0.15
+    },
+    {
+     "type": 0,
+     "headlight": 3,
+     "unit": 2,
+     "color": "ffffff",
+     "x": -0.017,
+     "y": 4.25,
+     "z": -5.54,
+     "radius": 0.15
+    }
+   ]
+  },
+  "NHboxcars/NH40602-Box50.wag": {
+   "directory": "NHboxcars",
+   "shape": "NH40602-Box50.s",
+   "length": 16.47
+  },
+  "NHboxcars/NH45097.wag": {
+   "directory": "NHboxcars",
+   "shape": "NH45097_box.s",
+   "length": 13.35
+  },
+  "NHboxcars/NH36388_box.wag": {
+   "directory": "NHboxcars",
+   "shape": "NH36388_box.s",
+   "length": 13.35
+  }
+ },
+ "consists": {
+  "nhwb3e": [
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcgS.eng",
+   "NH_WB/NH_WBcoMcg.eng"
+  ],
+  "nhwb3w": [
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcgS.eng",
+   "^NH_WB/NH_WBcoMcg.eng"
+  ],
+  "nhwb4e": [
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcgS.eng",
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcg.eng"
+  ],
+  "nhwb4w": [
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcgS.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng"
+  ],
+  "nhwb6e": [
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcgS.eng",
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcgS.eng",
+   "NH_WB/NH_WBcoMcg.eng"
+  ],
+  "nhwb6w": [
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcgS.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcgS.eng",
+   "^NH_WB/NH_WBcoMcg.eng"
+  ],
+  "nhwb8e": [
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcgS.eng",
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcgS.eng",
+   "NH_WB/NH_WBcoMcg.eng"
+  ],
+  "nhwb8w": [
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcgS.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcgS.eng",
+   "^NH_WB/NH_WBcoMcg.eng"
+  ],
+  "nhwb10e": [
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcgS.eng",
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcgS.eng",
+   "NH_WB/NH_WBcoMcg.eng",
+   "NH_WB/NH_WBcoMcg.eng"
+  ],
+  "nhwb10w": [
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcgS.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcgS.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng"
+  ],
+  "nhwb10wc": [
+   "^NH_WB/NH_WBclubMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcgS.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcgS.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng"
+  ],
+  "nhwb10w2c": [
+   "^NH_WB/NH_WBclubMcg.eng",
+   "^NH_WB/NH_WBclubMcg.eng",
+   "^NH_WB/NH_WBcoMcgS.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcgS.eng",
+   "^NH_WB/NH_WBcoMcg.eng",
+   "^NH_WB/NH_WBcoMcg.eng"
+  ],
+  "nh6": [
+   "ZC-NH-FL9/NH2002.eng",
+   "NALW_NH_ZT/ZSS_401.wag",
+   "NALW_NH_ZT/ZSS_954.wag",
+   "NALW_NH_ZT/ZSS8624.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag"
+  ],
+  "nh8": [
+   "ZC-NH-FL9/NH2002.eng",
+   "NHHE/ZHE5404.wag",
+   "NHHE/ZHE3287.wag",
+   "NALW_NH_ZT/ZSS_954.wag",
+   "NALW_NH_ZT/ZSS8624.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag"
+  ],
+  "nh9": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "NHHE/ZHE5404.wag",
+   "NALW_NH_ZT/ZSS_401.wag",
+   "NALW_NH_ZT/ZSS_954.wag",
+   "NALW_NH_ZT/ZSS8624.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh12": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "NALW_NH_ZT/ZSS_401.wag",
+   "NALW_NH_ZT/ZSS_954.wag",
+   "NALW_NH_ZT/ZSS8624.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh13": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "NHHE/ZHE5404.wag",
+   "NALW_NH_ZT/ZSS_401.wag",
+   "NALW_NH_ZT/ZSS_401.wag",
+   "NALW_NH_ZT/ZSS_401.wag",
+   "NALW_NH_ZT/ZSS_954.wag",
+   "NALW_NH_ZT/ZSS8624.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8624.wag",
+   "NALW_NH_ZT/ZSS8686.wag"
+  ],
+  "nh17": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "NHHE/ZHE5404.wag",
+   "NALW_NH_ZT/ZSS_401.wag",
+   "NALW_NH_ZT/ZSS_954.wag",
+   "NALW_NH_ZT/ZSS8624.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh22": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "NALW_NH_ZT/ZSS_212.wag",
+   "NALW_NH_ZT/ZSS_401.wag",
+   "NALW_NH_ZT/ZSS_954.wag",
+   "NALW_NH_ZT/ZSS8624.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh50": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "NHHE/ZHE5307.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8511.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh64": [
+   "ZC-NH-FL9/NH2002.eng",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh66": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "NHHE/ZHE3287.wag",
+   "NALW_NH_ZT/ZSS_212.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "NALW_NH_ZT/ZSS8624.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh67": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "NHHE/ZHE5404.wag",
+   "NALW_NH_ZT/ZSS_212.wag",
+   "NALW_NH_ZT/ZSS_954.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "NALW_NH_ZT/ZSS8624.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh69": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "NALW_NH_ZT/ZSS_212.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "NALW_NH_ZT/ZSS8624.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh71": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "NHHE/ZHE3287.wag",
+   "NHHE/ZHE5404.wag",
+   "NALW_NH_ZT/ZSS_954.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh76": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "NHHE/ZHE5307.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh78": [
+   "ZC-NH-FL9/NH2002.eng",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh140": [
+   "ZC-NH-FL9/NH2002.eng",
+   "NHHE/ZHE5307.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh141": [
+   "ZC-NH-FL9/NH2002.eng",
+   "NHHE/ZHE5307.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh169": [
+   "New Haven EP-5/NH372-EP5.eng",
+   "NHHE/ZHE5404.wag",
+   "NHHE/ZHE5524.wag",
+   "NHHE/ZHE5307.wag",
+   "NHHE/ZHE5404.wag",
+   "NHHE/ZHE5524.wag",
+   "NHHE/ZHE5307.wag",
+   "NHHE/ZHE3287.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "NHPointSleepers/WilsonPoint.wag",
+   "NHStateSleepers/BayState.wag",
+   "NHPointSleepers/WilsonPoint.wag"
+  ],
+  "nh170": [
+   "New Haven EP-5/NH372-EP5.eng",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "NALW_NH_ZT/ZSS8624.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS_954.wag",
+   "NALW_NH_ZT/ZSS_212.wag",
+   "NALW_NH_ZT/ZSS_401.wag",
+   "NALW_NH_ZT/ZSS8686.wag"
+  ],
+  "nh171": [
+   "New Haven EP-5/NH372-EP5.eng",
+   "NALW_NH_ZT/ZSS_212.wag",
+   "NALW_NH_ZT/ZSS_401.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "NALW_NH_ZT/ZSS_954.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "NALW_NH_ZT/ZSS8624.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "NALW_NH_ZT/ZSS8624.wag"
+  ],
+  "nh172": [
+   "New Haven EP-5/NH372-EP5.eng",
+   "NHHE/ZHE5404.wag",
+   "NHHE/ZHE5524.wag",
+   "NHHE/ZHE5307.wag",
+   "NALW_NH_ZT/ZSS_212.wag",
+   "NALW_NH_ZT/ZSS_401.wag",
+   "NALW_NH_ZT/ZSS_954.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "NALW_NH_ZT/ZSS8624.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh173": [
+   "New Haven EP-5/NH372-EP5.eng",
+   "NALW_NH_ZT/ZSS_212.wag",
+   "NALW_NH_ZT/ZSS_401.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "NALW_NH_ZT/ZSS_954.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "NALW_NH_ZT/ZSS8624.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh181": [
+   "New Haven EP-5/NH372-EP5.eng",
+   "NHHE/ZHE5404.wag",
+   "NHHE/ZHE5524.wag",
+   "NHHE/ZHE5307.wag",
+   "NHHE/ZHE5404.wag",
+   "NHHE/ZHE5524.wag",
+   "NHHE/ZHE5307.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "NALW_NH_ZT/ZSS8624.wag"
+  ],
+  "nh349": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh351": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh353": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh361": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "NALW_NH_ZT/ZSS8624.wag"
+  ],
+  "nh363": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh364": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "NHHE/ZHE3287.wag",
+   "NHHE/ZHE5307.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh369": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "NHAFCoach/NH5107.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh371": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag",
+   "NALW_NH_ZT/ZSS8603.wag",
+   "NALW_NH_ZT/ZSS8686.wag",
+   "NALW_NH_ZT/ZSS8624.wag",
+   "NALW_NH_ZT/ZSS_954.wag",
+   "NALW_NH_ZT/ZSS_401.wag",
+   "NALW_NH_ZT/ZSS_401.wag"
+  ],
+  "nh373": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nh381": [
+   "ZC-NH-FL9/NH2002.eng",
+   "^ZC-NH-FL9/NH2000.eng",
+   "NHHE/ZHE5307.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8377.wag",
+   "ZTNHAF/ZAF8237.wag",
+   "ZTNHAF/ZAF8529.wag",
+   "ZTNHAF/ZAF8511.wag"
+  ],
+  "nhef4frt": [
+   "NH_EF4/NewHavenEF4_300.eng",
+   "^NH_EF4/NewHavenEF4_303.eng",
+   "NYC_110952/NYC_110952.wag",
+   "Tankcar_8k_GATC_T103/UTLX_78214_8k_MT.wag",
+   "E_Hop/ERIE_Offset_CL.wag",
+   "East coast 40ft box car pack1/CNJ40ftb_23506.wag",
+   "Midwest 40ft box car pack1/XM1932_L&N17575.wag",
+   "East coast 40ft box car pack1/LNE40ftb_8927.wag",
+   "34 foot Hopper/CO_Ribside_CL.wag",
+   "34 foot Hopper/BO_Offset_CL.wag",
+   "BAR_1295/BAR_1295.wag",
+   "Midwest 40ft box car pack1/XM1932_CEI66844.wag",
+   "Midwest 40ft box car pack1/XM1932_CGW5325.wag",
+   "Midwest 40ft box car pack1/XM1932_CMO22422.wag",
+   "East coast 40ft box car pack1/CNJ40ftb_23506.wag",
+   "Midwest 40ft box car pack1/XM1932_CNW1555.wag",
+   "CNDcpk02/CN_521072.wag",
+   "CNDcpk02/CN_523641.wag",
+   "CNDcpk02/CN_541929.wag",
+   "NYC_290507/NYC_290507.wag",
+   "Tankcar_8k_GATC_T103/NATX_752_8k_LD.wag",
+   "Tankcar_8k_GATC_T103/NATX_752_8k_LD.wag",
+   "Tankcar_8k_GATC_T103/GATX_54269_8k_MT.wag",
+   "Tankcar_8k_GATC_T103/TCX_2792_8k_MT.wag",
+   "Tankcar_8k_GATC_T103/GATX_22526_8k_MT.wag",
+   "East coast 40ft box car pack1/WAB40ftb_7609.wag",
+   "NYC_277419/NYC_277419.wag",
+   "Midwest 40ft box car pack1/XM1932_MP39075.wag",
+   "East coast 40ft box car pack1/MONON40ftb_843.wag",
+   "East coast 40ft box car pack1/D&H40ftb_20244.wag",
+   "CNDcpk03/CN_146507.wag",
+   "Midwest 40ft box car pack1/XM1932_MKT97772.wag",
+   "E_Hop/Montour_Offset_CL.wag",
+   "E_Hop/Montour_Offset_CL.wag",
+   "E_Hop/Montour_Offset_CL.wag",
+   "Midwest 40ft box car pack1/XM1932_CMO22422.wag",
+   "East coast 40ft box car pack1/SOO40ftb_137796.wag",
+   "East coast 40ft box car pack1/SOO40ftb_137796.wag",
+   "Tankcar_8k_GATC_T103/GATX_2531_8k_LD.wag",
+   "East coast 40ft box car pack1/VGN40ftb_63226.wag",
+   "East coast 40ft box car pack1/WAB40ftb_7609.wag",
+   "CNDcpk03/CN_661143.wag",
+   "Midwest 40ft box car pack1/XM1932_CG3448.wag",
+   "Midwest 40ft box car pack1/XM1932_CEI66844.wag",
+   "BM_70451/BM_70451.wag",
+   "Midwest 40ft box car pack1/XM1932_L&N17575.wag",
+   "WAB_HM_36561/WAB_HM_36561_LD.wag",
+   "MW_Hop/WABASH_Offset_CL.wag",
+   "MW_Hop/WABASH_Offset_CL.wag",
+   "NHNE2/NH-C501.wag"
+  ],
+  "nhgp9frt": [
+   "NHGP-9/NH1212-GP9.eng",
+   "NHGP-9/NH1217-GP9.eng",
+   "^NHGP-9/NH1222-GP9.eng",
+   "NYC_110952/NYC_110952.wag",
+   "Tankcar_8k_GATC_T103/UTLX_78214_8k_MT.wag",
+   "E_Hop/ERIE_Offset_CL.wag",
+   "East coast 40ft box car pack1/CNJ40ftb_23506.wag",
+   "Midwest 40ft box car pack1/XM1932_L&N17575.wag",
+   "East coast 40ft box car pack1/LNE40ftb_8927.wag",
+   "34 foot Hopper/CO_Ribside_CL.wag",
+   "34 foot Hopper/BO_Offset_CL.wag",
+   "BAR_1295/BAR_1295.wag",
+   "Midwest 40ft box car pack1/XM1932_CEI66844.wag",
+   "Midwest 40ft box car pack1/XM1932_CGW5325.wag",
+   "Midwest 40ft box car pack1/XM1932_CMO22422.wag",
+   "East coast 40ft box car pack1/CNJ40ftb_23506.wag",
+   "Midwest 40ft box car pack1/XM1932_CNW1555.wag",
+   "CNDcpk02/CN_521072.wag",
+   "CNDcpk02/CN_523641.wag",
+   "CNDcpk02/CN_541929.wag",
+   "NYC_290507/NYC_290507.wag",
+   "Tankcar_8k_GATC_T103/NATX_752_8k_LD.wag",
+   "Tankcar_8k_GATC_T103/NATX_752_8k_LD.wag",
+   "Tankcar_8k_GATC_T103/GATX_54269_8k_MT.wag",
+   "Tankcar_8k_GATC_T103/TCX_2792_8k_MT.wag",
+   "Tankcar_8k_GATC_T103/GATX_22526_8k_MT.wag",
+   "East coast 40ft box car pack1/WAB40ftb_7609.wag",
+   "NYC_277419/NYC_277419.wag",
+   "Midwest 40ft box car pack1/XM1932_MP39075.wag",
+   "East coast 40ft box car pack1/MONON40ftb_843.wag",
+   "East coast 40ft box car pack1/D&H40ftb_20244.wag",
+   "CNDcpk03/CN_146507.wag",
+   "Midwest 40ft box car pack1/XM1932_MKT97772.wag",
+   "E_Hop/Montour_Offset_CL.wag",
+   "E_Hop/Montour_Offset_CL.wag",
+   "E_Hop/Montour_Offset_CL.wag",
+   "Midwest 40ft box car pack1/XM1932_CMO22422.wag",
+   "East coast 40ft box car pack1/SOO40ftb_137796.wag",
+   "East coast 40ft box car pack1/SOO40ftb_137796.wag",
+   "Tankcar_8k_GATC_T103/GATX_2531_8k_LD.wag",
+   "East coast 40ft box car pack1/VGN40ftb_63226.wag",
+   "East coast 40ft box car pack1/WAB40ftb_7609.wag",
+   "CNDcpk03/CN_661143.wag",
+   "Midwest 40ft box car pack1/XM1932_CG3448.wag",
+   "Midwest 40ft box car pack1/XM1932_CEI66844.wag",
+   "BM_70451/BM_70451.wag",
+   "Midwest 40ft box car pack1/XM1932_L&N17575.wag",
+   "WAB_HM_36561/WAB_HM_36561_LD.wag",
+   "MW_Hop/WABASH_Offset_CL.wag",
+   "MW_Hop/WABASH_Offset_CL.wag",
+   "NHNE2/NH-C501.wag"
+  ],
+  "nhsw1200frt": [
+   "NHSW1200/NH_sw1200_647.eng",
+   "NYC_110952/NYC_110952.wag",
+   "NHboxcars/NH40602-Box50.wag",
+   "Tankcar_8k_GATC_T103/UTLX_78214_8k_MT.wag",
+   "NHboxcars/NH45097.wag",
+   "E_Hop/ERIE_Offset_CL.wag",
+   "NHboxcars/NH36388_box.wag",
+   "NHNE2/NH-C501.wag"
+  ]
+ },
+ "blockSheetColumns": [
+  "Eastbound",
+  "Westbound"
+ ],
+ "tdbFile": "usax.tdb"
+}

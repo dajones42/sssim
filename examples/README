@@ -1,0 +1,9 @@
+To use these examples you must already have the correspond MSTS content
+installed somewhere.  The content is all available from the train-sim.com
+file library.  It isn't known if MSTS needs to be installed.
+
+To install the examples, create a sssim directory in the corresponding route's
+directory and copy the example files into it.
+
+To run them: open a terminal window, navigate to the directory that contains
+the sssim code and run "nw ." (add the full path to nw if needed).
