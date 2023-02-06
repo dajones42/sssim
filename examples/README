@@ -6,4 +6,57 @@ To install the examples, create a sssim directory in the corresponding route's
 directory and copy the example files into it.
 
 To run them: open a terminal window, navigate to the directory that contains
-the sssim code and run "nw ." (add the full path to nw if needed).
+the sssim code and run "nw ." (add the full path to nw if needed).  After
+opening the json file you may want to scroll down to the map display to
+figure out which lever controls which switches and signals.
+
+The bftt66s1 example represents a 7 AM to 3 PM shift for the Bellows Falls
+ball signal operator.  It is based on B&M ETT 66 (April 27, 1958),
+CV ETT 52 (October 26, 1958), Rutland ETT 119 (September 25, 1949),
+B&M Freight Train Symbol Book 51 (April 30, 1950), and B&M
+Passenger Train Consists January 1, 1956.  For a Northbound train to
+cross the single track: levers 7, 5 and 3 must be reversed.  For a
+Southbound train: levers 8, 10, 9 and 3 must be reversed.  The Rutland
+used manual block rules.  A Block For button will appear before a
+southbound Rutland train will start.  Click the button and the reverse
+lever 1 when the train appears.  For a northbound Rutland trains:
+click the Request Block button and the reverse lever 2.
+
+The ss28shift1 example represents a 7 AM to 3 PM shift for the operator
+at SS28 (between Cos Cob and Greenwich) on the New Haven.  It is based on
+a PTT from May 12, 1968, Passenger Train Consists October 28, 1962 and
+Freight Train Schedule April 25, 1965.
+Usually all black levers should be normal and all blue levers should be
+reversed.  For westbound trains on track 1 and 3, levers 19 and 20,
+repectively, should be reversed.  For eastbound trains on tracks 2 and 4,
+levers 2 and 1, respectively, should be reversed.  To send a train from
+track 1 to track 3: levers 19, 20 and 12 need to be normal; then levers
+11, 12 and 19 can be reversed.  To send a train from track 3 to track 1:
+levers 19, 20 and 10 need to be normal; then levers 9, 10 and 20 can be
+reversed.
+
+The ss44shift2 example represents a 3 PM to 11 PM shift for the operator
+at SS44 in South Norwalk on the New Haven.  It is based on "The Classic
+Railway Signal Tower" by Stephen McEvoy and the documents listed above.
+SS44 is preserved as the SoNo Switch Tower Museum.  The lever numbers match
+the New Haven usage as much as possible, but some tracks don't exist in
+the Metro North route.  Usually all black levers should be normal and
+all blue levers should be reversed.  For westbound trains on track 1:
+levers 57, 65 and 67 should be reversed.  For westbound trains on track 3:
+levers 58, 66 and 68 should be reversed.
+For eastbound trains on tracks 2: levers 4, 2 and 6 should be reversed.
+For eastbound trains on tracks 4: levers 3, 1 and 5 should be reversed.
+To send a train from track 2 to track 4: levers 1, 2, 3, 4 and 28 must be
+normal; then levers 27, 28, 4 and 2 can be reversed.
+To send a train from track 1 to track 3: levers 68, 67, 66, 65 and 40 must
+be normal; then levers 39, 40, 65 and 67 can be reversed.
+To send a train from the Danbury branch to track 3: levers 68, 66 and 47
+must be normal; then levers 48, 47, 64 and 59 can be reversed.
+To send a train from track 5 to the Danbury branch: levers 68, 66, 47 and
+41 must be normal; then levers 42, 41, 48, 47, 12 and 15 can be reversed.
+To send a train from track 4 to the Danbury branch: levers 5, 6, 68, 66,
+67, 65, 47, 37, 36 and 33 must be normal; then levers 34, 33, 35, 36, 37,
+38, 48, 47, 5 and 15 can be reversed.
+To send a train from track 4 to track 1 to reverse direction: levers 5, 6,
+67, 65, 36 and 33 must be normal; then levers 34, 33, 35, 36 and 5 can be
+reversed.
