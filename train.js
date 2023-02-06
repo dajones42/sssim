@@ -227,7 +227,7 @@ class Train {
 				let railcar= new RailCar();
 				let model= getMstsModel(
 				  dir+fspath.sep+car.shape,dir,null,
-				  railcar,1000);
+				  railcar,1000,null);
 				if (!model)
 					continue;
 				this.length+= car.length;
@@ -240,7 +240,7 @@ class Train {
 				if (car.fashape) {
 					let famodel= getMstsModel(
 					  dir+fspath.sep+car.fashape,dir,null,
-					  null,1000);
+					  null,1000,null);
 					model.add(famodel);
 					famodel.rotation.y= 0;
 					famodel.scale.z= 1;

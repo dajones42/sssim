@@ -27,6 +27,9 @@ THE SOFTWARE.
 let mstsModelMap= {};
 let mstsMaterialMap= {};
 
+//	Reads an MSTS ace file from directory texDir1 or textDir2
+//	and returns an appropriate material given the lightMatIdx.
+//	Saves the material so it can be shared.
 let getMstsMaterial= function(acefile,transparent,texDir1,texDir2,alphaTest,
   lightMatIdx)
 {
@@ -70,6 +73,9 @@ let getMstsMaterial= function(acefile,transparent,texDir1,texDir2,alphaTest,
 		else if (lightMatIdx == -12)
 			mat= new THREE.MeshLambertMaterial({
 			  map: texture, color: 0x888888 } );
+		else if (lightMatIdx>=0 && lightMatIdx<=1)
+			mat= new THREE.MeshStandardMaterial({
+			  map: texture, roughness: lightMatIdx } );
 		else
 			mat= new THREE.MeshLambertMaterial({ map: texture } );
 	} else {
@@ -89,7 +95,8 @@ let getMstsMaterial= function(acefile,transparent,texDir1,texDir2,alphaTest,
 //	Saves geometry and material info so it can be shared by multiple
 //	copies and eventually displosed of.
 //	Adds railcar parts if car is defined.
-let getMstsModel= function(shapePath,texDir1,texDir2,car,roOffset)
+//	Uses MeshStandardMaterial is roughness > 0
+let getMstsModel= function(shapePath,texDir1,texDir2,car,roOffset,roughness)
 {
 	let shapeData= mstsModelMap[shapePath];
 	if (!shapeData) {
@@ -204,7 +211,7 @@ let getMstsModel= function(shapePath,texDir1,texDir2,car,roOffset)
 				  geometry: bgeom,
 				  material: getMstsMaterial(aceFile,
 				    transparent,texDir1,texDir2,alphaTest,
-				    vtxState.lightMatIdx),
+				    roughness||vtxState.lightMatIdx),
 				  matrixIndex: vtxState.matIdx
 				});
 			}
@@ -484,7 +491,7 @@ let loadTileModels= function(tx,tz)
 			  mstsDir+fspath.sep+"GLOBAL"+fspath.sep+"SHAPES" :
 			  routeDir+fspath.sep+"SHAPES";
 			spath+= fspath.sep+object.filename;
-			model= getMstsModel(spath,rtpath,gtpath,null,0);
+			model= getMstsModel(spath,rtpath,gtpath,null,0,null);
 			if (!model)
 				continue;
 		} else if (object.type == "dyntrack") {

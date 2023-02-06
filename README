@@ -10,4 +10,4 @@ Some features also support manual block signalling.
 See help at the bottom of main page (sssim.html).
 
 This program is designed to be run with NW.js which is available at
-https://nwjs.io.  Testing was done using NW.js v0.33.4.
+https://nwjs.io.  Testing was done using NW.js v0.33.4 and v0.69.1.

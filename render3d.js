@@ -69,7 +69,8 @@ let initScene= function()
 			if (o.building) {
 				let path= sssimDir+fspath.sep+o.building.shape;
 				let model=
-				  getMstsModel(path,sssimDir,null,null,0);
+				  getMstsModel(path,sssimDir,null,null,0,
+				   o.building.roughness);
 				if (model) {
 					setCameraModelPosition(model,o.angle,
 					  o.building);
