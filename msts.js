@@ -215,7 +215,7 @@ let tFileToXZ= function(name)
 	for (let i=1; i<9; i++) {
 		let j= 0;
 		for (; j<16; j++)
-			if (name.substr(i,1)==hexdigit[j])
+			if (name.substr(i,1).toLowerCase()==hexdigit[j])
 				break;
 		let s= 16-2*i;
 		let m= 3<<s;

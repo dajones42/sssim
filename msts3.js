@@ -386,7 +386,7 @@ let makeGroundModel= function(tx,tz)
 {
 	let tile= findTile(tx,tz);
 	if (!tile) {
-		console.log("no tile "+tx+" "+tz);
+		console.log("no tile for ground "+tx+" "+tz);
 		return null;
 	}
 	console.log("makegroundmodel "+tx+" "+tz+" "+tile.filename);
@@ -469,7 +469,7 @@ let loadTileModels= function(tx,tz)
 {
 	let tile= findTile(tx,tz);
 	if (!tile) {
-		console.log("no tile "+tx+" "+tz);
+		console.log("no tile for models "+tx+" "+tz);
 		return null;
 	}
 	console.log("loadtilemodels "+tx+" "+tz);
@@ -487,6 +487,13 @@ let loadTileModels= function(tx,tz)
 		if (object.filename) {
 			let global= object.staticFlags &&
 			  (object.staticFlags&0x00200000)!=0;
+			if (object.filename.substr(0,3) == "..\\") {
+				let j= object.filename.lastIndexOf("\\");
+				if (j > 0)
+					object.filename=
+					  object.filename.substr(j+1);
+				global= false;
+			}
 			let spath= global ?
 			  mstsDir+fspath.sep+"GLOBAL"+fspath.sep+"SHAPES" :
 			  routeDir+fspath.sep+"SHAPES";
@@ -506,7 +513,7 @@ let loadTileModels= function(tx,tz)
 		  -2048*(tz-centerTZ)-object.position[2]+center.y;
 		let qdir= object.qdirection;
 		let q= new THREE.Quaternion(
-		  qdir[0],qdir[1],qdir[2],qdir[3]);
+		  qdir[0],qdir[1],-qdir[2],qdir[3]);
 		model.setRotationFromQuaternion(q);
 //		if (object.type == "gantry")
 //			console.log("gantry "+model.position.x+" "+

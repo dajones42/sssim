@@ -212,12 +212,16 @@ let loadModels= function()
 			if (Math.abs(dx)>2000 || Math.abs(dz)>2000)
 				continue;
 			let ground= makeGroundModel(tx+i,tz+j);
-			ground.position.x= 2048*(tx+i-centerTX)-center.x;
-			ground.position.y= -center.z;
-			ground.position.z= -2048*(tz+j-centerTZ)+center.y;
-			scene.add(ground);
-//			console.log("ground "+ground.position.x+" "+
-//			  ground.position.y+" "+ground.position.z);
+			if (ground) {
+				ground.position.x=
+				  2048*(tx+i-centerTX)-center.x;
+				ground.position.y= -center.z;
+				ground.position.z=
+				  -2048*(tz+j-centerTZ)+center.y;
+				scene.add(ground);
+//				console.log("ground "+ground.position.x+" "+
+//				  ground.position.y+" "+ground.position.z);
+			}
 			loadTileModels(tx+i,tz+j);
 		}
 	}
