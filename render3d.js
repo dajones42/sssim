@@ -105,6 +105,7 @@ let initScene= function()
 //	axes.position.y= 4;
 //	scene.add(axes);
 	//makeTrackLines();
+	addCatenaryModels();
 	loadModels();
 }
 
@@ -631,4 +632,225 @@ let mouseDown3d= function(event)
 	  interlocking.toggleState(lever,simTime))
 		renderLevers();
 	event.preventDefault();
+}
+
+//	Makes a model of catenary wire.  Options are:
+//	type:
+//	 "triangle": makes New Haven style triangle catenary.
+//	 "two": makes two bottom contact wires.
+//	 other: makes one bottom contact wire.
+//	length: length of wire in meters.
+//	spacing: spacing between wire hangers in meters.
+//	ht0: minimum height of catenary in meters.
+//	ht1: maximum height of catenary in meters.
+let makeCatenaryGeom= function(options)
+{
+	const mpft= .3048;
+	const rad= .015;
+	const cz= .06;
+	const spacing= options.spacing||10*mpft;
+	const maxx= (options.length ||
+	  (options.type=="triangle"?300:150)*mpft) /2;
+	const z0= options.ht0 || .6*mpft;
+	const z1= options.ht1 || (options.type=="triangle"?9:1.67)*mpft;
+	let x2z= function(x) {
+		let sx= x/maxx;
+		return z0 + sx*sx*(z1-z0);
+	}
+	let x2y= function(x) {
+		return .577*x2z(x);
+	}
+	let vertices= [];
+	let addVertex= function(x,y,z) {
+		vertices.push(x);
+		vertices.push(y);
+		vertices.push(z);
+	}
+	let indices= [];
+	let addTriangles= function(i1,i2,i3,i4) {
+		indices.push(i1);
+		indices.push(i2);
+		indices.push(i3);
+		indices.push(i3);
+		indices.push(i4);
+		indices.push(i1);
+	}
+	let addSides= function(i1,i2) {
+		addTriangles(i1+0,i2+0,i2+1,i1+1);
+		addTriangles(i1+1,i2+1,i2+2,i1+2);
+		addTriangles(i1+2,i2+2,i2+3,i1+3);
+		addTriangles(i1+3,i2+3,i2+0,i1+0);
+	}
+	let topWire= function(ySign,zOffset) {
+		let y= x2y(-maxx)*ySign;
+		let z= x2z(-maxx)+zOffset;
+		let i= vertices.length/3;
+		addVertex(-maxx,y,z-rad);
+		addVertex(-maxx,y-rad,z);
+		addVertex(-maxx,y,z+rad);
+		addVertex(-maxx,y+rad,z);
+		for (let x=-maxx+spacing/2; x<maxx; x+=spacing) {
+			y= x2y(x)*ySign;
+			z= x2z(x)+zOffset;
+			addVertex(x,y,z-rad);
+			addVertex(x,y-rad,z);
+			addVertex(x,y,z+rad);
+			addVertex(x,y+rad,z);
+			addSides(i,i+4);
+			i+= 4;
+		}
+		y= x2y(maxx)*ySign;
+		z= x2z(maxx)+zOffset;
+		addVertex(maxx,y,z-rad);
+		addVertex(maxx,y-rad,z);
+		addVertex(maxx,y,z+rad);
+		addVertex(maxx,y+rad,z);
+		addSides(i,i+4);
+	}
+	let bottomWire= function(zOffset) {
+		let i= vertices.length/3;
+		addVertex(-maxx,0,zOffset-rad);
+		addVertex(-maxx,-rad,zOffset);
+		addVertex(-maxx,0,zOffset+rad);
+		addVertex(-maxx,rad,zOffset);
+		addVertex(maxx,0,zOffset-rad);
+		addVertex(maxx,-rad,zOffset);
+		addVertex(maxx,0,zOffset+rad);
+		addVertex(maxx,rad,zOffset);
+		addSides(i,i+4);
+	}
+	let wireTri= function(x,zOffset) {
+		let y= x2y(x);
+		let z= x2z(x) + zOffset;
+		let i= vertices.length/3;
+		addVertex(x,0,zOffset-rad);
+		addVertex(x+rad,0,zOffset);
+		addVertex(x,0,zOffset+rad);
+		addVertex(x-rad,0,zOffset);
+		addVertex(x,y,z-rad);
+		addVertex(x+rad,y,z);
+		addVertex(x,y,z+rad);
+		addVertex(x-rad,y,z);
+		addVertex(x,-y,z-rad);
+		addVertex(x+rad,-y,z);
+		addVertex(x,-y,z+rad);
+		addVertex(x-rad,-y,z);
+		addSides(i,i+4);
+		addSides(i,i+8);
+		addSides(i+4,i+8);
+	}
+	let wireHanger= function(x,zOffset) {
+		let z= x2z(x) + zOffset;
+		let i= vertices.length/3;
+		addVertex(x,0,zOffset-rad);
+		addVertex(x+rad,0,zOffset);
+		addVertex(x,0,zOffset+rad);
+		addVertex(x-rad,0,zOffset);
+		addVertex(x,0,z-rad);
+		addVertex(x+rad,0,z);
+		addVertex(x,0,z+rad);
+		addVertex(x-rad,0,z);
+		addSides(i,i+4);
+	}
+	let hanger= function(x) {
+		let i= vertices.length/3;
+		addVertex(x-cz/2,rad,rad);
+		addVertex(x-cz/2,rad,rad+cz);
+		addVertex(x-cz/2,-rad,rad+cz);
+		addVertex(x-cz/2,-rad,rad);
+		addVertex(x+cz/2,rad,rad);
+		addVertex(x+cz/2,rad,rad+cz);
+		addVertex(x+cz/2,-rad,rad+cz);
+		addVertex(x+cz/2,-rad,rad);
+		addSides(i,i+4);
+	}
+//	console.log("type "+options.type);
+	if (options.type == "triangle") {
+		bottomWire(rad);
+		bottomWire(cz+rad);
+		topWire(-1,cz+rad);
+		topWire(1,cz+rad);
+		for (let x=-maxx+spacing/2; x<maxx; x+=spacing)
+			wireTri(x,cz+rad);
+		for (let x=-maxx; x<maxx; x+=spacing)
+			hanger(x);
+	} else if (options.type == "two") {
+		bottomWire(rad);
+		bottomWire(cz+rad);
+		topWire(0,cz+rad);
+		for (let x=-maxx+spacing/2; x<maxx; x+=spacing)
+			wireHanger(x,cz+rad);
+		for (let x=-maxx; x<maxx; x+=spacing)
+			hanger(x);
+	} else {
+		bottomWire(rad);
+		topWire(0,rad);
+		for (let x=-maxx+spacing/2; x<maxx; x+=spacing)
+			wireHanger(x,cz+rad);
+	}
+	let geom= new THREE.BufferGeometry();
+	geom.setAttribute("position",
+	 new THREE.Float32BufferAttribute(vertices,3));
+//	geom.setAttribute("normal",
+//	 new THREE.Float32BufferAttribute(normals,3));
+	geom.setIndex(indices);
+	geom.rotateX(-Math.PI/2);
+//	console.log(" verts "+vertices.length);
+//	console.log(" indices "+indices.length);
+	return geom;
+}
+
+let addCatenaryModels= function()
+{
+//	console.log("makeCatenary "+catenary);
+	if (!catenary)
+		return;
+	let addSupport= function(support,p,dx,dy) {
+		if (!support)
+			return;
+		let path= sssimDir+fspath.sep+support.model;
+		let model= getMstsModel(path,sssimDir,null,null,0,0);
+		model.rotation.y= Math.atan2(dy,dx);
+		model.position.x= p.x - centerU + support.offset*dy;
+		model.position.y= p.z-center.z - .275 + support.voffset;
+		model.position.z= centerV - p.y + support.offset*dx;
+		scene.add(model);
+//		console.log("support "+model.position.x+" "+model.position.y+
+//		  " "+dx+" "+dy);
+	}
+	let geom= makeCatenaryGeom(catenary);
+	let mat= new THREE.MeshBasicMaterial({ color: 0x334d33 } );
+	let tracks= catenary.tracks;
+	let len= catenary.length;
+	for (let i=0; i<tracks.length; i++) {
+		let track= tracks[i];
+		let tc= trackCircuits[track.name];
+		let loc= findLocation(centerU,centerV,tc).loc;
+		loc.move(track.offset);
+		let p1= loc.getPosition();
+		let n= Math.ceil(2*Math.abs(track.offset)/len);
+		let dx,dy;
+		for (let j=0; j<n; j++) {
+			loc.move(track.offset>0?-len:len);
+			let p2= loc.getPosition();
+			dx= p2.x-p1.x;
+			dy= p2.y-p1.y;
+			let d= Math.sqrt(dx*dx+dy*dy);
+			dx/= d;
+			dy/= d;
+			let mesh= new THREE.Mesh(geom,mat);
+//			mesh.rotation.x= Math.PI/2;
+			mesh.rotation.y= Math.atan2(dy,dx);//+Math.PI/2;
+			mesh.position.x= (p1.x+p2.x)/2 - centerU;
+			mesh.position.y=
+			  catenary.height + (p1.z+p2.z)/2-center.z - .275;
+			mesh.position.z= centerV - (p1.y+p2.y)/2;
+//			console.log("catenary "+mesh.position.x+" "+
+//			  mesh.position.y+" "+mesh.position.z);
+			scene.add(mesh);
+			addSupport(track.support,p1,dx,dy);
+			p1= p2;
+		}
+		addSupport(track.support,p1,dx,dy);
+	}
 }

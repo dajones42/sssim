@@ -99,6 +99,7 @@ let blockSheet= [[],[]];
 let blockSheetColumns= ["Northbound","Southbound"];
 let requests= [];
 let sssimDir= "";
+let catenary= null;
 
 //	finds the center of MSTS route using TDB data
 //	adjusts default display settings
@@ -197,6 +198,8 @@ let saveData= function(filename)
 	};
 	if (tdbPath)
 		data.tdbFile= fspath.basename(tdbPath);
+	if (catenary)
+		data.catenary= catenary;
 	let s= JSON.stringify(data,null,1);
 	if (filename.indexOf(".json") < 0)
 		filename+= ".json";
@@ -250,6 +253,8 @@ let readData= function(filename)
 		consists= data.consists;
 	if (data.blockSheetColumns)
 		blockSheetColumns= data.blockSheetColumns;
+	if (data.catenary)
+		catenary= data.catenary;
 	calcTrackDBUV();
 	makeTrack();
 	renderCanvas();

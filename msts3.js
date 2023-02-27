@@ -482,6 +482,9 @@ let loadTileModels= function(tx,tz)
 		let object= objects[i];
 		if (!object.position || !object.qdirection)
 			continue;
+		if (catenary && catenary.ignore && object.filename &&
+		  object.filename==catenary.ignore)
+			continue;
 		let model= null;
 //		console.log("type "+object.type);
 		if (object.filename) {

@@ -301,7 +301,7 @@ class Location {
 	}
 }
 
-let findLocation= function(x,y)
+let findLocation= function(x,y,trackCircuit)
 {
 	let bestD= 1e30;
 	let bestE= null;
@@ -309,6 +309,8 @@ let findLocation= function(x,y)
 	let bestR= false;
 	for (let i=0; i<edges.length; i++) {
 		let e= edges[i];
+		if (trackCircuit && trackCircuit!=e.trackCircuit)
+			continue;
 		let p1= e.v1.position;
 		let p2= e.v2.position;
 		let dx= p2.x-p1.x;
