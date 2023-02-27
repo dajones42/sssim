@@ -4251,5 +4251,34 @@
   "Eastbound",
   "Westbound"
  ],
+ "catenary": {
+  "type": "two",
+  "height": 7.2,
+  "length": 45.72,
+  "ignore": "kurras_nhv_catenary.s",
+  "tracks": [
+   {
+    "name": "3b",
+    "offset": -294.44,
+    "support": {
+     "model": "cbridge.s",
+     "offset": 7.4775,
+     "voffset": -1.625
+    }
+   },
+   {
+    "name": "1b",
+    "offset": -294.44
+   },
+   {
+    "name": "2e",
+    "offset": -294.44
+   },
+   {
+    "name": "4e",
+    "offset": -294.44
+   }
+  ]
+ },
  "tdbFile": "usax.tdb"
 }

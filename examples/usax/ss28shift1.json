@@ -3759,5 +3759,34 @@
   "Eastbound",
   "Westbound"
  ],
+ "catenary": {
+  "type": "triangle",
+  "height": 7.2,
+  "length": 91.44,
+  "ignore": "Gantry4line_03.s",
+  "tracks": [
+   {
+    "name": "3b",
+    "offset": -294.44,
+    "support": {
+     "model": "cbridge.s",
+     "offset": 7.4775,
+     "voffset": -1.625
+    }
+   },
+   {
+    "name": "1b",
+    "offset": -294.44
+   },
+   {
+    "name": "2b",
+    "offset": -294.44
+   },
+   {
+    "name": "4b",
+    "offset": -294.44
+   }
+  ]
+ },
  "tdbFile": "usax.tdb"
 }
